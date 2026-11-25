@@ -294,9 +294,95 @@ npm run lint                                                                    
 
 ## CI/CD and deployment
 
-GitHub Actions (`.github/workflows/ci-cd.yml`) runs lint (report-only), PHPUnit and Playwright **inside the project's Docker image** on every pull request and push to `master`. A pushed tag `vX.Y.Z` additionally runs a release check and deploys to **https://talkila.blazingsun.space** over SSH: maintenance page on, rsync of only the changed files, migrations, maintenance off, smoke test.
+Workflow file: `.github/workflows/ci-cd.yml`. Full guide (first deployment, migrations, seeders, maintenance mode, backups, rollback, troubleshooting): **[DEPLOYMENT.md](DEPLOYMENT.md)**.
 
-Setup and the release routine: **[DEPLOYMENT.md](DEPLOYMENT.md)**.
+**Tests run on every change. The site is deployed only when you push a release tag.**
+
+| Event | Name in the Actions list | Tests | Deploys |
+|---|---|---|---|
+| **Pull request into `master`** | `🔎 PR #12: <PR title>` | ✅ | ❌ |
+| **PR merged into `master`**, or **direct push to `master`** | `✅ master: <commit message>` | ✅ | ❌ |
+| **Release tag pushed**: `vX.Y.Z` | `🚀 Release v1.2.0` | ✅ | ✅ only if every test **and** the release check pass |
+| **Manual** (Actions → CI/CD → Run workflow) on a branch / on a tag | `🔁 Manual checks …` / `🚀 Release v1.2.0` | ✅ | ❌ / ✅ redeploys that release |
+
+```
+🔍 Lint (report-only) ─────────────────────────────────────────────┐
+🐳 Build Docker image ──┬──→ 🧪 PHPUnit — API ─────┐               │
+                        ├──→ 🌐 PHPUnit — web ─────┼──→ 📦 Release ─┼──→ 🚀 Deploy to talkila.blazingsun.space
+                        └──→ 🎭 E2E (Playwright) ──┘     bundle    │      (tags only, everything green)
+🏷️ Release check (tags only) ──────────────────────────────────────┘
+```
+
+The deploy turns the maintenance page on, rsyncs **only the changed files** over SSH, runs the migrations, turns maintenance off and smoke-tests the live site. If any step fails, the site stays in maintenance instead of running half-updated code.
+
+### Releasing (deploying to the live site)
+
+A release tag is `v` + the `"version"` in the root `package.json`, always three numbers: `vMAJOR.MINOR.PATCH`, for example `v1.2.0`. The **🏷️ Release check** job rejects a tag (and nothing is deployed) if:
+
+| Rule | Example of a rejected tag |
+|---|---|
+| The tag must look like `vX.Y.Z` | `v1.0`, `v.1.0`, `1.0.0`, `v1.0.0-beta` |
+| It must equal the `package.json` version at that commit, so the version was bumped | `v1.1.0` while `package.json` still says `1.0.0` |
+| It must be higher than every earlier release | `v1.0.4` after `v1.0.5` exists |
+| Its commit must already be on `master` | a tag on a feature branch |
+
+**Recommended: one command bumps and tags.** Start on an up-to-date `master` with all your changes merged:
+
+```bash
+git checkout master && git pull
+
+npm version patch          # 1.0.0 → 1.0.1  bug fixes
+npm version minor          # 1.0.1 → 1.1.0  new features
+npm version major          # 1.1.0 → 2.0.0  big/breaking changes
+# npm version edits package.json, commits "1.1.0" and creates the tag v1.1.0
+
+git push origin master --follow-tags     # pushes the bump commit AND the tag
+```
+
+This starts two runs: `✅ master: 1.1.0` (tests only) and `🚀 Release v1.1.0` (tests, release check, deploy).
+
+**Manual alternative.** Same result, step by step:
+
+```bash
+git checkout master && git pull
+# 1. Bump "version" in package.json (e.g. "1.0.0" → "1.1.0"), then:
+git commit -am "Release 1.1.0"
+git push origin master
+# 2. Tag that commit and push the tag:
+git tag -a v1.1.0 -m "v1.1.0: <what changed>"
+git push origin v1.1.0
+```
+
+**First release:** `package.json` started at `1.0.0`, so the first release tag was `v1.0.0` (**already released**):
+
+```bash
+git checkout master && git pull
+git tag -a v1.0.0 -m "v1.0.0: first release"
+git push origin v1.0.0
+```
+
+**If a release is rejected or fails:** fix the problem, then release a **new** version (`npm version patch` and push again). To retry the same tag after a temporary failure (e.g. SSH timeout), use **Re-run failed jobs** on that run.
+
+### Redeploy a release
+
+**Actions → CI/CD → Run workflow → Use workflow from: Tags → `v1.1.0`**, or with the GitHub CLI:
+
+```bash
+gh workflow run ci-cd.yml --ref v1.1.0
+```
+
+Only the **latest** release can be redeployed. To go back to older code, revert it on `master` and release a new version; this prevents accidental rollbacks.
+
+### Useful tag commands
+
+```bash
+git tag                                # list local tags
+git ls-remote --tags origin            # list tags on GitHub
+git show v1.0.0                        # see what a tag points to
+git tag -d v1.0.0                      # delete a local tag
+git push origin --delete v1.0.0        # delete a tag on GitHub
+git checkout v1.0.0                    # look at a release's code (read-only; go back with: git checkout master)
+```
 
 ---
 

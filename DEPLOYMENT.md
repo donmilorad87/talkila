@@ -58,25 +58,61 @@ public_html/talkila/
 
 ## 2. The CI/CD pipeline
 
-Defined in `.github/workflows/ci-cd.yml`. Every run shows these jobs, each as its own box in **Actions**:
+Workflow file: `.github/workflows/ci-cd.yml`.
 
-| Job | What it does | Runs on |
-|---|---|---|
-| 🔍 **Lint (report-only)** | ESLint + Stylelint over `talkila.backend/public`; findings are listed in the summary but never fail the build | every run |
-| 🐳 **Build Docker image** | builds the PHP 8.5 image from `Docker/Laravel/Dockerfile`, or reuses it from the cache if nothing changed | every run |
-| 🧪 **PHPUnit — API** | starts the full Docker stack (nginx, Laravel, MariaDB 11.8, Redis), migrates + seeds, runs `tests/Feature/Api` | every run, in parallel |
-| 🌐 **PHPUnit — web routes** | same stack, runs `tests/Feature/Web` | every run, in parallel |
-| 🎭 **E2E (Playwright)** | same stack, opens the site in Chromium (desktop + mobile), runs `tests/e2e` | every run, in parallel |
-| 🏷️ **Release check** | the tag must be `v` + `package.json` version, higher than every earlier release, and on `master` | tags only |
-| 📦 **Release bundle** | after all tests pass: git-tracked files + `composer install --no-dev`, built with the **same image** the tests used | tags only |
-| 🚀 **Deploy** | uploads the bundle to production (see [section 5](#5-releasing-a-new-version-a-new-deploy)) | tags only |
+### When it runs
 
-| You do | Result |
-|---|---|
-| Open / update a pull request into `master` | checks only |
-| Push to `master` or merge a PR (a merge **is** a push) | checks only |
-| Push a tag `vX.Y.Z` | checks → release check → bundle → **deploy** |
-| Actions → CI/CD → **Run workflow** on a tag | redeploys that release |
+**Tests run on every change. The site is deployed only when you push a release tag.**
+
+| Event | Name in the Actions list | Tests | Deploys |
+|---|---|---|---|
+| **Pull request into `master`**: opened, new commits, reopened, or draft marked "Ready for review" | `🔎 PR #12: <PR title>` | ✅ | ❌ |
+| **PR merged into `master`** (merge, squash or rebase) | `✅ master: <commit message>` | ✅ | ❌ |
+| **Direct push to `master`** | `✅ master: <commit message>` | ✅ | ❌ |
+| **Release tag pushed**: `vX.Y.Z` | `🚀 Release v1.2.0` | ✅ | ✅ only if every test **and** the release check pass |
+| **Manual** (Actions → CI/CD → Run workflow) on a **branch** | `🔁 Manual checks on master by <you>` | ✅ | ❌ |
+| **Manual** on a **tag** (choose the tag under "Use workflow from") | `🚀 Release v1.2.0` | ✅ | ✅ redeploys that release |
+
+### Pull request workflow
+
+Use pull requests to test changes on GitHub before they reach `master`:
+
+```bash
+git checkout -b feature/new-section        # work on a branch, not on master
+# …edit, commit…
+git push -u origin feature/new-section     # then open a PR into master on GitHub
+```
+
+1. **PR opened, or new commits pushed to it:** `🔎 PR #N: …` runs Lint, the Docker image, PHPUnit API, PHPUnit web routes and E2E. Results show on the PR page under **Checks** and in the run's **Summary**.
+2. **More commits pushed to the PR:** the running check is cancelled and restarted on the newest code.
+3. **PR merged into `master`:** `✅ master: …` runs every test again on the merged code. **Nothing is deployed.** `master` collects tested changes until you decide to release.
+4. **PR closed without merging:** nothing runs.
+5. **Ready to go live?** Bump the version and push a tag; see [Releasing](#5-releasing-a-new-version-a-new-deploy).
+
+To allow merging only green PRs: **Settings → Branches → Add rule for `master`** → require the checks *PHPUnit — API*, *PHPUnit — web routes* and *E2E (Playwright)*.
+
+### Jobs
+
+```
+🔍 Lint (report-only) ─────────────────────────────────────────────┐
+🐳 Build Docker image ──┬──→ 🧪 PHPUnit — API ─────┐               │
+                        ├──→ 🌐 PHPUnit — web ─────┼──→ 📦 Release ─┼──→ 🚀 Deploy to talkila.blazingsun.space
+                        └──→ 🎭 E2E (Playwright) ──┘     bundle    │      (tags only, everything green)
+🏷️ Release check (tags only) ──────────────────────────────────────┘
+```
+
+| Job | Runs on | Steps | Shown in the run summary |
+|---|---|---|---|
+| 🔍 **Lint (report-only)** | everything | ESLint and Stylelint over `talkila.backend/public`; tests of the release rules (`tests/ci/check-release.test.sh`). Lint findings never fail the build | Problem counts per linter, with output |
+| 🐳 **Build Docker image** | everything | Builds the PHP 8.5 image from `Docker/Laravel/Dockerfile`, or reuses it from the cache when nothing changed | Built or reused |
+| 🧪 **PHPUnit — API** | everything | Starts the Docker stack (nginx, Laravel, MariaDB 11.8, Redis), migrates + seeds, runs `tests/Feature/Api` | ✅/❌ with output |
+| 🌐 **PHPUnit — web routes** | everything | Same stack, runs `tests/Feature/Web` | ✅/❌ with output |
+| 🎭 **E2E (Playwright)** | everything | Same stack, Chromium desktop and mobile, runs `tests/e2e` | Results plus the `playwright-report` artifact |
+| 🏷️ **Release check** | tags only | `scripts/ci/check-release.sh`: tag is `vX.Y.Z`, equals `package.json` version, is higher than every earlier release, and its commit is on `master` | Release notes (commits since the previous tag), or why the tag was rejected |
+| 📦 **Release bundle** | tags only | Git-tracked files + `composer install --no-dev`, built with the **same image** the tests passed in | File count and size |
+| 🚀 **Deploy** | tags only | Maintenance page on, rsync of only the changed files over SSH, migrations, caches, maintenance off, smoke test | Files sent/deleted, health result |
+
+The three test jobs run **in parallel**, each in its own box. Deploys never overlap. Outdated PR runs are cancelled. Deploys appear under **Environments → production**.
 
 ---
 
@@ -183,18 +219,63 @@ feature branch ──PR──▶ master ──(checks)──▶ … more merges 
 
 ## 5. Releasing a new version (a new deploy)
 
-### Commands
+**Only a pushed release tag deploys.** Pushing or merging to `master` only runs the tests.
+
+A release tag is `v` + the `"version"` in the root `package.json`, always three numbers: `vMAJOR.MINOR.PATCH`, for example `v1.2.0`. The **🏷️ Release check** job rejects a tag (and nothing is deployed) if:
+
+| Rule | Example of a rejected tag |
+|---|---|
+| The tag must look like `vX.Y.Z` | `v1.0`, `v.1.0`, `1.0.0`, `v1.0.0-beta` |
+| It must equal the `package.json` version at that commit, so the version was bumped | `v1.1.0` while `package.json` still says `1.0.0` |
+| It must be higher than every earlier release | `v1.0.4` after `v1.0.5` exists |
+| Its commit must already be on `master` | a tag on a feature branch |
+
+### Recommended: one command bumps and tags
+
+Start on an up-to-date `master` with all your changes merged:
 
 ```bash
 git checkout master && git pull
-npm version patch            # bug fixes:        1.0.0 → 1.0.1
-#   npm version minor        # new features:     1.0.1 → 1.1.0
-#   npm version major        # breaking changes: 1.1.0 → 2.0.0
-git push origin master
-git push origin --tags
+
+npm version patch          # 1.0.0 → 1.0.1  bug fixes
+npm version minor          # 1.0.1 → 1.1.0  new features
+npm version major          # 1.1.0 → 2.0.0  big/breaking changes
+# npm version edits package.json, commits "1.1.0" and creates the tag v1.1.0
+
+git push origin master --follow-tags     # pushes the bump commit AND the tag
 ```
 
-`npm version` bumps `"version"` in `package.json`, commits it and creates the matching tag `vX.Y.Z`. Pushing the tag starts **🚀 Release vX.Y.Z** in Actions.
+This starts two runs: `✅ master: 1.1.0` (tests only) and `🚀 Release v1.1.0` (tests, release check, deploy).
+
+`npm version` refuses to run with uncommitted changes: commit or stash them first.
+
+### Manual alternative
+
+Same result, step by step:
+
+```bash
+git checkout master && git pull
+# 1. Bump "version" in package.json (e.g. "1.0.0" → "1.1.0"), then:
+git commit -am "Release 1.1.0"
+git push origin master
+# 2. Tag that commit and push the tag:
+git tag -a v1.1.0 -m "v1.1.0: <what changed>"
+git push origin v1.1.0
+```
+
+### First release
+
+`package.json` started at `1.0.0`, so the first release tag was `v1.0.0` (**already released**: talkila.blazingsun.space runs it):
+
+```bash
+git checkout master && git pull
+git tag -a v1.0.0 -m "v1.0.0: first release"
+git push origin v1.0.0
+```
+
+The next release is therefore `npm version patch` (→ `v1.0.1`) or higher.
+
+**If a release is rejected or fails:** fix the problem, then release a **new** version (`npm version patch` and push again). To retry the same tag after a temporary failure (e.g. SSH timeout), use **Re-run failed jobs** on that run.
 
 ### What the deploy does
 
@@ -211,10 +292,26 @@ git push origin --tags
 
 The run's **Summary** tab shows how many files were sent and deleted, plus the health result.
 
-### Redeploying
+### Redeploy a release
 
-- **Same release again** (e.g. after an SSH timeout): open the failed run → **Re-run failed jobs**.
-- Only the **newest** release can be deployed. Older tags are rejected, so nobody rolls back by accident ([section 12](#12-rolling-back-a-bad-release)).
+**Actions → CI/CD → Run workflow → Use workflow from: Tags → `v1.1.0`**, or with the GitHub CLI:
+
+```bash
+gh workflow run ci-cd.yml --ref v1.1.0
+```
+
+Only the **latest** release can be redeployed. To go back to older code, revert it on `master` and release a new version ([section 12](#12-rolling-back-a-bad-release)); this prevents accidental rollbacks.
+
+### Useful tag commands
+
+```bash
+git tag                                # list local tags
+git ls-remote --tags origin            # list tags on GitHub
+git show v1.0.0                        # see what a tag points to
+git tag -d v1.0.0                      # delete a local tag
+git push origin --delete v1.0.0        # delete a tag on GitHub
+git checkout v1.0.0                    # look at a release's code (read-only; go back with: git checkout master)
+```
 
 ---
 
@@ -419,7 +516,7 @@ The release check only allows versions **higher** than the last one, so a rollba
 ```bash
 git revert <bad-commit>        # or several; creates commits that undo the change
 git push origin master         # wait for green checks
-npm version patch && git push origin master && git push origin --tags
+npm version patch && git push origin master --follow-tags
 ```
 
 If the bad release ran a migration that changed or deleted data, also restore the database backup ([section 11](#11-backups-and-restore)). If the site is broken right now and you need a moment: `php artisan down` while you prepare the fix.
