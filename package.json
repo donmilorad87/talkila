@@ -1,6 +1,6 @@
 {
   "name": "talkila",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Talkila — booking e-learning marketplace (CI tooling: lint, E2E, release version)",
   "license": "PolyForm-Noncommercial-1.0.0",
