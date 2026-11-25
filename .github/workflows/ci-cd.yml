@@ -83,16 +83,17 @@ jobs:
           scripts/ci/summary.sh "Stylelint" "${{ steps.stylelint.outcome }}" stylelint.ci.log
           scripts/ci/summary.sh "Release rules" "${{ steps.release-rules.outcome }}" release-rules.ci.log
 
-  test:
-    name: 🐳 Tests in Docker (API, web, E2E)
+  image:
+    name: 🐳 Build Docker image
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
 
-      # The PHP 8.5 image takes minutes to compile; cache it until the Dockerfile or its configs change.
-      - name: Cache Laravel Docker image
+      # The PHP 8.5 image takes minutes to compile: build it once per Dockerfile/composer change, then every test job
+      # restores it from this cache (.github/actions/start-stack).
+      - name: Restore cached Laravel image
         id: image-cache
-        uses: actions/cache@v6
+        uses: actions/cache/restore@v6
         with:
           path: /tmp/laravel-image.tar
           key: laravel-image-${{ hashFiles('Docker/Laravel/**', 'talkila.backend/composer.json', 'talkila.backend/composer.lock') }}
@@ -103,51 +104,89 @@ jobs:
           docker build -f Docker/Laravel/Dockerfile -t "$LARAVEL_IMAGE" .
           docker save "$LARAVEL_IMAGE" -o /tmp/laravel-image.tar
 
-      - name: Load cached Laravel image
-        if: steps.image-cache.outputs.cache-hit == 'true'
-        run: docker load -i /tmp/laravel-image.tar
+      - name: Save Laravel image for the test jobs
+        if: steps.image-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: /tmp/laravel-image.tar
+          key: ${{ steps.image-cache.outputs.cache-primary-key }}
 
-      - name: Start the stack (nginx, Laravel, MariaDB 11.8, Redis)
+      - name: Summary
         run: |
-          scripts/ci/prepare-env.sh
-          docker compose up -d --wait # no --build: reuse the cached Laravel image (nginx builds if missing)
-          docker compose exec -T laravel composer install --no-interaction --no-progress
-          docker compose exec -T laravel chown -R www-data:www-data storage bootstrap/cache
-          # As www-data (php-fpm's user): files it creates (logs, compiled views) must stay writable for the site.
-          docker compose exec -T -u www-data laravel php artisan migrate --force --seed
+          state="${{ steps.image-cache.outputs.cache-hit == 'true' && 'reused from cache' || 'built' }}"
+          echo "## 🐳 Docker image: $state (PHP 8.5)" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: PHPUnit — API
-        id: api
+  api:
+    name: 🧪 PHPUnit — API
+    needs: image
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/start-stack
+
+      - name: PHPUnit — API (tests/Feature/Api)
+        id: tests
         run: docker compose exec -T -u www-data laravel vendor/bin/phpunit --testsuite Api --colors=never | tee php-api.ci.log
 
-      - name: PHPUnit — web routes
-        id: web
+      - name: Laravel log on failure
+        if: ${{ failure() }}
+        run: docker compose exec -T laravel sh -c 'tail -n 100 storage/logs/laravel-*.log' || true
+
+      - name: Summary
         if: ${{ !cancelled() }}
+        run: |
+          echo "## 🧪 PHPUnit — API (PHP $(docker compose exec -T laravel php -r 'echo PHP_VERSION;'), MariaDB 11.8)" >> "$GITHUB_STEP_SUMMARY"
+          scripts/ci/summary.sh "PHPUnit — API" "${{ steps.tests.outcome }}" php-api.ci.log
+
+  web:
+    name: 🌐 PHPUnit — web routes
+    needs: image
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/start-stack
+
+      - name: PHPUnit — web routes (tests/Feature/Web)
+        id: tests
         run: docker compose exec -T -u www-data laravel vendor/bin/phpunit --testsuite Web --colors=never | tee php-web.ci.log
 
-      - uses: actions/setup-node@v7
+      - name: Laravel log on failure
+        if: ${{ failure() }}
+        run: docker compose exec -T laravel sh -c 'tail -n 100 storage/logs/laravel-*.log' || true
+
+      - name: Summary
         if: ${{ !cancelled() }}
+        run: |
+          echo "## 🌐 PHPUnit — web routes (PHP $(docker compose exec -T laravel php -r 'echo PHP_VERSION;'), MariaDB 11.8)" >> "$GITHUB_STEP_SUMMARY"
+          scripts/ci/summary.sh "PHPUnit — web routes" "${{ steps.tests.outcome }}" php-web.ci.log
+
+  e2e:
+    name: 🎭 E2E (Playwright)
+    needs: image
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/start-stack
+
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
 
       - name: Install Playwright
         id: playwright
-        if: ${{ !cancelled() }}
         run: |
           npm ci
           echo "version=$(node -p "require('@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
 
       - name: Cache Playwright browsers
         id: browser-cache
-        if: ${{ !cancelled() }}
         uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ steps.playwright.outputs.version }}
 
       - name: Install Chromium
-        if: ${{ !cancelled() }}
         run: |
           if [[ "${{ steps.browser-cache.outputs.cache-hit }}" == "true" ]]; then
             npx playwright install-deps chromium
@@ -157,7 +196,6 @@ jobs:
 
       - name: E2E (Playwright, desktop + mobile)
         id: e2e
-        if: ${{ !cancelled() }}
         run: npx playwright test | tee e2e.ci.log
 
       - name: Laravel log on failure
@@ -178,20 +216,34 @@ jobs:
       - name: Summary
         if: ${{ !cancelled() }}
         run: |
-          echo "## 🐳 Tests (PHP $(docker compose exec -T laravel php -r 'echo PHP_VERSION;'), MariaDB 11.8)" >> "$GITHUB_STEP_SUMMARY"
-          scripts/ci/summary.sh "PHPUnit — API" "${{ steps.api.outcome }}" php-api.ci.log
-          scripts/ci/summary.sh "PHPUnit — web routes" "${{ steps.web.outcome }}" php-web.ci.log
+          echo "## 🎭 E2E" >> "$GITHUB_STEP_SUMMARY"
           scripts/ci/summary.sh "Playwright (desktop + mobile)" "${{ steps.e2e.outcome }}" e2e.ci.log
+          echo "Full HTML report: **playwright-report** artifact on this run." >> "$GITHUB_STEP_SUMMARY"
 
-      # Release tags only: the bundle is built here, from the image the tests just passed in, and deployed as-is.
+  bundle:
+    name: 📦 Release bundle
+    needs: [api, web, e2e]
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+
+      # Built from the same image the tests just passed in, and deployed as-is.
+      - name: Restore Laravel Docker image
+        uses: actions/cache/restore@v6
+        with:
+          path: /tmp/laravel-image.tar
+          key: laravel-image-${{ hashFiles('Docker/Laravel/**', 'talkila.backend/composer.json', 'talkila.backend/composer.lock') }}
+          fail-on-cache-miss: true
+
       - name: Build release bundle
-        if: startsWith(github.ref, 'refs/tags/')
         run: |
+          docker load -i /tmp/laravel-image.tar
           scripts/build-release.sh release
           tar -czf release.tar.gz release
+          echo "## 📦 Release bundle: $(find release -type f | wc -l) files, $(du -sh release.tar.gz | cut -f1) compressed" >> "$GITHUB_STEP_SUMMARY"
 
       - uses: actions/upload-artifact@v7
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           name: release
           path: release.tar.gz
@@ -215,7 +267,7 @@ jobs:
 
   deploy:
     name: 🚀 Deploy to talkila.blazingsun.space
-    needs: [lint, test, release]
+    needs: [lint, bundle, release]
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-24.04
     environment:

@@ -28,7 +28,7 @@ remote() { # remote <script>: runs a bash script in DEPLOY_PATH on the server
 }
 
 echo "▶ Checking the server"
-remote "test -f .env || { echo '.env is missing in $DEPLOY_PATH: create it first (docs/DEPLOYMENT.md, step 3)' >&2; exit 1; }"
+remote "test -f .env || { echo '.env is missing in $DEPLOY_PATH: create it first (DEPLOYMENT.md, section 3.3)' >&2; exit 1; }"
 first_deploy=$(remote "test -f artisan && echo no || echo yes")
 
 maintenance=off

@@ -52,11 +52,11 @@ The seeded admin account is `admin@admin.com` / `password`. Change it on any sha
 ├── docker-compose.yml        # the whole local stack
 ├── .env.example              # Docker Compose variables (DB name/user/password)
 ├── package.json              # CI tooling (ESLint, Stylelint, Playwright) + the release version
-├── .github/workflows/        # CI/CD (see docs/DEPLOYMENT.md)
+├── .github/workflows/        # CI/CD (see DEPLOYMENT.md)
 ├── scripts/                  # build-release.sh, deploy.sh, ci/ helpers
 ├── deploy/                   # production .htaccess, pinned SSH host keys, production .env template
 ├── tests/e2e/                # Playwright tests
-├── docs/DEPLOYMENT.md        # how releases reach production
+├── DEPLOYMENT.md        # how releases reach production
 ├── Docker/
 │   ├── Nginx/                # nginx image, vhost (default.conf), self-signed SSL cert
 │   ├── Laravel/              # PHP 8.5-FPM image, php.ini, supervisord.conf
@@ -296,7 +296,7 @@ npm run lint                                                                    
 
 GitHub Actions (`.github/workflows/ci-cd.yml`) runs lint (report-only), PHPUnit and Playwright **inside the project's Docker image** on every pull request and push to `master`. A pushed tag `vX.Y.Z` additionally runs a release check and deploys to **https://talkila.blazingsun.space** over SSH: maintenance page on, rsync of only the changed files, migrations, maintenance off, smoke test.
 
-Setup and the release routine: **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)**.
+Setup and the release routine: **[DEPLOYMENT.md](DEPLOYMENT.md)**.
 
 ---
 

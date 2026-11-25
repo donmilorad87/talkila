@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 |-----------|---------|
 | `talkila.backend/` | Combined Laravel 12 app (main site + Twilio call server) |
 | `Docker/` | Docker infrastructure (Nginx, Laravel, MariaDB init, configs) |
-| `scripts/`, `deploy/`, `.github/` | CI/CD: release bundle, SSH deploy, workflow (see `docs/DEPLOYMENT.md`) |
+| `scripts/`, `deploy/`, `.github/` | CI/CD: release bundle, SSH deploy, workflow (see `DEPLOYMENT.md`) |
 | `tests/e2e/` | Playwright E2E tests (root `package.json`) |
 
 ## Docker Development
@@ -190,7 +190,7 @@ Pattern: **Event → Job → Mail**
 
 - `.github/workflows/ci-cd.yml`: PR / push to master → lint (report-only) + PHPUnit + Playwright inside the Docker image; tag `vX.Y.Z` → also release check + deploy.
 - Deploy = `scripts/build-release.sh` (git-tracked files + `composer --no-dev`) then `scripts/deploy.sh` (artisan down → rsync changed files over SSH → migrate/caches → up → smoke test). Never touches `.env`, `storage/`, user uploads.
-- Production: https://talkila.blazingsun.space (Hostinger, PHP 8.5). Root `.htaccess` = `deploy/root.htaccess` (serves `public/`). Setup: `docs/DEPLOYMENT.md`.
+- Production: https://talkila.blazingsun.space (Hostinger, PHP 8.5). Root `.htaccess` = `deploy/root.htaccess` (serves `public/`). Setup: `DEPLOYMENT.md`.
 - Translations (`resources/lang`, `public/build/lang`) are committed on purpose: they are runtime files with no generator.
 
 ## PSR-4 Warnings

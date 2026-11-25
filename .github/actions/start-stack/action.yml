@@ -1,0 +1,24 @@
+name: Start the Docker stack
+description: >-
+  Loads the Laravel image built by the "Build Docker image" job and starts nginx, Laravel (PHP 8.5), MariaDB 11.8
+  and Redis with a migrated and seeded database. Needs the repository checked out and env LARAVEL_IMAGE set.
+runs:
+  using: composite
+  steps:
+    - name: Restore Laravel Docker image
+      uses: actions/cache/restore@v6
+      with:
+        path: /tmp/laravel-image.tar
+        key: laravel-image-${{ hashFiles('Docker/Laravel/**', 'talkila.backend/composer.json', 'talkila.backend/composer.lock') }}
+        fail-on-cache-miss: true
+
+    - name: Start the stack (nginx, Laravel, MariaDB 11.8, Redis)
+      shell: bash
+      run: |
+        docker load -i /tmp/laravel-image.tar
+        scripts/ci/prepare-env.sh
+        docker compose up -d --wait # no --build: reuse the loaded Laravel image (nginx builds if missing)
+        docker compose exec -T laravel composer install --no-interaction --no-progress
+        docker compose exec -T laravel chown -R www-data:www-data storage bootstrap/cache
+        # As www-data (php-fpm's user): files it creates (logs, compiled views) must stay writable for the site.
+        docker compose exec -T -u www-data laravel php artisan migrate --force --seed
