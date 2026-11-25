@@ -1,0 +1,227 @@
+
+
+//sass need to be installed first
+//npm install -g sass
+//than you can use this comand to compile scss
+
+//sass app.scss:./../../../assets/css/app.css --style compressed --watch --no-source-map
+//sass app.scss:./../../../assets/css/app.css --watch
+@charset 'utf-8';
+
+.df {
+    display: flex!important;
+}
+.dn {
+    display: none!important;
+}
+p.pm0:focus {
+    background: aliceblue;
+}
+
+#loadingPopup {
+    display: none;
+    background: transparent;
+}
+
+.video_conference {
+    #loadingPopup {
+        display: block;
+        background: rgba(0, 0, 0, .5);
+    }
+}
+
+.date-time-tabs {
+    ul {
+        a {
+            display: block;
+            float: left;
+            li {
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+.scrollCont {
+    transition: 0.3s;
+}
+
+.mainTitle {
+    font-weight: 900;
+    position: relative;
+    z-index: 10;
+}
+
+.phone {
+    text-indent: 4px;
+}
+
+.mainTitle p {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0;
+}
+
+.owl-carousel {
+    opacity: 0;
+}
+
+
+
+@media(max-width:640px) {
+
+    .bannerMain {
+        min-height: 535.883px;
+    }
+    .mainPicture img {
+        min-height: 341px;
+    }
+}
+@media(min-width:1280px){
+    #bannerMain{
+        min-height: 612.7px;
+    }
+}
+@import 'settings';
+@import './../../../node_modules/foundation-sites/scss/foundation';
+//@import 'motion-ui';
+
+/* Global styles */
+
+@include foundation-global-styles;
+@include foundation-forms;
+@include foundation-typography;
+
+/* Grids (choose one)*/
+
+@include foundation-xy-grid-classes;
+// @include foundation-grid;
+// @include foundation-flex-grid;
+
+/* Generic components */
+
+//@include foundation-button;
+//@include foundation-button-group;
+//@include foundation-close-button;
+@include foundation-label;
+@include foundation-progress-bar;
+//@include foundation-slider;
+@include foundation-switch;
+@include foundation-table;
+
+/* Basic components */
+
+//@include foundation-badge;
+//@include foundation-breadcrumbs;
+@include foundation-callout;
+//@include foundation-card;
+//@include foundation-dropdown;
+//@include foundation-pagination;
+// @include foundation-tooltip;
+
+/* Containers */
+
+//@include foundation-accordion;
+//@include foundation-media-object;
+//@include foundation-orbit;
+//@include foundation-responsive-embed;
+//@include foundation-tabs;
+//@include foundation-thumbnail;
+
+/* Menu-based containers */
+
+//@include foundation-menu;
+//@include foundation-menu-icon;
+//@include foundation-accordion-menu;
+//@include foundation-drilldown-menu;
+//@include foundation-dropdown-menu;
+
+/* Layout components */
+
+//@include foundation-off-canvas;
+//@include foundation-reveal;
+//@include foundation-sticky;
+//@include foundation-title-bar;
+//@include foundation-top-bar;
+
+/* Helpers */
+
+//@include foundation-float-classes;
+//@include foundation-flex-classes;
+@include foundation-visibility-classes;
+// @include foundation-prototype-classes;
+
+/*Motion UI */
+
+//@include motion-ui-transitions;
+//@include motion-ui-animations;
+
+/* Added css */
+
+// @import 'tooltip';
+@import 'topHeader';
+@import 'header';
+@import 'header-secondary';
+@import 'header-call';
+@import 'banner';
+@import 'footer';
+@import 'accounts';
+@import 'faq';
+@import 'slider-carousel';
+@import 'mobile-slider-carousel';
+@import 'social';
+@import 'customers';
+@import 'custom';
+//@import 'inputNumber';
+@import 'rangeInput';
+@import 'calculator';
+@import 'owlCarousel';
+@import 'owlCarouselTheme';
+@import 'callout';
+@import 'privacy-policy';
+@import 'profile';
+@import 'book-slot';
+@import 'booking-summary';
+@import 'app-popup';
+@import 'scroll-to-top';
+@import 'calendar';
+@import 'payment';
+@import 'private-profile';
+@import 'thankyou';
+@import 'setting';
+@import 'favorites';
+@import 'courses';
+@import 'mobile-join-club';
+@import 'join-club';
+@import 'booking';
+@import 'video-conference';
+@import 'login';
+@import 'login-validation';
+@import 'dot-navigation';
+@import 'mobile-menu';
+@import 'phone-ringing';
+@import 'settings-mobile';
+@import 'voice-call';
+@import 'verification';
+@import 'date-picker';
+@import 'step2-validation';
+@import 'talks_and_availability';
+@import 'toastify';
+//@import 'swipe-unlock';
+@import 'small_footer';
+@import 'main-height';
+@import 'subcategories';
+@import 'custom_indian';
+@import '_edit-profile';
+@import 'scrollBars';
+@import 'utility_classes';
+@import 'search';
+.flex-input label {
+    color: white;
+}
+
+@media (min-width:1024px) {
+    #appStorePupUp .popuper {
+        overflow: hidden;
+    }
+}

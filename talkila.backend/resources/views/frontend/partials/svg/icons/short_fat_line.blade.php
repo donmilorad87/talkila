@@ -1,0 +1,3 @@
+<svg class="fatShortLine" width="35" height="5" viewBox="0 0 35 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="35" height="5" rx="2.5" fill="#172B4D" />
+</svg>

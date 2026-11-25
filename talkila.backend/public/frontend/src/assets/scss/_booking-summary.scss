@@ -1,0 +1,147 @@
+.book_slot,
+.book_slot_payment {
+    .zIndexPad {
+
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: #f4f5f9;
+        height: 62px;
+        padding: 0;
+        margin: 0;
+        z-index: 11;
+    }
+    .backButtonings {
+        top: 4px !important;
+    }
+    .mainTitties {
+        top: 12px !important;
+    }
+    .subatitle {
+        top: 32px !important;
+    }
+
+    .summaryButtonFixedBottom {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 99;
+        .hiddenElementFixedBottom {
+            height: 0px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+    }
+}
+
+.loadAboutMe{
+    cursor:pointer;
+}
+
+.book_slot {
+    .zIndexPad {
+        .summaryButtonFixedBottom {
+            display: none;
+        }
+    }
+
+}
+
+hr {
+    margin: 16px auto;
+}
+.book-page {
+    .booking-slot-left {
+        .inner-box-book {
+            .box-resize {
+                width: 75px;
+                h6 {
+                    &::before {
+                        width: 22%;
+                        height: 22%;
+                        right: -5px;
+                        border-width: 2px;
+                    }
+                }
+            }
+            .heading-slider {
+                .text-r-size {
+                    font-size: 1.25rem;
+                    svg {
+                        width: 18px;
+                        height: 18px;
+                    }
+                }
+                p {
+                    margin: 0;
+                    font-size: 14px;
+                }
+                a {
+                    display: none;
+                }
+                .social-box {
+                    ul {
+                        li {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.subTitleBP {
+    font-size: 16px;
+    line-height: 42px;
+    height: 42px;
+    margin: 0;
+    text-align: center;
+}
+.leftBS {
+    padding-top: 0;
+    margin-top: 0;
+}
+.mt7{
+    margin-top:7px!important;
+}
+.mmh80{
+    min-height: 132px;
+    max-height: 132px;
+    height: 132px;
+}
+.profile{
+    .heading-title-fq{
+        font-size: 35px;
+        line-height: 24px;
+    }
+}
+.profileHeaderSumary {
+    .step1name {
+
+        line-height: 20px;
+        color: #172b4d;
+        font-size: 18px;
+
+    }
+    .step1username {
+        font-size: 14px;
+        line-height: 16px;
+        color: #172b4d;
+    }
+
+    .firstDivApproveIcon{
+        position: relative;
+        svg{
+            position: absolute;
+            right: -4px;
+            bottom: -12px;
+        }
+    }
+}
+
+.hollow{
+
+        background: white;
+        color: #313131;
+}

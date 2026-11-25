@@ -1,0 +1,1014 @@
+.popupBase {
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 315000;
+    display: none;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+
+
+#appStorePupUp {
+    .popuper {
+        div.grid-x {
+            padding: 0;
+        }
+        .popupImage {
+            float: left;
+            width: 40%;
+        }
+    }
+}
+
+#webCamContTakePic {
+    .popuper {
+        div.select {
+            display: inline-block;
+            margin: 0 0 1em 0;
+        }
+        p.small {
+            font-size: 0.7em;
+        }
+        label {
+            width: 12em;
+            display: inline-block;
+        }
+    }
+}
+
+.innerPopUp {
+    position: relative;
+    overflow-y: auto;
+}
+
+.popuper {
+    position: relative;
+    background: white;
+    margin: auto;
+    margin-top: 10vh;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+}
+
+.popuper2 {
+    transition: 0.3s;
+    transform: scale(0);
+}
+.popuper2 {
+    position: relative;
+    background: white;
+    margin: auto;
+    margin-top: 10vh;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+}
+
+.popuper {
+    transition: 0.3s;
+    transform: scale(0);
+}
+.popuper2 {
+    transition: 0.3s;
+    transform: scale(0);
+}
+.openedPopup {
+    opacity: 1;
+    display: flex;
+    z-index: 3000000;
+}
+
+.openedPopuper {
+    transform: scale(1);
+}
+
+#uploadImagePopup {
+    .popuper {
+        padding: 2em;
+        height: 234px;
+        width: 320px;
+        margin-top: calc((100vh - 234px) / 2);
+        .button {
+            background-color: white;
+        }
+    }
+}
+
+
+#appStorePupUp {
+
+    .media-object {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .media-object-section{
+        .thumbnail{
+            display: flex;
+        }
+        p{
+            margin: 0;
+            margin-left: 1rem;
+        }
+    }
+
+}
+
+#call-popup {
+    .popuper {
+        background: #172b4d;
+    }
+}
+
+#loadingCanvas {
+    height: 100%;
+    width: 100%;
+    max-width: 300px;
+}
+
+#loadingPopup .popuper {
+
+    padding: 0;
+    text-align: center;
+    background: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin: 0 auto;
+    border: 0;
+}
+
+.video_conference #loadingPopup .popuper {
+    top: 0;
+    transform: scale(0);
+}
+
+#kickStudentFromRoom .popuper {
+    height: 356px;
+    padding: 2em;
+    margin-top: calc((100vh - 356px) / 2);
+    width: 400px;
+}
+
+@media screen and #{breakpoint(large up)} {
+    .reveal {
+        padding: 0;
+        border-radius: 10px;
+        .close-button {
+            color: #231f20;
+            font-size: 3em;
+        }
+        .button-group {
+            a {
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+.app-popup-right {
+    padding: 32px;
+}
+
+.popupImage {
+    display: none;
+}
+
+@media (max-width: 639px) {
+    .popupText {
+        width: 100%;
+        height: 90%;
+        display: block;
+        position: relative;
+        margin: auto;
+        margin-top: 5%;
+    }
+}
+
+.pt16 {
+    padding-top: 16px!important;
+}
+
+.form-option {
+    padding: 24px;
+}
+
+#videoSourceInput {
+    video {
+        width: 100%;
+    }
+}
+
+.wbba {
+    word-break: break-all;
+}
+
+#editUsername,
+#addShortDescription {
+    form {
+        width: 100%;
+        min-height: 240px;
+        padding: 40px 0px;
+        textarea {
+            width: 100%;
+            height: 240px;
+            &.ok~.count-label {
+                bottom: -25px;
+            }
+        }
+    }
+}
+
+
+
+.lh0 {
+    line-height: 0;
+}
+
+.ppR {
+    .p16 {
+        float: left;
+        width: 100%;
+    }
+}
+
+.ml0 {
+    margin-left: 0!important;
+}
+
+
+.mr0 {
+    margin-right: 0!important;
+}
+
+.buttonErrorPopup {
+    margin: 0!important;
+    ;
+}
+.mainSearchContainerZ{
+    padding:0 1rem;
+}
+
+@media (min-width: 280px) {
+
+
+
+
+
+
+    .minw94 {
+        min-width: 100px;
+        max-width: 100px;
+    }
+
+    .setting-tabs {
+        .tabs {
+            align-items: center;
+            .tabs-title {
+                span {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .ppB,
+    .ppBB,
+    .ppR {
+        max-width: 90vw;
+        margin-left: 5vw;
+    }
+ .logged_in {
+        .gropings {
+            /*             margin-bottom: 102px; */
+            transition: 0.3s;
+            padding-right: 16px;
+            padding-left: 16px;
+            .groupC {
+                padding-right: 16px;
+            }
+        }
+    }
+    #extendAnswerAwait {
+        .popuper {
+            width: 90vw;
+            height: 320px;
+            margin: 0 auto;
+            margin-top: 0;
+            overflow: auto;
+            border: 1px solid rgba(6, 4, 3, 0.2);
+            background: white;
+            overflow-y: auto;
+            padding: 1em;
+            text-align: center;
+        }
+    }
+    #editUsername,
+    #addShortDescription {
+        .pageBackLink {
+            display: none;
+        }
+    }
+
+
+    #endCallPopup {
+        .popuper {
+            height: 400px;
+            margin: 0 auto;
+            margin-top: calc((100vh - 400px) / 2);
+            width: 90%;
+            padding: 1em;
+            .feedback-popup {
+                p {
+                    float: left;
+                    width: 100%;
+                    line-height: 48px;
+                }
+                a.button,
+                span.button {
+                    margin-left: auto;
+                    float: right;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    #successfulExtendionPayment {
+        .popuper {
+            width: 300px;
+            margin: 0 auto;
+
+            padding: 1em;
+
+
+        }
+    }
+    #call-popup {
+        .popuper {
+            display: flex;
+            align-items: center;
+        }
+    }
+    #cancelAppointment {
+        .popuper {
+            max-width: 90%;
+            height: 520px;
+            width: 410px;
+            border: none;
+            margin: 0 auto;
+
+        }
+    }
+    #profileSettings .popuper {
+        margin: auto;
+        border-radius: 10px;
+        padding: 16px;
+    }
+.logged_in {
+        .form-option {
+            padding: 0;
+            /* padding-top: 2em; */
+            padding-right: 8px;
+        }
+    }
+}
+
+@media (min-width: 400px) {
+
+    #extendCall, #extendAnswerAwait, #extendAnswer{
+
+        .closeSpanPopup {
+            position: absolute;
+            right: 24px;
+            top: 11px;
+            font-size: 38px;
+            color: #1d293f;
+            cursor: pointer;
+        }
+
+    }
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 14px;
+    }
+
+}
+
+@media (min-width: 500px) {
+    #editUsername {
+        .popuper {
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 370px;
+            margin-top: calc((100vh - 370px) / 2);
+        }
+    }
+}
+header{
+    background: white;
+}
+.third_header .mobileNav ul li {
+    line-height: 36px;
+}
+@media (min-width: 640px) {
+
+
+
+    .logged_in {
+        .gropings {
+            margin-bottom: 102px;
+            transition: 0.3s;
+            padding-left: 0;
+            padding-right: 0;
+            .groupC {
+                padding-right: 0px;
+            }
+        }
+        .coursesBlock {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    .ppB {
+        max-width: 500px;
+        margin-left: auto;
+    }
+    .ppBbb {
+        max-width: 530px;
+        margin-left: auto;
+    }
+    .ppBB {
+        max-width: 500px;
+        margin-left: auto;
+    }
+    .ppR {
+        max-width: 400px;
+        margin-left: auto;
+    }
+  .logged_in {
+        .gropings {
+            margin-bottom: 32px;
+        }
+    }
+   .logged_in {
+        .form-option {
+            padding:0 27px;
+
+        }
+    }
+    #endCallPopup {
+        .popuper {
+            width: 400px;
+        }
+    }
+}
+
+.p1em {
+    padding: 1em;
+}
+
+@media only screen and (hover: none) {
+    .dial.up svg {
+        display: none;
+    }
+    .dial.down svg {
+        display: none;
+    }
+}
+
+#pictureEx,
+#teacherExAnswerPicture {
+    border-radius: 50%;
+    width: 100px;
+    margin: 16px;
+}
+
+@media (min-width: 768px) {
+
+    .logged_in main>.grid-container .whiteBackground,
+    .account_verification main>.grid-container .whiteBackground {
+        margin-right: 0px;
+    }
+ .logged_in main>.grid-container .p24px,
+    .account_verification main>.grid-container .p24px {
+        padding-right: 0px;
+    }
+    .ppBB {
+        max-width: 600px;
+        margin-left: auto;
+    }
+
+    #editUsername,
+    #addShortDescription {
+        .show-for-mobile2 {
+            display: block;
+        }
+    }
+    #addGroupTalk,
+    #addPrivateTalk {
+        .popuper {
+            width: 700px;
+        }
+    }
+}
+
+#call-popup {
+    .ppB {
+        padding: 1em!important;
+        overflow: visible;
+        .calling-model {
+            padding-top: 64px;
+            flex: 1;
+            padding-left: 0px;
+        }
+        .form-option {
+            padding-top: 64px;
+            background: #172b4d;
+            flex: 2;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    #appStorePupUp {
+
+        .popuper{
+            .grid-x{
+
+                height: inherit;
+
+                .popupImage{
+                    height: inherit;
+                    img{
+                        height: inherit;
+                        min-height: 650px;
+                    }
+                }
+
+                .popupText{
+                    min-height: 650px;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+
+            min-height: 650px;
+        }
+    }
+
+ .logged_in main>.grid-container .whiteBackground,
+    .account_verification main>.grid-container .whiteBackground {
+        margin-right: 24px;
+    }
+ .logged_in main>.grid-container .p24px,
+    .account_verification main>.grid-container .p24px {
+        padding-right: 24px;
+    }
+    .minw94 {
+        min-width: 120px;
+        max-width: 120px;
+    }
+    .setting-tabs {
+        .tabs {
+            align-items: center;
+            .tabs-title {
+                span {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+    #cancelAppointment {
+        .popuper {
+            max-width: 100%;
+            height: 520px;
+            width: 410px;
+            border: none;
+            margin-top: calc((100vh - 520px) / 2);
+        }
+    }
+    #time-slot-popup .popuper {
+        max-width: 338px;
+    }
+    #appStorePupUp .media-object {
+        float: left;
+        width: 100%;
+        .media-object-section {
+            float: left;
+            margin-right: 16px;
+        }
+        .media-object-section.main-section {
+            float: left;
+            margin-right: 0;
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        h3 {
+            margin-bottom: 20px;
+        }
+    }
+    #appStorePupUp .main-section p {
+        line-height: 37px;
+
+    }
+    .popupImage {
+        display: block;
+    }
+    #rejectRejonVideoTalk .popuper{
+        width: 300px;
+        height: 200px;
+    }
+     #closingVideoQuestion .popuper {
+        width: 300px;
+        height: 200px;
+    }
+    #shareScreen .popuper {
+        width: 100vw;
+        height: 100vh;
+        margin-top: 0px;
+        border-radius: 0px;
+    }
+    #extendCall {
+        #extendLesson:hover,
+        #extendLesson:focus {
+            border-color: #eba800;
+            color: white;
+            background: #eba800 !important;
+        }
+        .popuper {
+
+
+
+            border: 1px solid rgba(6, 4, 3, 0.2);
+            background: white;
+            overflow-y: auto;
+        }
+    }
+    .popupText {
+        float: right;
+        width: 60%;
+        margin: auto;
+    }
+    #rejectRejonVideoTalk .popupText , #closingVideoQuestion .popupText {
+        float: right;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+    .popuperText {
+        color: #1d293f;
+        text-shadow: 0 0px 1px rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+
+.colorW {
+    color: white;
+    &:hover {
+        color: white;
+    }
+}
+
+.pl0 {
+    padding-left: 0;
+}
+
+.pr0 {
+    padding-right: 0;
+}
+
+.p2em {
+    padding: 2em 2em 0em 2em!important;
+}
+
+.zz2 {
+    .p2em {
+        padding: 2em!important;
+    }
+    .form-option {
+        padding-top: 1.25rem;
+    }
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mt15rem {
+    margin-top: 1.5rem;
+}
+
+.closeSpanPopup {
+    position: absolute;
+    right: 16px;
+    top: 0px;
+    font-size: 38px;
+    color: #1d293f;
+    cursor: pointer;
+    z-index: 999999;
+}
+
+
+
+.closeSpanPopups.cz {
+    position: absolute;
+    right: auto;
+    top: -8px;
+    font-size: 38px;
+    color: #1d293f;
+    cursor: pointer;
+}
+
+@media screen and #{breakpoint(medium down)} {
+    .reveal {
+        margin: 15px;
+        width: auto;
+        h3 {
+            font-size: 1.5em;
+            margin-top: 2em;
+        }
+        .button-group {
+            text-align: center;
+            justify-content: center;
+            a {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+.cp {
+    cursor: pointer;
+}
+
+.thumbnail .dimages {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+#popUpCarousel {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#popUpCarousel p {
+    text-align: center;
+}
+
+.whiteX {
+    color: white;
+}
+
+
+.credit-model {
+    float: left;
+    width: 100%;
+}
+
+#editEmail,
+#setPrivateProfile,
+#addYouTubeVideo,
+#add_education,
+#add_cv_work_experience,
+#cv_popup,
+#professionEdit,
+#addShortDescription,
+#editPassword,
+#editFullName {
+    .popuper {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.popuper {
+    margin: 0 auto;
+}
+
+.showFor640andAbove {
+    .grid-x {
+        align-items: center;
+    }
+}
+.tay10px{
+    transform: translateY(-10px);
+}
+@media (min-width: 280px) {
+
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 9px;
+    }
+    #extendCall, #extendAnswerAwait, #extendAnswer{
+
+        .closeSpanPopup {
+            position: absolute;
+
+            font-size: 28px;
+            color: #1d293f;
+            cursor: pointer;
+        }
+
+    }
+
+
+
+    .callScreenButt {
+        display: none;
+    }
+    .btn-decline svg,
+    .btn-accept svg {
+        margin-right: 0px;
+        margin-top: 0px;
+
+    }
+    .h38 {
+        top: 6px;
+        transition: 0.2s;
+        &.is-active {
+            top: 3px;
+        }
+    }
+
+    .courses {
+        main.favorites-page>.grid-container {
+            .grid-container {
+                padding-right: 0rem;
+                padding-left: 0rem;
+            }
+        }
+    }
+    .courses {
+        .owl-dots button.owl-dot {
+            width: 20px;
+        }
+    }
+    .popuper {
+        margin: 0 auto;
+        width: 90%;
+    }
+    .popuper2 {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+}
+.card-list{
+    width: 100%;
+}
+@media (min-width: 450px) {
+    .callScreenButt {
+        display: inline;
+    }
+    .btn-decline svg,
+    .btn-accept svg {
+        margin-right: 10px;
+        margin-top: 0px;
+    }
+}
+
+@media (min-width: 640px) {
+    #paymentWalletPopUp{
+        .popuper{
+            min-height:inherit;
+        }
+    }
+    .courses {
+        main.favorites-page>.grid-container {
+            .grid-container {
+                padding-right: 1rem;
+                padding-left: 1rem;
+            }
+        }
+    }
+    .firster {
+        margin: 0 auto;
+        width: 640px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .logged_in, .affiliateRefereeHash {
+        .bwhite p.btext {
+            margin-left: 0;
+            text-align: left;
+        }
+        .bwhite p.btext {
+            margin-left: 0;
+            text-align: left;
+            &.tac1024 {
+                text-align: center;
+            }
+        }
+    }
+
+
+    .firster {
+        margin: 0 auto;
+        width: 1040px;
+        height: 661px!important;
+        margin-top: calc((100vh - 661px) / 2)!important;
+    }
+}
+
+.video_conference {
+    .popuper {
+        padding: 0;
+    }
+}
+
+
+
+.grayColor {
+    color: #8B95A6!important;
+    padding-left: 4px;
+}
+ .logged_in{
+    .corrections{
+        margin-top: 0;
+        position: relative;
+        top: 0px;
+
+    }
+}
+.mb14{
+    margin-bottom: 14px;
+}
+.closeAddTalkFunnel{
+    position: absolute;
+    right: 16px;
+    font-size: 33px;
+    color: #1D293F;
+    top: 0px;
+    height: 94px;
+}
+
+.h94px{
+    height:94px;
+
+}
+
+.mt94{
+   margin-top: 94px;
+}
+
+.mt100{
+    margin-top: 100px;
+}
+
+.mt80{
+    margin-top: 80px;
+}
+
+.mt60{
+    margin-top: 60px;
+}
+.popuper {
+    overflow-y: auto;
+}
+#loadingPopup{
+    .popuper{
+        overflow-y: auto;
+    }
+}
+.popuper2 {
+    overflow-y: auto;
+}
+
+#videoPopup{
+    .popuper {
+        &>div {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+.closinger {
+    position: absolute;
+    right: 16px;
+    top: 0px;
+    font-size: 38px;
+    color: #1d293f;
+    cursor: pointer;
+    z-index: 999999;
+}
+.playButtonProfile{
+    cursor:pointer;
+}

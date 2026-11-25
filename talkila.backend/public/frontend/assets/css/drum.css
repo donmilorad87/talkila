@@ -1,0 +1,279 @@
+/* main container styles */
+div.drum-wrapper {
+	position: relative;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    width: 30px;
+}
+div.drum-wrapper .inner {
+	position: relative;
+	overflow: hidden;
+}
+div.drum-wrapper div.container {
+	position: absolute;
+	width: 100%;
+	top: 48px;
+	left: 0px;
+	-webkit-perspective: 1100px;
+	-moz-perspective: 1100px;
+	-o-perspective: 1100px;
+	perspective: 1100px;
+}
+
+div.drum-wrapper,
+div.drum-wrapper .inner {
+	height: 102px;
+}
+
+.outside div.drum-wrapper {
+	height: 140px;
+}
+.outside div.drum-wrapper .inner {
+	top: 16px;
+}
+.outside div.drum-wrapper .container {
+	top: 38px;
+}
+
+/* dail styles for mouse controls */
+div.drum-wrapper .dial {
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	height: 48px;
+	background-color: transparent;
+	display: block;
+}
+
+.outside div.drum-wrapper .dial {
+	height: 50%;
+}
+
+div.drum-wrapper .dial div {
+	height: 10px;
+	margin: 0 auto;
+}
+div.drum-wrapper .dial svg {
+	position: absolute;
+}
+div.drum-wrapper .up {
+	top: 0px;
+}
+div.drum-wrapper .up svg {
+    transition: 0.3s;
+	top: -8px;
+    left: 0px;
+    padding: 6px 8px 8px 8px;
+	cursor: pointer;
+    height: 20px;
+    width: 36px;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0px 1px rgba(6, 4, 3, .1), rgba(0, 0, 0,  .4) 0px 0px 6px -2px inset;
+	transition: 0.2s;
+
+}
+.date-scheduler-wrap div{
+	cursor: pointer;
+	width: calc((100% / 7) - (24px / 7));
+	text-align: center;
+}
+.date-scheduler-wrap div.active{
+	cursor: auto;
+	pointer-events: none;
+}
+div.drum-wrapper .up svg:hover g path{
+stroke:#323232;
+
+}
+div.drum-wrapper .up svg:hover{
+	box-shadow: inset 0 0 0px 1px rgba(6, 4, 3, .2), rgba(0, 0, 0,  .45) 0px 0px 6px -2px inset;
+
+}
+
+div.drum-wrapper .down {
+	bottom: 0px;
+}
+div.drum-wrapper .down svg {
+    transition: 0.3s;
+    bottom: -2px;
+    height: 20px;
+    width: 36px;
+    text-align: center;
+    left: 0px;
+    padding: 8px 8px 2px 8px;
+    cursor: pointer;
+	border-radius: 4px;
+    box-shadow: inset 0 0 0px 1px rgba(6, 4, 3, .1), rgba(0, 0, 0,  .4) 0px 0px 6px -2px inset;
+	transition: 0.2s;
+
+}
+div.drum-wrapper .down svg:hover{
+	box-shadow: inset 0 0 0px 1px rgba(6, 4, 3, .2), rgba(0, 0, 0,  .45) 0px 0px 6px -2px inset;
+}
+div.drum-wrapper .down svg:hover g path{
+stroke:#323232;
+
+
+}
+/* actual drum styles */
+div.drum {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+div.drum figure {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+	display: block;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	line-height: 20px;
+	color: black;
+	margin: 0px;
+	padding: 0px 3px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+	text-align: left;
+}
+
+div.drum-wrapper div.container, div.drum-wrapper figure {
+	height: 25px;
+	line-height: 25px;
+}
+
+div.date_range_to {
+	margin-left: 25px;
+}
+.date_range_from, .date_range_to {
+    width: calc(50% - 12.5px);
+    float: left;
+    text-align: center;
+}
+
+.date_range_header {
+	height: 40px;
+}
+.date_range_header span.title {
+	float: left;
+    text-align: left;
+    font-weight: 600;
+    color: #313131;
+
+}
+.date_range_header span.selection {
+	float: right;
+    text-align: right;
+    color: #2684FF;
+    font-weight: 600;
+
+	margin-right: 12px;
+}
+figure{
+
+	border-radius:2px;
+	background: rgb(250, 250, 250);
+}
+.form_div {
+	position: relative;
+}
+.dial.up>div{
+
+    position: absolute;
+    top: 0;
+    left: calc((100% - 36px) / 2);
+    width: 36px;
+
+}
+.dial.down>div{
+
+    position: absolute;
+    bottom: 0;
+    left: calc((100% - 36px) / 2);
+    width: 36px;
+
+}
+textarea {
+    border-color: #e6e6e6;
+    border: 1px solid #e6e6e6;
+}
+.date_range_container{
+    margin: 0 auto;
+    width: 100%;
+}
+div.date_range div.date_range_container .lines {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	position: absolute;
+    top: 58px;
+    width: 100%;
+    height: 17px;
+	border-top: 1px solid rgba(6, 4, 3, .2);
+
+    border-bottom: 1px solid rgba(6, 4, 3, .2);
+}
+div.date_range div.date_range_container .lines div {
+    margin-left: 2px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #323232;
+    margin-top: -2px;
+    font-size: 16px;
+
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	/* IE10+ CSS styles go here */
+	.lines{
+		display: none;
+	}
+	}
+div.drum-wrapper {
+	float: left;
+}
+div.drum figure {
+	text-align: center;
+}
+#drum_from_hours figure, #drum_to_hours figure,
+#drum_from_date figure, #drum_to_date figure {
+	text-align: center;
+}
+#drum_from_date, #drum_to_date {
+	margin-left: 10px;
+	margin-right: 5px;
+}
+#drum_from_date, #drum_to_date,
+#drum_from_hours, #drum_to_hours,
+#drum_from_minutes, #drum_to_minutes {
+    width: calc(50% - 3px);
+}
+#drum_from_hours, #drum_to_hours {
+	margin-left: 1px;
+}
+#drum_from_minutes, #drum_to_minutes {
+	margin-left: 4px;
+}
+#drum_from_month, #drum_to_month {
+	width: 90px;
+}
+#drum_from_fullYear, #drum_to_fullYear {
+	width: 45px;
+}
+

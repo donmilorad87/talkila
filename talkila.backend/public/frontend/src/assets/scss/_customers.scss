@@ -1,0 +1,126 @@
+.wrapper_customer {
+    padding: 4.875em 0 4.875em;
+    background-color: #f7f8fa;
+    .circle-heart {
+        background: #e9f7fe;
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+        padding: 20px;
+    }
+    .heart-svg {
+        fill: #2684ff;
+    }
+    .heading-customer-title {
+        margin: 45px 0 55px;
+        font-weight: bold;
+        font-size: 3.500em;
+        color: #1D293F;
+        span {
+            color: #2684ff;
+        }
+    }
+    .p20 {
+        padding: 30px 25px;
+        background: white;
+        border: 1px solid #E2E4E8;
+        border-radius: 15px;
+    }
+    .start-icon-inner {
+        margin-left: 20px;
+        svg {
+            color: #F5A623;
+        }
+    }
+    p {
+        font-size: 1.000em;
+        color: #1D293F;
+        font-weight: 400;
+        line-height: 1.750em;
+        margin-top: 1.625em;
+    }
+    .owl-dots {
+        margin-top: 3.750em;
+        .active {
+            background: #ffb805;
+        }
+    }
+    .owl-nav {
+        button {
+            span {
+                color: #ffb805;
+            }
+        }
+    }
+    .owl-stage-outer {
+        b {
+            color: #1D293F;
+            font-size: 1.125em;
+        }
+    }
+    .customer-img {
+        img {
+            width: 48px;
+            border-radius: 100%;
+        }
+    }
+}
+.profile{
+    .wrapper_customer {
+        padding: 1rem 0 3rem 0;
+    }
+}
+.cna{
+    cursor:not-allowed;
+}
+.drop-area{
+    &:hover{
+
+        border: 2px dashed #1D293F;
+    }
+}
+
+.crossPosition{
+    position: absolute;
+    right: 16px;
+    top: 10px;
+}
+
+@media screen and #{breakpoint(small down)} {
+    .wrapper_customer {
+        .circle-heart {
+            margin: auto;
+        }
+        .heading-customer-title {
+            font-size: 2.500em;
+            text-align: center;
+            line-height: 56px;
+            br {
+                display: none;
+            }
+        }
+        .owl-nav {
+            display: none;
+        }
+    }
+}
+#testimonial svg {
+    font-size: 20px;
+}
+#testimonial .start-icon-inner {
+    margin-top: 12px;
+}
+.circle-heart svg {
+    font-size: 40px;
+    position: relative;
+    top: 2px;
+    width: 1em;
+    height: 1em;
+
+}
+
+.book_slot{
+    .suppliersCalendar{
+        display:none;
+    }
+}

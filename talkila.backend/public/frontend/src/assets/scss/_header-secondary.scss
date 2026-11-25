@@ -1,0 +1,362 @@
+.top-bar-left ul {
+    li {
+        a {
+            color: #1d293f;
+            font-weight: 600;
+            font-size: 1em;
+        }
+    }
+}
+.profilAreaLi {
+    cursor: pointer;
+    img {
+        transition: 0.3s;
+    }
+
+}
+#profile-img{
+    box-shadow: 0 0 3px 0 rgba(6, 4, 3, 0.2);
+}
+.headerArea {
+    .profile-area {
+        #profile-img {
+        }
+    }
+    .headerMenuContainer {
+        z-index: 10;
+        position: relative;
+    }
+    .emailSpan {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        line-height: initial;
+        float: left;
+        width: 100%;
+    }
+}
+
+.loggedInProfileMenu {
+    z-index: 20;
+    position: relative;
+}
+.closeDropDownMenu {
+    position: absolute;
+    right: 7px;
+    top: -6px;
+    font-size: 28px;
+    color: #1d293f;
+    cursor: pointer;
+}
+#profile-menuParent {
+    display: none;
+    opacity: 0;
+    transition: 0.3s;
+    cursor: default;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.profile-area {
+    margin: 0;
+    list-style: none;
+    height: 74px;
+    line-height: 74px;
+    .profilAreaLi {
+        height: 74px;
+        margin-left: 1rem;
+    }
+    li {
+        position: relative;
+        a {
+            color: #364258;
+            font-weight: normal;
+            font-size: 14px;
+            input {
+                box-shadow: none;
+                border: 0;
+                width: 83px;
+                margin: 0;
+            }
+        }
+        .manage-input {
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            height: 74px;
+            svg {
+                margin-right: 10px;
+            }
+        }
+        .dropdown-box {
+            font-size: 14px;
+            position: absolute;
+            right: calc((100% - 1200px) / 2);
+            width: 310px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 0px 0px 10px 10px;
+            top: -1000px;
+            -webkit-transition: 0.2s;
+            transition: 0.2s;
+            background: white;
+            cursor: default;
+            z-index: 999;
+
+            strong {
+                color: #172b4d;
+                line-height: 32px;
+                float: left;
+                width: 100%;
+            }
+            .userEmailPOptions {
+                float: left;
+                width: 100%;
+                line-height: 32px;
+                border-bottom: 1px solid rgba(6, 4, 3, 0.1);
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+            }
+            hr {
+                margin: 10px 0;
+            }
+            ul {
+                float: left;
+                width: 100%;
+                li {
+                    display: inherit;
+                    float: left;
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                    line-height: 28px;
+
+                    .date-wrap-content {
+                        margin: 0;
+                    }
+                    a {
+                        margin: 0;
+                    }
+                    &.d-flex {
+                        display: flex;
+                        .switch-paddle {
+                            width: 2.5rem;
+                            height: 1.5rem;
+                            &::after {
+                                width: 1rem;
+                                height: 1rem;
+                            }
+                        }
+                        input:checked ~ .switch-paddle::after {
+                            left: 1.25rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.switch-paddle {
+    height: 32px!important;
+}
+.thirdHeaderCont{
+    overflow: hidden;
+}
+header span.menuIcon2 {
+    cursor: pointer;
+    float: right;
+    color: #1d293f;
+    margin: 4.25px 0.3em 4.25px 0.8em;
+    width: 20px;
+}
+
+.dropMenuContainer {
+    float: left;
+    height: 74px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-area2 {
+
+    cursor: pointer;
+    margin: 0;
+    list-style: none;
+    border: 1px solid rgba(6,4,3,.1);
+    height: 40px;
+    border-radius: 40px;
+
+
+    .profilAreaLi {
+        height: 38px;
+        padding: 4px;
+    }
+
+    li {
+        position: relative;
+        a {
+            color: #364258;
+            font-weight: normal;
+            font-size: 14px;
+            input {
+                box-shadow: none;
+                border: 0;
+                width: 83px;
+                margin: 0;
+            }
+        }
+        .manage-input {
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            height: 74px;
+            svg {
+                margin-right: 10px;
+            }
+        }
+        .dropdown-box {
+            font-size: 14px;
+            position: absolute;
+            width: 390px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 0px 0px 10px 10px;
+            top: -1000px;
+            -webkit-transition: 0.2s;
+            transition: 0.2s;
+            background: white;
+
+            z-index: 999;
+            padding-bottom: 1rem;
+            strong {
+                color: #172b4d;
+                line-height: 32px;
+                float: left;
+                width: 100%;
+            }
+            .userEmailPOptions {
+                float: left;
+                width: 100%;
+                line-height: 32px;
+                border-bottom: 1px solid rgba(6, 4, 3, 0.1);
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+            }
+            hr {
+                margin: 10px 0;
+            }
+            ul {
+                float: left;
+                width: 100%;
+                li {
+                    display: inherit;
+                    float: left;
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                    line-height: 28px;
+                    height: 50px;
+                    border-bottom: 1px solid rgba(6, 4, 3, 0.1);
+                    &:last-child{
+                        border-bottom: 0;
+                    }
+                    .date-wrap-content {
+                        margin: 0;
+                    }
+                    a {
+                        margin: 0;
+                    }
+                    &.d-flex {
+                        display: flex;
+                        .switch-paddle {
+                            width: 2.5rem;
+                            height: 1.5rem;
+                            &::after {
+                                width: 1rem;
+                                height: 1rem;
+                            }
+                        }
+                        input:checked ~ .switch-paddle::after {
+                            left: 1.25rem;
+                        }
+                    }
+                    .editProSpan{
+                        height: 50px;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 17px;
+                        display: flex;
+                        align-items: center;
+                        color: #172B4D;
+                    }
+
+                    .spacerDivSettings{
+                        width: 40px;
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.logoLink {
+    float: left;
+}
+.top-bar {
+    .top-header-manage {
+        .profile-area {
+            li {
+                &:last-child {
+                    a {
+                        img {
+                            width: 32px;
+                        }
+                    }
+                }
+                img {
+                    margin: 0 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and #{breakpoint(small down)} {
+    .top-bar {
+        .top-header-manage {
+            margin-left: 0px;
+        }
+    }
+}
+
+@media (min-width:640px){
+    .courses{
+        .backgroundWhite {
+            padding: 0 16px;
+        }
+    }
+
+    .dropdown-box {
+        right: 1rem;
+    }
+}
+@media (min-width:768){
+    .courses{
+        .backgroundWhite {
+            margin: 16px;
+        }
+    }
+
+}
+@media (min-width:1200px){
+    .dropdown-box {
+        right: calc((100% - 1200px) / 2);
+    }
+}

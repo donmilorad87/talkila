@@ -1,0 +1,427 @@
+@media(min-width:1024px) {
+    #calcConter {
+        height: 676px;
+    }
+}
+.peopleCount{
+    opacity: 0;
+}
+.boicon{
+
+    width: 49px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-right: 12px;
+
+}
+.h0o0{
+    height: 0px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.calcButton {
+    width: calc(50% - 5px);
+    height: 48px;
+    background: white;
+    border-radius: 6px;
+    position: absolute;
+    top: 5px;
+    z-index: 1;
+    transition: 0.3s;
+}
+.home{
+    .calcButton {
+        height: 53px;
+    }
+}
+.verticalAlignCenter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+#calcCur {
+    float: left;
+    font-size: 20px;
+    line-height: 24px;
+    color: white;
+    width: 13px;
+    font-weight: 600;
+    margin-left: 2px;
+    height: 24px;
+}
+
+#calcString {
+    float: right;
+    font-size: 20px;
+    line-height: 24px;
+    color: white;
+    width: 32px;
+    font-weight: 600;
+    height: 24px;
+}
+
+.box1 {
+    width: calc(100% - 55px);
+    float: right;
+    height: 24px;
+    line-height: 24px;
+}
+
+.box2 {
+    width: calc(100% - 37px) !important;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+}
+
+#calcHrsString {
+    float: right;
+    font-size: 20px;
+    line-height: 24px;
+    color: white;
+    width: 32px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.circle1 {
+    width: 560px;
+    height: 560px;
+    padding: 50px;
+    box-shadow: 0 0 16px -10px black;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    border:1px solid rgba(0,0,0,0.3);
+}
+
+.circle2 {
+    width: 460px;
+    height: 460px;
+    padding: 50px;
+    box-shadow: 0 0 16px -10px black;
+    background: rgba(255, 255, 255, 0.19);
+    border-radius: 50%;
+    border:1px solid rgba(0,0,0,0.3);
+}
+
+.circle3 {
+    width: 360px;
+    height: 360px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 16px -10px black;
+    border-radius: 50%;
+    display: flex;
+    border:1px solid rgba(0,0,0,0.3);
+}
+
+.currencyinput {
+    width: 162px;
+    margin-bottom:12px;
+}
+
+.currencyinput2 {
+    width: 120px;
+    margin-bottom:12px;
+}
+
+.currencyinput input {
+    border: none !important;
+}
+
+.currencyinput2 input {
+    border: none !important;
+}
+
+.prekidac {
+    height: 44px;
+    padding: 4px;
+    border-radius: 6px;
+    background: #343e52;
+    position: relative;
+}
+
+.pc {
+    color: #1d293f;
+    float: left;
+    position: relative;
+    z-index: 9;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.gc {
+    color: white;
+    float: left;
+    position: relative;
+    z-index: 9;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.sliderer {
+    width: calc(49% - 5px);
+    margin: 0;
+    float: left;
+    position: absolute;
+    z-index: 1;
+    background: white;
+    border-radius: 6px;
+    height: 36px;
+    left: 5px;
+    transition: 0.3s;
+}
+
+.pc,
+.gc {
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 6px;
+    width: 49%;
+}
+
+.pc {
+    margin-right: 2%;
+}
+
+.pc:hover,
+.gc:hover {
+    text-shadow: 0 0 4px -2px #1d293f;
+    box-shadow: 0 0 2px inset #1d293f;
+}
+
+.calcCircles {
+    background: #1d293f;
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.calcCircles>div {
+    align-items: center;
+}
+
+.circle {
+    width: 50%;
+    margin-top: 58px;
+}
+
+.wpad .verticalAlignMiddle .prekidac,
+.wpad .verticalAlignMiddle .rangeInput {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#prekidac {
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.wpad .verticalAlignMiddle {
+    padding: 100px 0 20px;
+}
+
+.circle {
+    h2 {
+        font-size: 3.400em;
+        color: #fff;
+        text-align: center;
+    }
+}
+
+.verticalAlignMiddle {
+    padding: 100px 0 0 0;
+
+    .heading-tile-calulator {
+        color: #fff;
+        font-weight: 700;
+        word-break: break-word;
+        text-align: left;
+        margin: 0;
+    }
+
+    .rangeInput {
+        .flex-input {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            input[type="text"] {
+                background: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                border:none;
+                margin: 0;
+                padding: 0;
+                color: #fff;
+                font-size: 20px;
+                text-align: right;
+                font-weight: bold;
+
+                &:focus {
+                    outline: none;
+                    border: none;
+                }
+            }
+        }
+    }
+
+    .tabs-all {
+        padding: 30px 0;
+        width: 100%;
+
+        .ul-main {
+            background: rgba(61, 82, 119, 0.5);
+            padding: 6px;
+            border-radius: 7px;
+            position: relative;
+
+            ul {
+                line-height: 48px;
+                background: none;
+                border: none;
+                position: relative;
+                z-index: 2;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                li {
+                    width: 50%;
+                    text-align: center;
+                    cursor: auto;
+
+                        background: none;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #1D293F;
+                        transition: 0.3s;
+                }
+                li:hover{text-shadow: 0 0 5px black;}
+                li:nth-child(1) {pointer-events: none;}
+                li:nth-child(2) {
+
+
+
+                        cursor: pointer;
+                        color: #fff;;
+                        font-size: 16px;
+                        font-weight: bold;
+                        display: block;
+
+                }
+            }
+        }
+    }
+
+    .tabs-panel {
+        min-height: 360px;
+        padding: 0;
+    }
+}
+
+@media screen and #{breakpoint(medium down)} {
+    .verticalAlignMiddle {
+        padding: 4.875em 0 4.875em !important;
+
+        .heading-tile-calulator {
+            font-size: 2.000em;
+            text-align: center !important;
+
+            br {
+                display: none;
+            }
+        }
+
+        .tabs-panel {
+            min-height: auto;
+        }
+
+        .mobile-view-heading {
+            h2 {
+                font-weight: 700;
+                color: #fff;
+                text-align: center;
+                font-size: 48px;
+            }
+
+            p {
+                text-align: center;
+                color: #fff;
+
+                br {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+.roundedP{color:white; text-align: center; font-size: 10px; margin: 0;}
+
+
+    .defaultCalendarSelection{
+        font-size: 14px;
+        font-weight: 600;
+        .defaultCalendar{
+            border: 2px solid gray;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            svg{
+                display: none;
+            }
+
+        }
+        &.active{
+            .defaultCalendar{
+                border: 0px solid gray;
+                border-radius: 50%;
+                width: 26px;
+                height: 26px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                svg{
+                    display: block;
+                    width: auto!important;
+                    margin: 0;
+
+                }
+            }
+
+        }
+    }
+
+
+.switch-paddle {
+    width: 53px;
+    min-width: 53px;
+    background: #f2f2f2;
+}
+
+.book_slot{
+    .defaultCardButton   {
+        display: none!important;
+    }
+}
+
+#connected_calendars{
+    .popuper{
+        height: auto!important;
+    }
+}

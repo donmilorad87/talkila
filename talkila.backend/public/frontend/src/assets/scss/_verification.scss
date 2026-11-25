@@ -1,0 +1,75 @@
+#succesUpload {
+    display: none;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#verificationForm {
+    display: block;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+#uplBlue {
+    position: absolute;
+    top: -500px;
+    transition: 0.3s;
+}
+
+#uplText,
+#uplGray {
+    position: absolute;
+    bottom: -500px;
+    transition: 0.3s;
+}
+
+
+
+#checkVerificationLabel,
+#checkVerificationInput {
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+#checkVerification {
+    position: absolute;
+    top: 34px;
+    right: -60px;
+    transition: 0.3s;
+}
+
+#checkVerificationInputError {
+    text-align: left;
+    font-size: 10px;
+    color: red !important;
+    position: relative;
+    bottom: 16px;
+    opacity: 0;
+    display: block;
+    transition: 0.3s;
+}
+
+//owerride
+.align-left {
+    text-align: left;
+}
+
+.name-input {
+    margin: 0 0 0 0;
+
+    &.error {
+        border: 1px solid #FD2A18 !important;
+    }
+    &.error~.name-warn {
+        opacity: 1;
+        height: auto;
+    }
+    &.ok {
+        border: 1px solid #e6e6e6 !important;
+    }
+
+    &.ok~.eye-icon-mange {
+        margin-right: 26px;
+    }
+}

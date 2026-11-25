@@ -1,0 +1,918 @@
+.newBadge {
+    position: absolute;
+
+    right: 0;
+    background: #eeaa46;
+    padding: 0 18px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+@media (min-width: 280px) {
+    #appStorePupUp {
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    max-height: 40px;
+                    height: 40px;
+                }
+            }
+        }
+    }
+
+    .p016mob {
+        padding: 0 16px;
+    }
+    .book_slot {
+        display: flex;
+        flex-direction: column;
+        main {
+            flex-grow: 1;
+        }
+    }
+    .date-scheduler-wrap {
+        div {
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+
+    .talkCategorySubcategory {
+        .innerMobileDiv.w-100 {
+            margin: 0px;
+        }
+    }
+    .newBadge {
+        top: 16px;
+    }
+    .innerResultsSearch {
+        margin-top: 0rem;
+    }
+
+    .favorites_talks,
+    .favorites_users,
+    .talkCategorySubcategory {
+        .innerResultsSearch {
+            .no-found-heading {
+                display: block;
+                margin: 0;
+            }
+        }
+    }
+
+    .courses,
+    .favorites_talks,
+    .favorites_users {
+        .favoritesMenuS {
+            .tabs li.tabs-title {
+                border-bottom: 0;
+
+                &.is-active {
+                    border: 3px solid #d6d6d6;
+                    top: 0px;
+                    background: white;
+                    border-radius: 8px;
+                }
+            }
+        }
+
+        #filterTalks {
+            display: none;
+        }
+    }
+
+    .talkCategorySubcategory {
+        .fButtonCont {
+            display: none;
+        }
+
+        background: #f4f5f9;
+
+        .steperko .small-2.bwhite {
+            position: absolute;
+            right: 24px;
+            top: 18px;
+        }
+
+        .right-left-wrap.step a {
+            position: relative;
+            right: -16px;
+        }
+
+        .subFilterItems {
+            span {
+                font-size: 10px;
+            }
+        }
+
+        .innerMobileDiv {
+            border-radius: 10px;
+            background: transparent;
+            overflow-y: auto;
+            height: auto;
+        }
+    }
+}
+
+.steperko3 {
+    background-color: #f4f5f9;
+
+    height: 52px;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    padding: 0 16px;
+    top: 0;
+}
+.talkCategorySubcategory {
+    .steperko3 {
+        background-color: #f4f5f9;
+        height: 52px;
+        margin: 0;
+        width: 100vw;
+        position: relative;
+        padding: 0 16px;
+        top: 0;
+        left: 0;
+    }
+}
+
+@media (min-width: 360px) {
+    #appStorePupUp {
+        .button-group {
+
+            a {
+
+                svg {
+                    max-height: 48px;
+                    height: 48px;
+                }
+            }
+        }
+    }
+    .talkCategorySubcategory {
+        .subFilterItems {
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.catDisabled {
+    /*  cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none; */
+}
+
+@media (min-width: 640px) {
+    .button-group {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                max-height: 48px;
+                height: 48px;
+            }
+        }
+    }
+    .date-scheduler-wrap {
+        div {
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+    .talkCategorySubcategory {
+        .innerMobileDiv.w-100 {
+            margin: 16px;
+        }
+    }
+    .squareBorders {
+        border-radius: 0;
+        border-top: 0;
+        margin: 1rem;
+        margin-top: 0;
+    }
+    .courses {
+        .squareBorders {
+            border-top: 1px solid rgba(6, 4, 3, 0.1);
+        }
+    }
+    .talkCategorySubcategory {
+        .squareBorders {
+            border-radius: 0;
+            border-top: 0;
+            margin: 1rem;
+            margin-top: 0;
+        }
+    }
+}
+
+.whitebox {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid rgba(6, 4, 3, 0.1);
+    box-shadow: 0 0 8px -4px;
+}
+
+.talkCategorySubcategory {
+    .innerMobileDiv.w-100 {
+        padding-top: 40px;
+    }
+}
+
+.smallFilter {
+    background: white;
+    padding: 16px;
+    border-radius: 10px 10px 0 0;
+    margin: 0;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 8px;
+}
+
+.favorites_users {
+    .smallFilter {
+        background: white;
+        padding-bottom: 16px;
+        padding-top: 16px;
+        border-radius: 10px 10px 0 0;
+    }
+}
+
+.innerResultsSearch {
+    background: white;
+}
+
+@media (min-width: 768px) {
+    .mt1rem-768x1024{
+        margin-top: 1rem;
+    }
+    #appStorePupUp {
+        .button-group {
+
+            justify-content: flex-start;
+
+            a {
+
+
+                svg {
+                    max-height: 64px;
+                    height: 64px;
+                }
+            }
+        }
+    }
+    .p016mob {
+        padding: 0px;
+    }
+
+    .date-scheduler-wrap {
+        div {
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+
+    .newBadge {
+        top: calc((100% - 30px) / 2);
+    }
+    .innerResultsSearch {
+        margin-top: 1rem;
+    }
+    .talkCategorySubcategory {
+        #filterTalks {
+            #filter-form {
+                margin-top: 74px;
+            }
+        }
+    }
+
+    .talkCategorySubcategory {
+        max-height: 100%;
+        position: relative;
+        .fButtonCont {
+            display: block;
+        }
+
+        main {
+            padding-bottom: 0;
+        }
+    }
+    .filterTitle {
+        width: 300px;
+        position: absolute;
+        left: 0;
+    }
+
+    .smallFilter {
+        display: none;
+    }
+
+    .courses,
+    .favorites_talks,
+    .favorites_users {
+        .favoritesMenuS {
+            .tabs li.tabs-title {
+                &.is-active {
+                    border: 3px solid #d6d6d6;
+                    top: 0px;
+                    background: white;
+                    border-radius: 8px;
+                }
+            }
+        }
+
+        #filterTalks {
+            display: block;
+        }
+    }
+}
+.avaSmallFilter {
+    .filterDayBadge {
+        max-width: 50.28px;
+    }
+}
+.typeAvaF {
+    .filterTypeBadge {
+        max-width: 122.67px;
+    }
+}
+#showMoreLanguagesButton {
+    display: block;
+}
+.checkbox-inner {
+    transition: 0.3s;
+}
+.dno0s0 {
+    display: none;
+    opacity: 0;
+    transform: scale(0);
+}
+.smoreButer {
+    margin: 0 32px;
+    width: calc(100% - 64px);
+}
+#filterTalks {
+    background: white;
+}
+.fButtonCont,
+#bgFilter {
+    z-index: 99999999;
+}
+.large-12 {
+    & > #bookingAnonCont {
+        display: none;
+    }
+}
+@media (min-width: 1024px) {
+    .mt1rem-768x1024{
+        margin-top: 0rem;
+    }
+    #appStorePupUp {
+        .button-group {
+
+            justify-content: flex-start;
+
+
+        }
+    }
+    .pr24des {
+        padding-right: 24px;
+    }
+
+    .date-scheduler-wrap {
+        div {
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+    .talkCategorySubcategory {
+        #filterTalks {
+            #filter-form {
+                margin-top: auto;
+            }
+        }
+    }
+
+    .filterTitle {
+        width: auto;
+        position: relative;
+        left: 0;
+    }
+
+    .talkCategorySubcategory {
+        .fButtonCont {
+            display: none;
+        }
+    }
+}
+
+.mainSearchContainerZ {
+    transition: 0.2;
+}
+.filterOpens {
+    width: 300px;
+    background: white !important;
+    margin: 0px;
+    border: 0px;
+    margin-top: 0 !important;
+    padding: 1rem !important;
+}
+.categorySubcategoryTalksTable,
+.talksShowMore {
+    transition: 0.3s;
+}
+
+.third_header {
+    border-bottom: 1px solid rgba(6, 4, 3, 0.1);
+}
+
+.sortingSearch {
+    position: relative;
+    left: 8px;
+    top: 1px;
+}
+.sortingSearch2 {
+    position: relative;
+    left: 4px;
+    top: 1px;
+}
+.rotate180 {
+    transform: rotate(180deg);
+}
+.lefterZ {
+    position: absolute;
+    left: 1rem;
+    z-index: 111;
+}
+
+.righterZ {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+}
+.talkCategorySubcategory,
+.favorites_talks,
+.favorites_users {
+    .righterZ {
+        svg {
+            height: 100%;
+            padding: 0px;
+        }
+    }
+}
+
+.jcsb {
+    justify-content: space-between;
+}
+
+.cnterZ {
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+.subFilterItems {
+    background: rgba(38, 132, 255, 0.05);
+    border-radius: 25px;
+    margin: 0 2px;
+    border-bottom: 1px solid rgba(6, 4, 3, 0.1);
+    width: 100%;
+    text-align: center;
+    height: 32px;
+    box-shadow: inset 0px 0px 0px 1px rgba(175, 190, 240, 0.67);
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    span {
+        color: #2684ff;
+        line-height: 16px;
+        font-weight: 600;
+
+        &:after {
+            margin-left: 4px;
+            content: url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%228%22%20viewBox%3D%220%200%208%205%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M0.94%200L4%203.06L7.06%200L8%200.946667L4%204.94667L0%200.946667L0.94%200Z%22%20fill%3D%22%232684FF%22%2F%3E%3C%2Fsvg%3E);
+        }
+    }
+}
+.no-found-heading {
+    padding-top: 1rem;
+}
+.innerResultsSearch {
+    align-items: center;
+
+    overflow-y: auto;
+
+    left: 0;
+    padding: 16px;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 12px;
+
+    .serachImg {
+        width: 88px;
+        height: 88px;
+        border-radius: 16px;
+        object-fit: cover;
+    }
+
+    .courseTitleSearch {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #172b4d;
+    }
+}
+
+.mb4 {
+    margin-bottom: 4px;
+}
+.jcfe {
+    justify-content: flex-end;
+}
+
+input[type="checkbox"]:checked {
+    background: #ffb805;
+    color: white;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    background: #e9e9e9;
+    border: 1px solid rgba(6, 4, 3, 0.1);
+    height: 20px;
+    width: 25px;
+    color: white;
+    border-radius: 4px;
+    background: #f9f9fa;
+}
+
+input[type="checkbox"]:after {
+    content: " ";
+
+    width: 5px;
+    height: 8px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(50deg);
+    display: none;
+}
+
+input[type="checkbox"]:checked:after {
+    display: block;
+}
+.talkCategory,
+.talkCategorySubcategory {
+    input[type="checkbox"]:after {
+        left: 6.5px;
+        top: 3px;
+        position: relative;
+        width: 5px;
+        height: 11px;
+    }
+}
+
+.signup {
+    input[type="checkbox"]:after {
+        left: 8px;
+        top: 2px;
+    }
+}
+.g1rem {
+    gap: 1rem;
+}
+#cookieCont {
+
+    position: relative;
+    svg {
+        min-width: 40px;
+    }
+}
+
+.redFramebord {
+    transform: 0.3s;
+    width: 100%;
+    background: #F2E3F7;
+    margin-bottom: 1rem;
+    position: relative;
+    border:1px solid rgba(255, 0, 0, 0.13);
+    border-radius:12px;
+    float: left;
+    overflow: hidden;
+    height:48px;
+    cursor:pointer;
+    transition:0.3s;
+    border-radius:6px;
+    border: 1px solid #F2E3F7;
+    .headerDivToper{
+        background: rgba(255, 0, 0, 0.13);
+        margin-bottom: 1rem;
+        position: relative;
+        border-radius:6px;
+        p{
+            color: #734783;
+            line-height:3rem;
+            padding:4px 0;
+            margin:0;
+            font-size: 11px;
+            line-height: 20px;
+        }
+        .infoArrow{
+            cursor:pointer;
+            transition: 0.3s;
+            position: absolute;
+            right: 1rem;
+            font-size: 24px;
+            color: #2684FF;
+            font-weight:600;
+        }
+    }
+    .divItemTransition {
+        padding: 0 1rem;
+    }
+}
+.creditCardReset {
+    cursor: pointer;
+}
+
+#vat_cb, #vat_cbclient, #use_another_addres{
+    padding: 0;
+    padding-left: 12px;
+}
+
+.vat_cb_label {
+    cursor: pointer;
+}
+.checekrPayPalPayouout {
+    position: absolute;
+    right: 16px;
+    bottom: calc((100% - 22px) / 2);
+}
+.payoutPayPalWrap {
+    position: relative;
+}
+.filterTitle {
+    font-weight: 600;
+    font-size: 20px;
+    color: #172b4d;
+    background: #f9f9fa;
+    padding: 0 12px;
+    margin-bottom: 0;
+    line-height: 49px;
+    border: 1px solid rgba(6, 4, 3, 0.1);
+    border-left: 1px solid rgba(6, 4, 3, 0.1);
+    border-right: 0;
+    min-height: 49px;
+    height: 49px;
+}
+
+.spanSearchBlok {
+    background: #f0fafb;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #172b4d;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+}
+
+.iconsSearchItem {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    span {
+        display: flex;
+        align-items: center;
+        margin-right: 4px;
+    }
+}
+.iconsSearchItem.cesAvaTalkOver {
+    float: left;
+    width: 100%;
+    justify-content: center;
+}
+.profesorNameSpan {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.colorBlack {
+    color: #172b4d;
+}
+
+.favorites_talks {
+    .smallFilter {
+        padding-top: 1rem;
+    }
+}
+#categorySubcategoryTalksTable {
+    img {
+        border-radius: 10px;
+    }
+}
+.zi1001 {
+    z-index: 9999999999999;
+    position: relative;
+}
+
+.thxer {
+    height: auto;
+    background: white;
+    left: 0;
+    padding: 1rem;
+    margin-top: 0;
+    overflow: auto;
+    padding-top: 0;
+    padding-bottom: 0px;
+}
+
+.favorites_talks {
+    .thxer {
+        height: auto;
+    }
+
+    .innerMobileDiv {
+        z-index: 1111;
+        position: relative;
+        width: 100%;
+    }
+
+    .innerResultsSearch {
+        padding-bottom: 8px;
+    }
+}
+
+.mr8 {
+    margin-right: 8px !important;
+}
+
+.bwhite {
+    background: white;
+}
+
+.o05 {
+    opacity: 0.5;
+}
+
+.filterIcon {
+    background: #f4f5f9;
+    border: 6px solid #f4f5f9;
+    border-radius: 6px;
+}
+
+.pBottomItemsSearch {
+    border-bottom: 1px solid rgba(6, 4, 3, 0.1);
+    padding-bottom: 16px;
+    padding-top: 16px;
+    position: relative;
+
+    &:last-child {
+        border-bottom: 0;
+        padding-bottom: 0px;
+    }
+    &:first-child {
+        padding-bottom: 16px;
+
+    }
+}
+
+.bigHeartSearch {
+    position: absolute;
+    bottom: 18px;
+    right: 0;
+}
+.maxw96 {
+    max-width: 104px;
+}
+.hotHotter {
+    background: #f44336;
+    color: white;
+    border-radius: 12px;
+    margin-right: 12px;
+    padding: 0 10px;
+}
+.funnelSmallerText {
+    line-height: 28px;
+    color: #172b4d;
+}
+.funnelBiggerText {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+    color: #172b4d;
+}
+.profile {
+    #stickyBook {
+        .course-item {
+            margin-bottom: 0;
+            &:last-child {
+                margin-bottom: 16px;
+            }
+        }
+    }
+}
+#showMoreDesc {
+    color: #172b4d;
+    opacity: 0.7;
+}
+.booking{
+    #showMoreDesc {
+        opacity: 1;
+        line-height: 24px;
+        height: 24px;
+    }
+}
+
+.favorites_talks {
+    #mobileSearchContainer {
+        .bigHeartSearch {
+            position: absolute;
+            bottom: 18px;
+            right: 0;
+        }
+    }
+    .bigHeartSearch {
+        position: relative;
+        bottom: 0;
+        right: 0;
+    }
+}
+.funnelIconsFix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    min-height: 24px;
+}
+
+#newFilterPopup {
+    left: 1000px;
+
+    .popuper {
+        position: relative;
+        left: 1000px;
+    }
+}
+
+.talkCategorySubcategory {
+    /* .talkTabs{
+        display: none;
+    } */
+    #categoriesHolder {
+        display: none;
+    }
+}
+.shortenDesc {
+    word-break: break-all;
+}
+#categoryCarousel {
+    .owl-stage-outer {
+        .tabs-title {
+            padding: 0 8px;
+        }
+    }
+}
+.filterIcon.righterZ,
+#languageGg,
+.filterDayBadge,
+.filterLengthBadge,
+.filterTypeBadge {
+    cursor: pointer;
+}

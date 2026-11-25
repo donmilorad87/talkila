@@ -1,0 +1,162 @@
+.inner-box-book {
+    .date-time-tabs {
+        height: 42px;
+        line-height: 42px;
+        display: flex;
+        justify-content: space-between;
+        h5{
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            line-height: inherit;
+            margin: 0;
+            height: inherit;
+        }
+        ul {
+            float: right;
+            position: absolute;
+            right: 0;
+            line-height: inherit;
+            height: inherit;
+            border: 0;
+            li {
+                line-height: inherit;
+                height: inherit;
+                padding-right: 16px;
+                a {
+
+                    color: #aeb4c1;
+                    line-height: inherit;
+                    height: inherit;
+                    padding: 0;
+                }
+            }
+            .is-active {
+                a {
+                    color: #2684ff;
+                    &:focus {
+                        background: none !important;
+                        border: 0 !important;
+                    }
+                }
+            }
+        }
+    }
+    .large-expanded {
+        width: 100%;
+    }
+    .tabs-content {
+        border: 0;
+        .tabs-panel {
+            padding: 1em 0 0 0;
+        }
+        .weekly-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 20px;
+            p {
+                margin: 0;
+            }
+            img {
+                width: 7px;
+                &:first-child {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        .week-date {
+            display: flex;
+            justify-content: space-between;
+            &.days {
+                justify-content: flex-start;
+                margin: 0 -5px;
+            }
+        }
+        .week-date-secend {
+            display: flex;
+            flex-wrap: wrap;
+            div {
+                width: 12.8%;
+                text-align: center;
+                margin: 5px;
+                button {
+                    max-height: 48px;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+
+        .week-date {
+            .active {
+                background: #eef6ff;
+                border: 1px solid #258aff !important;
+                color: #258aff;
+                small {
+                    color: #258aff !important;
+                }
+            }
+
+            button {
+                padding: 10px 17px;
+                border: 1px solid #e6e6e6;
+                color: #000;
+                width: 62px;
+                small {
+                    color: #ccc;
+                    display: inline-block;
+                    margin-top: 10px;
+                }
+            }
+        }
+        .weekly-time {
+            .active {
+                background: #eef6ff;
+                border: 1px solid #258aff !important;
+                color: #258aff !important;
+            }
+            button {
+                width: 100%;
+                text-align: left;
+                color: #000 !important;
+                border-color: #ddd !important;
+            }
+        }
+    }
+}
+
+
+.book_slot_payment{
+    .tabs-content {
+        border: 0;
+        .tabs-panel {
+            padding:0;
+            margin-top: 0;
+        }
+    }
+    .bookingSummaryHDmobile{
+        p.mb16{
+            word-break: break-all;
+        }
+    }
+}
+
+.divItemTransition{
+    transition: 0.3s;
+}
+#bookingAnonCont{
+    float: left;
+    width: 100%;
+    opacity: 1;
+    transform:scale(1);
+    margin-top: 10px;
+}
+
+#calendar-body,#sevenDaysCalendar{
+    .today{
+
+        box-shadow: inset 0 0 0 1px rgba(38, 132, 255, .3);
+    }
+}

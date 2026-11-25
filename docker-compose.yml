@@ -1,0 +1,110 @@
+name: talkila
+
+services:
+  nginx:
+    build:
+      context: ./Docker/Nginx
+      dockerfile: Dockerfile
+    container_name: talkila-nginx
+    ports:
+      - "127.0.0.8:80:80"
+      - "127.0.0.8:443:443"
+    volumes:
+      - ./talkila.backend:/var/www/html:cached
+      - ./Docker/Nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./Docker/Nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - laravel
+      - pgadmin
+    networks:
+      - talkila-network
+    restart: unless-stopped
+
+  laravel:
+    build:
+      context: .
+      dockerfile: Docker/Laravel/Dockerfile
+    container_name: talkila-laravel
+    volumes:
+      - ./talkila.backend:/var/www/html:cached
+      - ./Docker/Laravel/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf:ro
+      - ./Docker/Laravel/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+    environment:
+      - DB_CONNECTION=pgsql
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=${DB_DATABASE:-talkila}
+      - DB_USERNAME=${DB_USERNAME:-talkila}
+      - DB_PASSWORD=${DB_PASSWORD:-talkila_secret}
+      - REDIS_HOST=redis
+      - CACHE_DRIVER=redis
+      - SESSION_DRIVER=redis
+      - QUEUE_CONNECTION=redis
+      - BROADCAST_DRIVER=pusher
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - talkila-network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: talkila-postgres
+    environment:
+      POSTGRES_DB: ${DB_DATABASE:-talkila}
+      POSTGRES_USER: ${DB_USERNAME:-talkila}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-talkila_secret}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.8:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-talkila}"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - talkila-network
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: talkila-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@talkila.local}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+      SCRIPT_NAME: /pgadmin
+      PGADMIN_SERVER_JSON_FILE: /pgadmin4/servers.json
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+      - ./Docker/pgAdmin/servers.json:/pgadmin4/servers.json:ro
+    networks:
+      - talkila-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: talkila-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - talkila-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  pgadmin-data:
+  redis-data:
+
+networks:
+  talkila-network:
+    driver: bridge

@@ -1,0 +1,342 @@
+.card_value_sum {
+    background-color: #000 !important;
+}
+
+.redred {
+    background: lightblue;
+}
+
+#collapseButtonZ {
+    svg {
+        width: 18px;
+        fill: white;
+    }
+}
+.table-responsive {
+    overflow-x: initial !important;
+}
+.headindCardTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+    font-weight: 600;
+
+    .newEmployeeBtn {
+        background: #ff9902;
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+        float: right;
+        padding: 1rem;
+        position: relative;
+        top:0px;
+        left:0px;
+        box-shadow: 3px 3px 0 0 rgb(39, 39, 39), inset 0 0 0 2px rgb(39, 39, 39);
+        transition: ease-in-out 0.1s;
+
+        &:active {
+            top:3px;
+            left:3px;
+            box-shadow: 0px 0px 0 0 black, inset 0 0 0 2px black;
+        }
+    }
+}
+
+#collapseExample {
+    max-height: 54px;
+    height: 100%;
+    color: black;
+    font-size: 18px;
+    background: #b6d7a8;
+    border: 2px dashed #009e0e;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+
+    h3 {
+        text-align: center;
+        line-height: 50px;
+        margin: 0;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+
+        }
+        .dropdownTitle {
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 50px;
+            margin: 0;
+            color: black;
+        }
+        .text-right {
+            position: absolute;
+            right: 6px;
+            top: 0px;
+
+            button {
+                background: black;
+                border: none;
+                border-radius: 50%;
+                font-size: 30px;
+                padding: 0;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                transform: rotate(90deg) scale(1, 1);
+                transition: 0.3s;
+            }
+        }
+    }
+    .card-body {
+        border: 0;
+        background-color: #b6d7a8;
+        text-align: center;
+        font-weight: 600;
+    }
+}
+.table-responsive {
+    .dataTables_wrapper .dataTables_filter input {
+        margin-left: 0em !important;
+    }
+}
+#profile-path-holder1 {
+    cursor: pointer;
+}
+
+
+.copyTexter {
+
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    line-height: 50px;
+
+    input {
+        border: 0;
+    }
+
+    p {
+        margin: 0;
+
+        display: flex;
+        justify-content: center;
+    }
+    svg {
+        position: relative;
+        bottom: 2px;
+    }
+
+    right: 6px;
+    position: absolute;
+    top: 6px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    margin: 0;
+}
+
+.toastifyNot {
+    background: #00c3ff;
+    z-index: 9999;
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+    border: 2px solid white;
+    transition: 0.3s;
+    position: absolute;
+    top: 1rem;
+}
+
+.cardTitleZ {
+    font-size: 28px;
+    padding: 0;
+    color: #212529;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+
+    ::after {
+        content: "";
+        background: #2962ff;
+        height: 1px;
+        width: 30px;
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+    }
+}
+
+
+
+.aic {
+    align-items: center;
+}
+
+.jcc {
+    justify-content: center;
+}
+
+.f1 {
+    flex: 1;
+}
+
+.cardsContainer {
+    padding: 1rem 0 1.5rem 0;
+
+    .borderZ {
+        border: 2px solid;
+        border-radius: 4px;
+        margin-right: 1rem;
+        min-height: 108px;
+
+        &:last-child {
+            margin-right: 0rem;
+        }
+    }
+}
+
+#chart {
+    padding: 24px 0 0px 0;
+}
+
+.tbl {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    margin-bottom: 1rem;
+
+    thead {
+        tr {
+            background: rgb(165, 165, 165);
+
+            th {
+                border: 0;
+                border-left: 2px solid;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            &:nth-child(odd) {
+                background: rgb(238, 238, 238);
+            }
+
+            td {
+                border-left: 2px solid;
+            }
+        }
+    }
+}
+
+.mt1 {
+    margin-top: 1rem;
+}
+
+.mb1 {
+    margin-bottom: 1rem;
+}
+
+.mt2 {
+    margin-top: 2rem;
+}
+
+.mb2 {
+    margin-bottom: 2rem;
+}
+
+.mt3 {
+    margin-top: 3rem;
+}
+
+.mb3 {
+    margin-bottom: 3rem;
+}
+
+.apexcharts-title-text {
+    font-size: 20px;
+}
+
+.burger-menu {
+    margin: 0 !important;
+    position: absolute;
+}
+
+@media (min-width: 280px) {
+    .burger-menu {
+        right: 0px;
+    }
+}
+
+@media (min-width: 768px) {
+    .burger-menu {
+        right: auto;
+        left: 192px;
+    }
+}
+
+.fixed-top {
+    z-index: 91030;
+}
+
+.sidemenu-area {
+    top: 52px;
+}
+
+.h32 {
+    height: 32px;
+
+    svg {
+        height: 100%;
+    }
+}
+
+.firsterShare {
+    input:focus-visible {
+        outline: none;
+    }
+    .copyTextSpan {
+        font-size: 18px;
+    }
+    #profile-path-holder1 {
+        font-weight: 600;
+    }
+}
+
+#profile-path-holder1 {
+    margin: 0;
+    resize: none;
+    background: none;
+    appearance: none;
+    border: none;
+    width: 314px;
+}
+
+/* .redredred{
+    color:red;
+    &:hover{
+        color:orange;
+    }
+    &::after{
+        color:orange;
+    }
+} */
+
+.dropdowGreen {
+    p {
+        color: black;
+        margin: 0;
+        font-weight: 300;
+        b {
+            font-weight: 600;
+        }
+    }
+}
+
+.datatable {
+    width: 100% !important;
+}

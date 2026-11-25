@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="languageSvg" width="27" height="20" viewBox="0 0 48 32"><rect fill="#f00" height="32" width="48"></rect><rect fill="#fff" height="6" width="20" x="14" y="13"></rect><rect fill="#fff" height="20" width="6" x="21" y="6"></rect></svg>

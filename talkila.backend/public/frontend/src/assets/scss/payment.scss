@@ -1,0 +1,91 @@
+.box-payment {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    color: #000;
+    margin-top: 10px;
+}
+
+.box-payment__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.active{
+        // padding: 10px 10px;
+    border-radius: 5px;
+        small {
+            color: #258aff;
+        }
+    }
+
+.choose-payment-box{
+.tabs-panel {
+    padding: 0;
+    margin-top: 15px;
+}
+    form.form-option {
+
+        input {
+    border: 1px solid rgba(6,4,3,0.1);
+    box-shadow: none;
+    }
+    // .right{
+    //     margin-right: 5px;
+    // }
+
+    // .left{
+    //     margin-left: 5px;
+    // }
+
+    }
+
+    ul {
+        border: 0;
+        list-style:none;
+        li {
+            max-height: 70px;
+            width: 100%;
+            text-align: center;
+            border-radius: 8px;
+            margin: 8px;
+            border: 1px solid rgba(6,4,3,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 70px;
+            &.is-active {
+                background-color: #EEF6FF;
+                border-color: #258AFF;
+            }
+            a {
+                &:focus {
+                    .tabs-title {
+                        background: none;
+                    }
+                    background: none;
+                }
+                img {
+                        width: 100px;
+                }
+                        p {
+                                margin: 0;
+                                color: #000;
+                                font-weight: bold;
+                            }
+
+            }
+        }
+    }
+
+
+ .payment-title{
+     color: #000;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+}

@@ -1,0 +1,207 @@
+input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    height: 5px;
+    padding: 0;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+
+/*Chrome thumb*/
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-border-radius: 50%;
+    /*16x16px adjusted to be same as 14x14px on moz*/
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 6px white;
+    background: #1d293f;
+    border: 0;
+}
+
+
+/*Mozilla thumb*/
+
+input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -moz-border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 6px white;
+    background: #1d293f;
+    border: 0;
+}
+
+
+/*IE & Edge input*/
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 6px;
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 2px 0;
+    /*remove default tick marks*/
+    color: transparent;
+
+}
+
+
+/*IE & Edge thumb*/
+
+input[type=range]::-ms-thumb {
+    position: relative;
+    top: 8px;
+    height: 20px;
+    width: 20px;
+    margin: 8px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 6px white;
+    background: #1d293f;
+    border: 0;
+}
+
+
+/*IE & Edge left side*/
+
+input[type=range]::-ms-fill-lower {
+    background: white;
+    border-radius: 2px;
+}
+
+
+/*IE & Edge right side*/
+
+input[type=range]::-ms-fill-upper {
+    background: #c5c5c5;
+    border-radius: 2px;
+}
+
+
+/*IE disable tooltip*/
+
+input[type=range]::-ms-tooltip {
+    display: none;
+}
+
+
+#valut {
+    color: white;
+    font-size: 20px;
+    line-height: 20px;
+    height: 20px;
+    position: relative;
+    top: 9px;
+}
+
+.rangeInput input[type=text]+label::after {
+    content: "€";
+}
+
+#box5 {
+    width: 128px;
+}
+
+@media (min-width:280px) {
+    .rangeInput {
+        margin-bottom: 16px
+    }
+
+    .verticalAlignMiddle .mobile-view-heading p {
+        margin-bottom: 0px;
+    }
+
+    .verticalAlignMiddle .mobile-view-heading h2 {
+        margin: 16px 0 16px;
+    }
+
+    .verticalAlignMiddle .rangeInput label {
+
+        font-size: 12px;
+        line-height: 24px;
+    }
+}
+
+@media (min-width:320px) {
+    .verticalAlignMiddle .rangeInput label {
+
+        font-size: 14px;
+    }
+}
+
+@media (min-width:360px) {
+    .verticalAlignMiddle .heading-tile-calulator {
+        line-height: 38px;
+    }
+
+    .verticalAlignMiddle .rangeInput label {
+
+        font-size: 16px;
+    }
+}
+
+@media (min-width:400px) {}
+
+@media (min-width:440px) {}
+
+@media (min-width:640px) {
+    .verticalAlignMiddle .heading-tile-calulator {
+        line-height: 48px;
+    }
+
+    .verticalAlignMiddle .mobile-view-heading h2 {
+        margin: 22px 0 22px;
+    }
+
+    .rangeInput {
+        margin-bottom: 35px
+    }
+
+    .verticalAlignMiddle .mobile-view-heading p {
+        margin-bottom: 16px;
+    }
+}
+
+@media (min-width:1024px) {
+    .verticalAlignMiddle .heading-tile-calulator {
+        line-height: 48px;
+    }
+
+
+
+}
+
+.talkilaInputNaslov {
+    margin-top: 32px;
+    float: left;
+    font-size: 20px;
+    color: #1d293f;
+    margin-bottom: 8px;
+}
+
+.validationInputNumberSpan {
+    position: absolute;
+    bottom: -34px;
+}
+
+.sendConfirmation {
+    position: absolute;
+    width: calc(100% - 10px);
+    line-height: 58px;
+    z-index: 9;
+    background: white;
+    text-align: left;
+    display: none;
+    opacity: 0;
+    transition: 0.3s;
+}

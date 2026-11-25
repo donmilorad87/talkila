@@ -1,0 +1,61 @@
+
+@media (min-width:280px){
+    main{
+        padding:0rem;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+
+    .third_header{
+        display:none;
+    }
+    .caki2{
+        height: 52px;
+        margin: 0;
+    }
+}
+.br1rem{
+    border-radius: 1rem;
+}
+.br12{
+    border-radius: 12px;
+}
+.mh82{
+    min-height: 82px;
+    max-height: 82px;
+    min-width: 82px;
+    max-width: 82px;
+}
+@media (min-width:640px) {
+    .mainHeaderSettings {
+        display: flex;
+    }
+    .logged_in{
+        .third_header{
+            display:block;
+        }
+    }
+    main{
+        padding:0rem 1rem;
+    }
+    .edit_profile{
+        input,textarea{
+            border:1px solid rgba(6,4,3,.1)
+        }
+    }
+}
+@media (min-width:768px){
+
+
+    .third_header{
+        display:block;
+    }
+    .edit_profile{
+        background: #f4f5f9;
+    }
+
+}
+
+
+
+

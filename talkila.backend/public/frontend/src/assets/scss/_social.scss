@@ -1,0 +1,174 @@
+.facebook-icon svg {
+    enable-background: new 0 0 310 310;
+    height: 34px;
+    fill: white;
+}
+.whatsapp-icon svg {
+    fill: white;
+    height: 47px;
+}
+.google-icon svg {
+    fill: white;
+    height: 48px;
+}
+.envelope-icon svg {
+    fill: white;
+    height: 38px;
+}
+.wrraper-social {
+    padding: 4.875em 0 0;
+    margin: auto;
+    text-align: center;
+
+    .social-img-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .facebook-icon {
+            background: #3a5998;
+            width: 128px;
+            height: 128px;
+            border-radius: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .whatsapp-icon {
+            background: rgba(37, 211, 102, 0.71);
+            width: 97px;
+            height: 97px;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            margin-left: -14px;
+            align-items: center;
+        }
+
+        .google-icon {
+            background: rgba(252, 48, 95, 0.8);
+            width: 166px;
+            height: 166px;
+            border-radius: 100%;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin-left: -15px;
+        }
+        .envelope-icon {
+            background: rgba(38, 132, 255, 0.75);
+            width: 102px;
+            height: 102px;
+            border-radius: 100%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            margin-left: -20px;
+        }
+    }
+
+    p {
+        margin: 2.5em 0 2.188em;
+    }
+}
+
+.boder-top {
+    border-top: 1px solid #cccccc;
+    margin-top: 2.875em;
+    padding-top: 3.563em;
+    padding-bottom: 3.3em;
+    justify-content: center;
+    .main-comment {
+        h2 {
+            font-size: 4.375em;
+            font-weight: bold;
+        }
+        p {
+            margin-bottom: 0px;
+            color: #1d293f;
+
+            strong {
+                color: #2684ff;
+            }
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                margin-right: 4px;
+            }
+        }
+    }
+
+    .social-heading-title {
+        font-size: 2em;
+        line-height: 46px;
+        span {
+            color: #2684ff;
+        }
+    }
+}
+
+@media screen and #{breakpoint(medium down)} {
+    .boder-top {
+        .social-heading-title {
+            margin-top: 4.063rem;
+        }
+    }
+}
+
+@media screen and #{breakpoint(small down)} {
+    .wrraper-social {
+        .social-img-inner {
+            .facebook-icon {
+                width: 4em;
+                height: 4em;
+            }
+
+            .whatsapp-icon {
+                width: 5em;
+                height: 5em;
+            }
+            .google-icon {
+                width: 7em;
+                height: 7em;
+            }
+            .envelope-icon {
+                width: 84px;
+                height: 84px;
+            }
+        }
+
+        .headint-title-social {
+            font-size: 2.5em;
+            line-height: 56px;
+            br {
+                display: none;
+            }
+        }
+        p {
+            br {
+                display: none;
+            }
+        }
+    }
+
+    .main-comment {
+        text-align: center;
+        margin-bottom: 60px;
+        ul {
+            display: flex;
+            justify-content: center;
+        }
+    }
+    .boder-top .social-heading-title {
+        font-size: 1.5em;
+        line-height: 32px;
+        text-align: center;
+        br {
+            display: none;
+        }
+    }
+}

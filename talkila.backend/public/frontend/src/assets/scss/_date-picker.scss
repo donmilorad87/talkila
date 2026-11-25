@@ -1,0 +1,373 @@
+
+
+
+
+
+
+.wrapper {
+
+  margin: 0 auto;
+
+  max-width: 1100px;
+
+}
+
+.book_slot{
+    .wrapper {
+        margin:  auto;
+    }
+    .gropings {
+        .mb16{
+            margin-bottom: 0!important;
+        }
+    }
+}
+
+.container-calendar {
+
+  padding: 0px;
+
+  max-width: 100%;
+
+  margin: 0 auto;
+
+  overflow: auto;
+
+}
+#bMySlotsButtonsCont {
+    cursor: pointer;
+}
+.br6{border-radius:6px;}
+.book_slot {
+    #todays{
+        padding: 8px;
+        border: 1px solid rgba(6,4,3,0.1);
+        border-radius: 6px;
+        transition:0.1s;
+        &:hover{
+            font-weight: bold;
+            background: #FFB805;
+            border-radius: 4px;
+            color: white !important;
+
+            border: 1px solid white;
+        }
+    }
+    .container-calendar{
+        max-width: 100%;
+        padding: 0;
+    }
+
+}
+
+.book_slot{
+
+    .dateDDIner{
+        svg{
+            transition:0.3s;
+        }
+    }
+}
+.mb0{
+    margin-bottom:0px;
+}
+
+.button-container-calendar button {
+
+    cursor: pointer;
+    font-size: 20px;
+    color: #00a2b7;
+    line-height: 28px;
+    width: 28px;
+    outline: none;
+
+
+}
+.calendarMArrows{
+  display: none;
+  position: relative;
+  z-index: 1;
+  width: 70%;
+    float: left
+}
+
+
+.table-calendar {
+
+  border-collapse: collapse;
+
+  width: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+}
+
+
+thead, tbody, tfoot {
+  border: 0px solid #f1f1f1;
+
+}
+.table-calendar td, .table-calendar th {
+
+  padding: 10px;
+
+  text-align: center;
+
+  vertical-align: top;
+
+}
+
+
+
+#monthHeader {
+  float: left;
+
+  text-transform: uppercase;
+
+  color: #1D293F;
+
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 28px;
+}
+
+
+
+#yearHeader {
+float: right;
+
+
+  padding: 0 3px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #1D293F;
+  line-height: 28px;
+  margin: 0;
+}
+
+
+
+.date-picker {
+
+  cursor: pointer;
+
+}
+
+
+
+
+
+
+
+.date-picker.selected span {
+
+  color: #00BCD4;
+
+}
+
+
+
+/* sunday */
+
+.date-picker:nth-child(7), .red-text {
+
+  font-weight: 600;
+
+
+}
+
+
+
+/* friday
+
+.date-picker:nth-child(6) {
+
+  color: green;
+
+}
+
+*/
+
+#monthAndYear {
+
+  text-align: center;
+
+  margin-top: 0;
+
+}
+
+
+
+.button-container-calendar {
+
+  position: relative;
+
+  margin-bottom: 1em;
+
+  overflow: hidden;
+
+  clear: both;
+
+  text-align: center;
+
+}
+
+.date-picker{
+  transition: 0.1s;
+}
+.date-picker:hover{
+  font-weight: bold;
+  background: #FFB805;
+  border-radius: 4px;
+  color: white !important;
+
+  border: 1px solid white;
+  p{
+    color: white !important;
+  }
+}
+
+
+#previous {
+
+  float: left;
+
+}
+
+
+
+#next {
+
+  float: right;
+
+}
+
+
+
+.footer-container-calendar {
+
+  margin-top: 1em;
+
+  border-top: 1px solid #dadada;
+
+  padding: 10px 0;
+
+  display: none;
+
+}
+
+
+
+.footer-container-calendar select {
+
+  cursor: pointer;
+
+  display: inline-block;
+
+  zoom: 1;
+
+  background: #ffffff;
+
+  color: #585858;
+
+  border: 1px solid #bfc5c5;
+
+  border-radius: 3px;
+
+  padding: 5px 1em;
+
+}
+#calendar-body td{
+  width: 160px;
+  max-width: calc(100% / 7);
+  float: left;
+  position: relative;
+  color: #1D293F;
+  height: 58px;
+
+}
+
+
+#calendar-body td p{
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 0px;
+
+}
+
+#calendar-body td .selected>p{
+  color: white!important;
+}
+
+thead {
+  background: white;
+  color: #1D293F;
+
+}
+thead tr th{
+  font-weight: 300;
+  color:#172B4D;
+  opacity: 1;
+  font-size: 12px;
+}
+#calendar-body td .innerDate{
+
+  font-size: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  left: 0;
+  font-weight: 600;
+    color: #FFB805;
+
+}
+.fallowFavCont{
+
+
+    float: left;
+    width: 120px;
+
+
+}
+
+
+#date-picked {
+
+  text-align: center;
+
+  color: #999;
+
+  border-top: 1px solid lightblue;
+
+  padding-top: 15px;
+
+  font-size: 11pt;
+
+  font-weight: bold;
+
+}
+.date-picker.selected {
+    p{
+        color: white!important;
+    }
+    .innerDate {
+        color: white!important;
+    }
+    font-weight: bold;
+    background: #FFB805;
+    border-radius: 4px;
+
+
+    border: 1px solid white;
+}

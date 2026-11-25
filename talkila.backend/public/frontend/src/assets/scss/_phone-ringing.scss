@@ -1,0 +1,418 @@
+.phonering-alo-phone.phonering-alo-static {
+    opacity:.6
+}
+
+.phonering-alo-phone.phonering-alo-hover,.phonering-alo-phone:hover {
+    opacity:1
+}
+
+.phonering-alo-ph-circle {
+    width:160px;
+    height:160px;
+    top:0px;
+    left:0px;
+    position:absolute;
+    background-color:transparent;
+    border-radius:100% !important;
+    border:2px solid rgba(30,30,30,0.4);
+    border:2px solid #bfebfc 9;
+    opacity:.1;
+    -webkit-animation:phonering-alo-circle-anim 1.2s infinite ease-in-out;
+    animation:phonering-alo-circle-anim 1.2s infinite ease-in-out;
+    transition:all .5s;
+    -webkit-transform-origin:50% 50%;
+    -ms-transform-origin:50% 50%;
+    transform-origin:50% 50%
+}
+
+.phonering-alo-phone.phonering-alo-active .phonering-alo-ph-circle {
+    -webkit-animation:phonering-alo-circle-anim 1.1s infinite ease-in-out!important;
+    animation:phonering-alo-circle-anim 1.1s infinite ease-in-out!important
+}
+
+.phonering-alo-phone.phonering-alo-static .phonering-alo-ph-circle {
+    -webkit-animation:phonering-alo-circle-anim 2.2s infinite ease-in-out!important;
+    animation:phonering-alo-circle-anim 2.2s infinite ease-in-out!important
+}
+
+.phonering-alo-phone.phonering-alo-hover .phonering-alo-ph-circle,.phonering-alo-phone:hover .phonering-alo-ph-circle {
+    border-color:#00aff2;
+    opacity:.5
+}
+
+
+
+.phonering-alo-phone.phonering-alo-green .phonering-alo-ph-circle {
+    border-color:#00aff2 ;
+    border-color:#bfebfc;
+    opacity:.5
+}
+
+.phonering-alo-phone.phonering-alo-gray.phonering-alo-hover .phonering-alo-ph-circle,.phonering-alo-phone.phonering-alo-gray:hover .phonering-alo-ph-circle {
+    border-color:#ccc;
+    opacity:.5
+}
+
+.phonering-alo-phone.phonering-alo-gray .phonering-alo-ph-circle {
+    border-color:#75eb50 ;
+    opacity:.5
+}
+
+.phonering-alo-ph-circle-fill {
+    width:100px;
+    height:100px;
+    top:30px;
+    left:30px;
+    position:absolute;
+    background-color: #000;
+    border-radius:100% !important;
+    border:2px solid transparent;
+    -webkit-animation:phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
+    animation:phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
+    transition:all .5s;
+    -webkit-transform-origin:50% 50%;
+    -ms-transform-origin:50% 50%;
+    transform-origin:50% 50%
+}
+
+.phonering-alo-phone.phonering-alo-active .phonering-alo-ph-circle-fill {
+    -webkit-animation:phonering-alo-circle-fill-anim 1.7s infinite ease-in-out!important;
+    animation:phonering-alo-circle-fill-anim 1.7s infinite ease-in-out!important
+}
+
+.phonering-alo-phone.phonering-alo-static .phonering-alo-ph-circle-fill {
+    -webkit-animation:phonering-alo-circle-fill-anim 2.3s infinite ease-in-out!important;
+    animation:phonering-alo-circle-fill-anim 2.3s infinite ease-in-out!important;
+    opacity:0!important
+}
+
+.phonering-alo-phone.phonering-alo-hover .phonering-alo-ph-circle-fill,.phonering-alo-phone:hover .phonering-alo-ph-circle-fill {
+    background-color:rgba(0,175,242,0.5);
+    background-color:#00aff2 9;
+    opacity:.75!important
+}
+
+
+
+.phonering-alo-phone.phonering-alo-green .phonering-alo-ph-circle-fill {
+    background-color:rgba(0,175,242,0.5);
+    background-color:#a6e3fa 9
+}
+
+.phonering-alo-phone.phonering-alo-gray.phonering-alo-hover .phonering-alo-ph-circle-fill,.phonering-alo-phone.phonering-alo-gray:hover .phonering-alo-ph-circle-fill {
+    background-color:rgba(204,204,204,0.5);
+    background-color:#ccc 9;
+    opacity:.75!important
+}
+
+
+
+.phonering-alo-ph-img-circle {
+    width: 70px;
+    height: 70px;
+    top: 46px;
+    left: 46px;
+    position:absolute;
+    background:rgba(30,30,30,0.1) url(data:image/png;base64,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) no-repeat 75% center;
+    border-radius:100% !important;
+    border:2px solid transparent;
+    -webkit-animation:phonering-alo-circle-img-anim 1s infinite ease-in-out;
+    animation:phonering-alo-circle-img-anim 1s infinite ease-in-out;
+    -webkit-transform-origin:50% 50%;
+    -ms-transform-origin:50% 50%;
+    transform-origin:50% 50%
+}
+
+.phonering-alo-phone.phonering-alo-active .phonering-alo-ph-img-circle {
+    -webkit-animation:phonering-alo-circle-img-anim 1s infinite ease-in-out!important;
+    animation:phonering-alo-circle-img-anim 1s infinite ease-in-out!important
+}
+
+.phonering-alo-phone.phonering-alo-static .phonering-alo-ph-img-circle {
+    -webkit-animation:phonering-alo-circle-img-anim 0 infinite ease-in-out!important;
+    animation:phonering-alo-circle-img-anim 0 infinite ease-in-out!important
+}
+
+
+
+.phonering-alo-phone.phonering-alo-gray.phonering-alo-hover .phonering-alo-ph-img-circle,.phonering-alo-phone.phonering-alo-gray:hover .phonering-alo-ph-img-circle {
+    background-color:#ccc
+}
+
+
+
+@-webkit-keyframes phonering-alo-circle-anim {
+    0% {
+        -webkit-transform:rotate(0) scale(.5) skew(1deg);
+        -webkit-opacity:.1
+    }
+
+    30% {
+        -webkit-transform:rotate(0) scale(.7) skew(1deg);
+        -webkit-opacity:.5
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+        -webkit-opacity:.1
+    }
+}
+
+@-webkit-keyframes phonering-alo-circle-fill-anim {
+    0% {
+        -webkit-transform:rotate(0) scale(.7) skew(1deg);
+        opacity:.2
+    }
+
+    50% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+        opacity:.2
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(.7) skew(1deg);
+        opacity:.2
+    }
+}
+
+@-webkit-keyframes phonering-alo-circle-img-anim {
+    0% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg)
+    }
+
+    10% {
+        -webkit-transform:rotate(-25deg) scale(1) skew(1deg)
+    }
+
+    20% {
+        -webkit-transform:rotate(25deg) scale(1) skew(1deg)
+    }
+
+    30% {
+        -webkit-transform:rotate(-25deg) scale(1) skew(1deg)
+    }
+
+    40% {
+        -webkit-transform:rotate(25deg) scale(1) skew(1deg)
+    }
+
+    50% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg)
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg)
+    }
+}
+
+@-webkit-keyframes fadeInRight {
+    0% {
+        opacity:0;
+        -webkit-transform:translate3d(100%,0,0);
+        -ms-transform:translate3d(100%,0,0);
+        transform:translate3d(100%,0,0)
+    }
+
+    100% {
+        opacity:1;
+        -webkit-transform:none;
+        -ms-transform:none;
+        transform:none
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity:0;
+        -webkit-transform:translate3d(100%,0,0);
+        -ms-transform:translate3d(100%,0,0);
+        transform:translate3d(100%,0,0)
+    }
+
+    100% {
+        opacity:1;
+        -webkit-transform:none;
+        -ms-transform:none;
+        transform:none
+    }
+}
+
+@-webkit-keyframes fadeOutRight {
+    0% {
+        opacity:1
+    }
+
+    100% {
+        opacity:0;
+        -webkit-transform:translate3d(100%,0,0);
+        -ms-transform:translate3d(100%,0,0);
+        transform:translate3d(100%,0,0)
+    }
+}
+
+@keyframes fadeOutRight {
+    0% {
+        opacity:1
+    }
+
+    100% {
+        opacity:0;
+        -webkit-transform:translate3d(100%,0,0);
+        -ms-transform:translate3d(100%,0,0);
+        transform:translate3d(100%,0,0)
+    }
+}
+
+@-webkit-keyframes phonering-alo-circle-anim {
+    0% {
+        -webkit-transform:rotate(0) scale(.5) skew(1deg);
+                transform:rotate(0) scale(.5) skew(1deg);
+        opacity:.1
+    }
+
+    30% {
+        -webkit-transform:rotate(0) scale(.7) skew(1deg);
+                transform:rotate(0) scale(.7) skew(1deg);
+        opacity:.5
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+                transform:rotate(0) scale(1) skew(1deg);
+        opacity:.1
+    }
+}
+
+@keyframes phonering-alo-circle-anim {
+    0% {
+        -webkit-transform:rotate(0) scale(.5) skew(1deg);
+                transform:rotate(0) scale(.5) skew(1deg);
+        opacity:.1
+    }
+
+    30% {
+        -webkit-transform:rotate(0) scale(.7) skew(1deg);
+                transform:rotate(0) scale(.7) skew(1deg);
+        opacity:.5
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+                transform:rotate(0) scale(1) skew(1deg);
+        opacity:.1
+    }
+}
+
+@-webkit-keyframes phonering-alo-circle-fill-anim {
+    0% {
+        -webkit-transform:rotate(0) scale(.7) skew(1deg);
+                transform:rotate(0) scale(.7) skew(1deg);
+        opacity:.2
+    }
+
+    50% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+                transform:rotate(0) scale(1) skew(1deg);
+        opacity:.2
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(.7) skew(1deg);
+                transform:rotate(0) scale(.7) skew(1deg);
+        opacity:.2
+    }
+}
+
+@keyframes phonering-alo-circle-fill-anim {
+    0% {
+        -webkit-transform:rotate(0) scale(.7) skew(1deg);
+                transform:rotate(0) scale(.7) skew(1deg);
+        opacity:.2
+    }
+
+    50% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+                transform:rotate(0) scale(1) skew(1deg);
+        opacity:.2
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(.7) skew(1deg);
+                transform:rotate(0) scale(.7) skew(1deg);
+        opacity:.2
+    }
+}
+
+@-webkit-keyframes phonering-alo-circle-img-anim {
+    0% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+                transform:rotate(0) scale(1) skew(1deg)
+    }
+
+    10% {
+        -webkit-transform:rotate(-25deg) scale(1) skew(1deg);
+                transform:rotate(-25deg) scale(1) skew(1deg)
+    }
+
+    20% {
+        -webkit-transform:rotate(25deg) scale(1) skew(1deg);
+                transform:rotate(25deg) scale(1) skew(1deg)
+    }
+
+    30% {
+        -webkit-transform:rotate(-25deg) scale(1) skew(1deg);
+                transform:rotate(-25deg) scale(1) skew(1deg)
+    }
+
+    40% {
+        -webkit-transform:rotate(25deg) scale(1) skew(1deg);
+                transform:rotate(25deg) scale(1) skew(1deg)
+    }
+
+    50% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+                transform:rotate(0) scale(1) skew(1deg)
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+                transform:rotate(0) scale(1) skew(1deg)
+    }
+}
+
+@keyframes phonering-alo-circle-img-anim {
+    0% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+                transform:rotate(0) scale(1) skew(1deg)
+    }
+
+    10% {
+        -webkit-transform:rotate(-25deg) scale(1) skew(1deg);
+                transform:rotate(-25deg) scale(1) skew(1deg)
+    }
+
+    20% {
+        -webkit-transform:rotate(25deg) scale(1) skew(1deg);
+                transform:rotate(25deg) scale(1) skew(1deg)
+    }
+
+    30% {
+        -webkit-transform:rotate(-25deg) scale(1) skew(1deg);
+                transform:rotate(-25deg) scale(1) skew(1deg)
+    }
+
+    40% {
+        -webkit-transform:rotate(25deg) scale(1) skew(1deg);
+                transform:rotate(25deg) scale(1) skew(1deg)
+    }
+
+    50% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+                transform:rotate(0) scale(1) skew(1deg)
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg);
+                transform:rotate(0) scale(1) skew(1deg)
+    }
+}

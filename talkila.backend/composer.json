@@ -1,0 +1,88 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "Talkila Platform",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "adyen/php-api-library": "^15.0",
+        "andreaselia/laravel-api-to-postman": "^2.2",
+        "bugsnag/bugsnag-laravel": "^2.28",
+        "darkaonline/l5-swagger": "^9.0",
+        "google/cloud-vision": "^1.9",
+        "guzzlehttp/guzzle": "^7.9",
+        "intervention/image-laravel": "^1.5",
+        "laravel/cashier": "^15.0",
+        "laravel/framework": "^12.0",
+        "laravel/passport": "^13.0",
+        "laravel/reverb": "^1.0",
+        "laravel/socialite": "^5.16",
+        "laravel/tinker": "^2.10",
+        "laravel/ui": "^4.5",
+        "opcodesio/log-viewer": "^3.19",
+        "pusher/pusher-php-server": "^7.2",
+        "sendgrid/sendgrid": "^8.1",
+        "socialiteproviders/apple": "^5.7",
+        "socialiteproviders/facebook": "^4.1",
+        "socialiteproviders/instagram": "^4.1",
+        "socialiteproviders/linkedin": "^4.2",
+        "spatie/laravel-medialibrary": "^11.0",
+        "spatie/laravel-webhook-client": "^3.4",
+        "spatie/laravel-webhook-server": "^3.8",
+        "twilio/sdk": "^8.3",
+        "tymon/jwt-auth": "^2.2",
+        "yajra/laravel-datatables-oracle": "^12.0"
+    },
+    "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.1",
+        "fakerphp/faker": "^1.23",
+        "laravel/dusk": "^8.0",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.6",
+        "phpunit/phpunit": "^11.0",
+        "spatie/laravel-ignition": "^2.8"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/Http/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}

@@ -1,0 +1,45 @@
+
+@media screen and #{breakpoint(medium down)} {
+
+    .mobile-view-block {
+        .heading-Talkila {
+            font-size: 2.5em;
+            margin: 0.5em 0 0;
+            text-align: center;
+        }
+
+        .active {
+            box-shadow: none;
+        }
+        #mobile-slider-one {
+            margin-bottom: 3em;
+        }
+        .slider-item {
+
+            .icon-sn {
+                margin: auto;
+                margin-right: none;
+                float: none;
+                margin-bottom: 30px;
+
+            }
+
+            .heading-slider {
+                text-align: center;
+            }
+        }
+
+
+
+        .owl-carousel {
+            .owl-dots {
+                flex-direction: row;
+                position: static;
+                justify-content: center;
+
+            }
+
+        }
+
+    }
+}

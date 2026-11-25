@@ -1,0 +1,196 @@
+.p1rem{
+    padding:1rem;
+}
+.lh4rem {
+    line-height: 4rem;
+}
+
+.mt1rem {
+    margin-top: 1rem;
+}
+
+.pb4rem {
+    padding-bottom: 4rem;
+}
+
+.pt4rem {
+    padding-top: 4rem;
+}
+
+.pb1rem {
+    padding-bottom: 1rem;
+}
+
+.pt1rem {
+    padding-top: 1rem;
+}
+.pt3rem{
+    padding-top:3rem;
+}
+.p01rem {
+    padding: 0 1rem;
+}
+.aife{
+    align-items: flex-end;
+}
+.h72{
+    height: 72px;
+}
+.lh2rem{
+    line-height: 2rem;
+}
+.lh2{
+    line-height: 2;
+}
+
+.mr1rem {
+    margin-right: 1rem;
+}
+
+.pr1rem {
+    padding-right: 1rem;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 30fr auto;
+    /* key rule */
+
+    height: 100vh;
+    max-height: 100%;
+
+}
+
+header {
+    grid-area: header;
+
+}
+
+
+main {
+    grid-area: main;
+
+}
+
+
+
+footer {
+    grid-area: footer;
+
+}
+
+body {
+    margin: 0;
+}
+
+
+body {
+    background: #f4f5f9;
+}
+
+.leftMain,
+.rightMain {
+    display: block;
+    background: #f4f5f9;
+}
+
+@media (min-width:0px) {
+
+    .leftMain,
+    .rightMain {
+        display: none;
+    }
+
+    body {
+        grid-template-columns: 100%;
+        grid-template-areas: "header"
+            "main"
+            "footer";
+    }
+
+}
+
+@media (min-width:280px) {
+    .profile{
+        .seccond-footer{
+            display: none;
+        }
+        .footer-tabs{
+            position:fixed;
+        }
+        main{
+            margin-bottom: 64px;
+        }
+    }
+
+    main {
+        width: 100%;
+        padding: 0px;
+
+    }
+}
+.l10{
+    left: 10px;
+}
+@media (min-width:768px) {
+    .profile{
+        .seccond-footer{
+            display: block;
+        }
+        main{
+            margin-bottom: 0px;
+        }
+    }
+
+    .white-box{
+        border:1px solid rgba(6,4,3,0.1);}
+    main {
+        padding: 1rem;
+        padding-top:1rem;
+    }
+}
+.white-box{
+
+    background:white;
+    border-radius:12px;
+}
+main{
+    background: #f4f5f9;
+}
+
+@media (min-width:1200px) {
+
+
+
+    .container {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    .home{
+        .container {
+            padding: 0 1rem;
+        }
+    }
+}
+
+@media (min-width:1440px) {
+
+    .leftMain,
+    .rightMain {
+        display: block;
+        background: #f4f5f9;
+    }
+
+    body {
+        grid-template-columns: 100%;
+        grid-template-areas: "header"
+            "main"
+            "footer";
+    }
+
+}
+html{
+    overflow-x: hidden;
+}

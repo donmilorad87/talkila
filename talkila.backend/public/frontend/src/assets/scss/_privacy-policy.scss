@@ -1,0 +1,40 @@
+.vertical-tabs{
+    .vertical{
+        border: none;
+        .tabs-panel{
+        padding: 0px;
+        p{
+            color: #172B4D;
+        }
+        }
+
+    }
+}
+
+#example-tabs{
+    border: none;
+    .is-active{
+        a{
+            background:none;
+            &:before {
+                content: "";
+                width: 12px;
+                height: 2px;
+                background-color: #2684FF;
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    }
+    li{
+        a{
+            padding: 0px;
+            display: inline-block;
+            margin-bottom: 1.563em;
+        }
+    }
+}
+
+
+
+

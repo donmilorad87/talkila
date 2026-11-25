@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="languageSvg" width="27" height="20"><path fill="#ED2939" d="M0 0h27v20H0z"></path><path fill="#fff" d="M0 0h18v20H0z"></path><path fill="#002395" d="M0 0h9v20H0z"></path></svg>

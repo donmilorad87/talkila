@@ -1,0 +1,107 @@
+
+
+        .white-box {
+            .pt-0 {
+                .inner-box-book {
+                    padding: 0px;
+
+                    .pb-0 {
+                        padding: 15px 0 0px;
+                    }
+
+                    .heading-date {
+                        display: flex;
+                        align-items: center;
+                        margin: 0 0 25px;
+
+                        h6 {
+                            margin: 0px 15px 2px;
+                            font-weight: 400;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+
+    .grid-margin-x {
+        .inner-box-book {
+
+            #footer {
+                p {
+                    text-align: center;
+                }
+            }
+
+            .thankyou-item {
+                padding: 0px;
+                display: flex;
+
+                .icon-re-size {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 64px;
+                    height: 64px;
+                    box-shadow: 0 6px 40px rgba(0, 0, 0, 0.15);
+                    border-radius: 12px;
+                    position: relative;
+                    z-index: 1;
+                    background-color: #ffffff;
+                    background-color: #ffffff;
+                    min-width: 64px;
+                    min-height: 64px;
+
+                    &::before {
+                        position: absolute;
+                        content: '';
+                        border-style: dashed;
+                        height: 100%;
+
+                        left: 45%;
+                        z-index: -1;
+                        top: 64px;
+                        border-width: 1px;
+                        border-color: #7C8087;
+                    }
+                }
+
+                ul {
+
+
+                    li::before {
+                        display: none;
+                    }
+
+                }
+            }
+        }
+    }
+
+.thankyou-item:last-of-type .icon-re-size::before {
+    display: none;
+}
+.mwidth167{
+    min-width: 167px;
+}
+.heading-title-fr {
+
+
+    div#footer {
+        .talkilaInputNaslov {
+            display: none;
+        }
+
+        .grid-x {
+            margin-top: 25px;
+        }
+    }
+
+    .footerTerms {
+        font-size: 0.813em;
+        margin-top: 10px;
+    }
+}

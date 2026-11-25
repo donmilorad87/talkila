@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Entity;
+
+class Events
+{
+    const UNDEFINED = 0;
+    const DECLINE = 9;
+    const PICKUP = 10;
+    const HANGUP = 11;
+    const REDIAL = 12;
+    const CLIENT_WAITING = 13;
+    const SUPPLIER_WAITING = 14;
+    const TALK_END = 15;
+    const SUPPLIER_LEFT_ROOM = 16;
+    const CLIENT_LEFT_ROOM = 17;
+    const AUDIO_OFF = 20;
+    const AUDIO_ON = 21;
+    const VIDEO_ON = 31;
+    const VIDEO_OFF = 32;
+    const SPEAKER_ON = 40;
+    const SPEAKER_OFF = 41;
+    const EXTEND_CALL_TAB = 50;
+    const EXTEND_CALL_TIME_SELECTED = 51;
+    const EXTEND_CALL_SWIPED = 52;
+    const EXTEND_CALL_SUCCESSFUL = 53;
+    const EXTEND_CALL_FAILURE = 54;
+    const EXTEND_CALL_ACCEPT = 55;
+    const EXTEND_CALL_REJECT = 56;
+    const EXTEND_CALL_REQUEST = 57;
+    const EXTEND_CALL_CANCELLED = 58;
+    const CONNECTION_LOST = 90;
+    const APP_CRASH_CLIENT = 91;
+    const APP_CRASH_PROVIDER = 92;
+    const GROUP_SUPPLIER_SET_ALL_AUDIO_OFF = 100;
+    const GROUP_SUPPLIER_SET_ALL_AUDIO_ON = 101;
+    const GROUP_SUPPLIER_SET_ALL_VIDEO_OFF = 102;
+    const GROUP_SUPPLIER_SET_ALL_VIDEO_ON = 103;
+    const SUPPLIER_SET_CLIENT_AUDIO_OFF = 104;
+    const SUPPLIER_SET_CLIENT_AUDIO_ON = 105;
+    const SUPPLIER_SET_CLIENT_TO_AUDIO_ON = 109;
+    const SUPPLIER_SET_CLIENT_VIDEO_OFF = 106;
+    const SUPPLIER_SET_CLIENT_VIDEO_ON = 107;
+    const KICK_PARTICIPANT =  108;
+    const SUPPLIER_ON_HOLD = 120;
+    const SUPPLIER_ON_HOLD_BACK = 121;
+    const CLIENT_ON_HOLD = 125;
+    const CLIENT_ON_HOLD_BACK = 126;
+    const SCREEN_SHARE_ON = 150;
+    const SCREEN_SHARE_OFF = 151;
+    const RECONNECT_TO_ROOM = 160;
+    const CLIENT_RAISE_HAND = 170;
+    const SUPPLIER_ACCEPT_RAISED_HAND = 171;
+    const SUPPLIER_REJECT_RAISED_HAND = 172;
+}

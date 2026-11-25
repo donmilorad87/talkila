@@ -1,0 +1,276 @@
+.flex-content-right {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+ .logged_in {
+    .groupC {
+        .course-item {
+            padding: 0px;
+        }
+    }
+}
+
+.mt19 {
+    margin-top: 19px;
+}
+
+.mt18 {
+    margin-top: 18px;
+}
+
+.mt35 {
+    margin-top: 35px;
+}
+
+.oa {
+    overflow: auto;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.hGrop {
+    height: calc(100% - 94px);
+}
+
+.realQr {
+    transition: 0.3s;
+}
+
+
+
+.disabledButton {
+    opacity: 0.5;
+    filter: grayscale(0.5);
+    cursor: not-allowed;
+}
+
+.addTalksAndAvaContainer {
+
+    padding: 1rem;
+    background: #f4f5f9;
+    border-radius: 23px;
+    width: 100%;
+}
+
+.addPrivateTalkTalksAndAva {
+    background: white;
+}
+
+.dataTalkId {
+
+    display: flex;
+    align-items: center;
+
+
+    .icon-sn {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 4rem;
+        max-height: 4rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 8px;
+        margin-right: 1rem;
+        h6{
+            font-size: 20px;
+        }
+        p{
+            margin:0;
+            padding:0;
+        }
+    }
+
+}
+
+.talkDurationAva {
+
+
+    min-height: 64px;
+    max-height: 64px;
+    min-width: 64px;
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.h6TalkAndAva {
+    font-size: 20px !important;
+    text-align: center;
+}
+
+.borderRad {
+    border-radius: 8px;
+}
+
+.middleFlex {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.logged_in {
+    #categorySubcategoryTalksTable {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 1rem;
+
+        tbody {
+            td {
+                border-bottom: 0;
+            }
+        }
+
+        tr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(6, 4, 3, 0.1);
+
+        }
+    }
+}
+
+@media (min-width: 0px) {
+    .pt32res {
+        padding-top: 32px;
+    }
+
+    .m0mobile {
+        margin: 0;
+    }
+
+    .addTalksAndAvaContainer {
+        span {
+            flex: 1;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .pt32res {
+        padding-top: 0px;
+    }
+
+    .m0mobile {
+        margin-left: -0.625rem;
+        margin-right: -0.625rem;
+    }
+
+    .addTalksAndAvaContainer {
+        span {
+            flex: 0.5;
+
+            &:first-child {
+                margin-right: 16px;
+            }
+        }
+    }
+
+    .logged_in {
+        #categorySubcategoryTalksTable {
+            .width321 {
+                width: 235px;
+            }
+
+            .w-100p {
+                width: 100px;
+                text-align: center;
+            }
+
+            .w-106p {
+                width: 80px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+     .logged_in {
+        #categorySubcategoryTalksTable {
+            .width321 {
+                width: 250px;
+            }
+
+            .w-100p {
+                width: 100px;
+                text-align: center;
+            }
+
+            .w-106p {
+                width: 106px;
+            }
+        }
+    }
+}
+
+.sortingSearch {
+
+    .orderByRateASC,
+    .orderByDurationASC,
+    .orderByPriceASC {
+        &:hover {
+            filter: drop-shadow(0px -1px 0px #5d6b82) !important;
+        }
+    }
+
+    .orderByRateDESC,
+    .orderByDurationDESC,
+    .orderByPriceDESC {
+        &:hover {
+            filter: drop-shadow(0px 1px 0px #5d6b82) !important;
+        }
+    }
+}
+
+.talkTypeAva {
+    font-size: 12px;
+    line-height: 20px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+
+    color: rgba(23, 43, 77, 0.7);
+}
+
+.headlineAva {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: #172b4d;
+}
+
+.pageTitlePoperAva {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    height: 94px;
+    line-height: 94px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #172b4d;
+    width: 100%;
+    text-align: center;
+    background: white;
+    border-bottom: 2px solid rgba(23, 43, 77, 0.1);
+}
+
+.bshadow {
+
+    box-shadow: 0 0 5px 0 rgba(6, 4, 3, .1);
+
+}
+
+.br6 {
+    border-radius: 6px;
+}

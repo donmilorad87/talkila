@@ -1,0 +1,21 @@
+.activeDot{
+    background: #FFB805;
+}
+
+.scrollCont{
+    background:#258aff;
+    width:10px;
+    transition: 0.3s;
+    right:0px;
+
+}
+
+.scrollCont:active{
+    cursor: grabbing;
+}
+
+.scrollCont:hover{
+    cursor: grab;
+    width: 20px!important;
+    right:0px;
+}

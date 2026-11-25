@@ -1,0 +1,115 @@
+
+.bannerTop{
+    background-color: #f5f9ff;height: 116px;width: 100%;top: 0;position: absolute;
+}
+.mbn h1{position: relative;}
+.wrapper-banner {
+    background-color: #f5f9ff;
+.bg-banner {
+    background-color: #f5f9ff;
+    padding-top: 4.8125rem;
+}
+#languageFilterEnableDisable{
+    cursor: pointer!important;
+}
+
+.banner-left {
+
+
+    .button-group{
+        margin-top: 3.125em;
+
+    a {
+        margin-right: 25px;
+    }
+
+       }
+
+}
+
+.banner-right {
+    display: flex;
+    align-items: flex-end;
+}
+
+.form-dropdown{
+   .inputNumber.grid-x {
+    background: #fff;
+    margin-bottom: 2em;
+    .button{
+        background: #258AFF;
+        &:hover{
+            background: #0076ff;
+        }
+    }
+}
+}
+}
+
+
+
+@media #{breakpoint(medium up)}  and #{breakpoint(large down)}  {
+    .wrapper-banner {
+        .bg-banner {
+            padding-top:5em;
+        }
+    }
+
+
+}
+
+
+@media screen and #{breakpoint(small down)} {
+
+.banner-left {
+    p{
+        text-align: center;
+
+        br{
+            display: none;
+        }
+    }
+
+
+.form-dropdown{
+   .inputNumber.grid-x {
+        display: none ;
+
+
+}
+}
+.button-group{
+    display: none;
+}
+.title_tag{
+    display: block;
+}
+.dm-none{
+    display: none;
+}
+.talkilaInputNaslov {
+    display: none;
+}
+}
+
+.wrapper-banner{
+.bg-banner {
+
+    h1 {
+         text-align: center;
+         font-size: 2.500em;
+         font-weight: bold;
+            .solid-line {
+                right: 0;
+                left: 0px;
+                margin: auto;
+            }
+
+        }
+}
+
+}
+
+}
+
+

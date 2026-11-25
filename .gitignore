@@ -1,0 +1,6 @@
+# Environment files hold secrets; only the *.example templates are committed.
+.env
+.env.*
+!*.example
+talkila.backend/.env
+talkila.backend/.env.docker

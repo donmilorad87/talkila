@@ -1,0 +1,98 @@
+
+
+.date-time-tabs{
+    ul{
+        border-bottom: 1px solid rgba(6,4,3, 0.1);
+    }
+}
+.w-67{
+    width:67%;
+}
+.settings_profile{
+    .menu-bar li a {
+        height: 55px;
+            display: flex;
+            align-items: center;
+            text-decoration-color: #ffb805;
+    }
+}
+
+
+@media (min-width:640px){
+
+
+
+    .logged_in main , .affiliateRefereeHash main{
+        padding-bottom: 0px;
+    }
+    .bwhite p.btext {
+        margin-left: 0;
+        text-align: left;
+    }
+    .logged_in, .affiliateRefereeHash{
+
+        .whiteBackground {
+            margin:0;
+            margin-top:24px;
+        }
+        .p24px {
+
+            padding: 0px;
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
+    }
+
+}
+.pb1dot5rem{
+     padding-bottom: 1.5rem!important;
+}
+#bookingContent{
+    .show-for-medium2{
+        padding-bottom:1px;
+    }
+}
+.s768show{
+    display: none;
+}
+@media (min-width:768px){
+    .s768show{
+        display: block;
+    }
+
+
+
+
+
+    .logged_in, .affiliateRefereeHash{
+        .whiteBackground {
+
+            margin-right:24px;
+        }
+        .p24px {
+
+            padding-right: 24px;
+        }
+    }
+    .lefterings{
+        display: none;
+    }
+
+}
+
+@media (min-width:1024px){
+    .lefterings{
+        display: block;
+    }
+
+
+    .logged_in, .affiliateRefereeHash{
+        .whiteBackground {
+            margin: 24px;
+            margin-bottom: 0;
+        }
+        .p24px {
+            padding: 24px;
+        }
+    }
+}

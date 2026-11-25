@@ -1,0 +1,776 @@
+.bookings-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    .booking-title-inner {
+        margin-left: 15px;
+        p {
+            margin: 0 0 5px 0px;
+            font-weight: 600;
+        }
+        h5 {
+            font-size: 1.25em;
+        }
+    }
+}
+
+.wa{
+    width:auto
+}
+
+table{
+    a{
+        color: #172b4d;
+        font-weight: 600;
+        &:hover{
+            color: #172b4d;
+            text-decoration: underline;
+            text-decoration-color: #ffb805;
+        }
+    }
+}
+
+.headerMobileStikcy{
+    position: sticky;
+    top: 0;
+    background: #f4f5f9;
+    z-index: 99;
+}
+.activeBooking{
+    background:#35B44B;
+}
+#funnelReviewWrap{
+    opacity: 0;
+    transition: 0.3s;
+}
+#blankPopup{
+    #allRating{
+        pointer-events: none;
+    }
+}
+
+.bookingBadge {
+    right: 0;
+    top: 0;
+
+
+    .canceledBookingStudent {
+        background: #db2121;
+    }
+    .canceledBookingProfesor {
+        background: #bc21db;
+    }
+    .rejectedBookingProfesor {
+        background: #f37208;
+    }
+    .postponedBooking {
+        background: #091b39;
+    }
+
+    div {
+        padding: 0 8px;
+        display: flex;
+        align-items: center;
+        color: white;
+        svg {
+            height: 32px;
+            margin-right: 8px;
+        }
+    }
+}
+
+.dRed {
+    cursor: pointer;
+    display: flex;
+    svg {
+        width: 20px;
+        position: relative;
+        top: 0;
+        margin: 0;
+        height: auto;
+        padding: 0;
+        margin-right: 15px;
+        height: 100%;
+    }
+}
+.bookingSummaryHDmobile {
+    .mb16 {
+        word-break: break-all;
+    }
+}
+
+.voiceColor {
+    color: #8b95a6;
+}
+.talkDetailsInfoBox {
+    width: 240px;
+}
+.border-left {
+    border-left: 1px solid #efeff0;
+}
+
+.bookingSubTitle {
+    /* margin: 24px 0 16px 0; */
+    margin: 0;
+}
+.mobile-timing-wrap {
+    padding: 15px 10px;
+    background: #dae7f9;
+    box-shadow: none !important;
+    .timing-box-right {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &.gray {
+        background: #c5eeef;
+    }
+
+    .social-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .online-active {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            span {
+                position: absolute;
+                content: "";
+                width: 10px;
+                height: 10px;
+                background: #37b24d;
+                top: 0px;
+                right: 1px;
+                border-radius: 100%;
+                border: 2px solid #edf3fc;
+            }
+        }
+        .title-social-inner {
+            color: #172b4d;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+}
+.booking {
+    .tabs-content {
+        border: none;
+    }
+}
+
+.timing-box-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .inner-box-timing {
+        border-radius: 12px;
+        padding: 12px 15px;
+        text-align: center;
+        max-height: 64px;
+        max-width: 64px;
+        h6 {
+            margin: 0;
+        }
+        p {
+            margin: 0;
+            color: #172b4d;
+            font-size: 10px;
+        }
+    }
+    h5 {
+        font-size: 20px;
+        margin: 0 25px 0;
+    }
+    .bookingDetailsUsername {
+        color: #172b4d;
+        font-size: 14px;
+        float: left;
+        line-height: 40px;
+        margin-left: 15px;
+        margin-bottom: 0;
+    }
+    &.inner {
+        h5 {
+            font-size: 20px;
+            margin: 0;
+            margin-bottom: 8px;
+        }
+    }
+}
+.anonnymous-wrap {
+    margin-left: 30px;
+    strong {
+        color: #172b4d;
+    }
+}
+.weekly-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 20px;
+    p {
+        margin: 0;
+    }
+    img {
+        width: 7px;
+        &:first-child {
+            transform: rotate(180deg);
+        }
+    }
+}
+.timing-box-right {
+    .timezone-inner {
+        p {
+            margin: 0;
+            color: #172b4d;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        span {
+            font-size: 12px;
+        }
+    }
+}
+.dateDDIner {
+    svg {
+        transition: 0.3s;
+        position: relative;
+        bottom: 2px;
+        left: 2px;
+    }
+}
+.pr32{
+    padding-right: 32px;
+}
+.optionButton {
+    cursor: pointer;
+    margin: 0 0 0 25px;
+    position: relative;
+    border: 1px solid rgba(6, 4, 3, 0.1);
+    border-radius: 6px;
+    height: 33px;
+
+    &:hover {
+        box-shadow: 0 0 5px gray;
+    }
+
+    ul {
+        opacity: 0;
+        display: none;
+        position: absolute;
+        background: #172b4d;
+        z-index: 9;
+        width: 130px;
+        height: auto;
+        list-style: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        color: white;
+        line-height: 26px;
+        font-size: 12px;
+        font-weight: 100;
+        margin: 0;
+        right: 0px;
+        top: 32px;
+        box-shadow: 0 0 10px -3px black;
+        transition: 0.3s;
+    }
+    li {
+        width: 100%;
+        cursor: pointer;
+        transition: 0.3s;
+        display: inline-block;
+        border-bottom: 1px solid transparent;
+        &:hover {
+            text-decoration: underline;
+        }
+        svg {
+            pointer-events: all;
+        }
+    }
+    svg {
+        pointer-events: none;
+    }
+}
+.booking {
+    .optionButton {
+        ul {
+            width: 154px;
+        }
+    }
+}
+.book_slot{
+    #stickyBook{
+        color: #172B4D;
+    }
+}
+.video_conference .optionButton ul {
+    background: white;
+    color: #091b39;
+    overflow: hidden;
+}
+// social-icon-left-scss
+.social-wrap {
+    .social-first-box {
+        text-align: center;
+        padding: 13px 18px 13px;
+        color: #c5cad3;
+        font-weight: bold;
+        p {
+            margin: 0;
+            font-size: 10px;
+        }
+    }
+    .social-secend-box {
+        margin-left: 35px;
+        p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 28px;
+            img {
+                width: 16px;
+                height: 16px;
+                margin-right: 8px;
+            }
+        }
+    }
+}
+
+.booking{
+    .social-secend-box {
+        margin-left: 16px;
+    }
+}
+.tdu{
+    text-decoration: underline;
+}
+.tac.fw {
+    font-weight: 600;
+    color: #172b4d;
+}
+.tabs {
+    border: 0;
+}
+.mh40 {
+    max-height: 40px;
+}
+.mh40{
+    min-height: 40px;
+}
+.h40 {
+    height: 40px;
+}
+.lh40 {
+    line-height: 40px !important;
+}
+// social-icon-left-scss
+// profile-content-right-scss
+.bookings-inner {
+    border: 1px solid #f2f2f2;
+    border-radius: 10px;
+
+    margin-bottom: 32px;
+
+    &:hover {
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.16);
+    }
+
+}
+.date-dd {
+    text-align: center;
+    padding: 0;
+    color: #172b4d;
+    font-weight: bold;
+}
+.color-label {
+    display: inline-block;
+    color: #2684ff;
+    font-size: 12px;
+    font-weight: bold;
+    background: #b4d5ff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid #2684ff;
+}
+.credit-modal {
+    .profile-img-box {
+        justify-content: flex-start;
+    }
+}
+.each-review > div.grid-x {
+    display: flex;
+    align-items: center;
+    .media-object {
+        display: flex;
+        align-items: center;
+    }
+}
+.profile-img-box {
+    img {
+        width: 40px;
+        border-radius: 100px;
+    }
+    .profile-wrap {
+        position: relative;
+        margin: 0 3px 0;
+        span {
+            display: block;
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #37b24d;
+            top: 2px;
+            right: 3px;
+            border-radius: 100%;
+            border: 1px solid #fff;
+        }
+    }
+    .offline {
+        span {
+            background: #9a9a9a;
+        }
+    }
+    .away {
+        span {
+            background: #ffcc00;
+        }
+    }
+}
+.credit-modal {
+    padding: 30px;
+}
+.talk_details {
+    .credit-modal {
+        padding: 24px;
+    }
+    .heading-slider {
+        span.favoriteHeart {
+            position: relative;
+            top: 2px;
+            right: -4px;
+        }
+    }
+}
+
+.mobile-model {
+    margin: 15px 0;
+}
+// profile-content-right-scss
+.month-left {
+    justify-content: flex-start !important;
+    p {
+        margin: 0 10px !important;
+        color: #1d293f;
+    }
+}
+.bt1{
+    border-top: 1px solid rgba(6,4,3,.1);
+}
+.tl-pt-wrap {
+    .total-payyout-wprapper {
+        margin-bottom: 0px;
+        .ant-title-headding {
+            font-size: 14px;
+            color: #172b4d;
+        }
+        .title-code {
+            strong {
+                color: #172b4d;
+            }
+        }
+    }
+}
+.mobile-model {
+    margin: 15px 0;
+}
+#bookingContent {
+    height: auto !important;
+}
+.bookings-inner {
+    .online-active {
+        img {
+            border-radius: 50%;
+        }
+    }
+}
+// total-payout
+.tl-pt-wrap {
+    background: #f4f9ff;
+    padding: 15px 20px;
+
+    .total-payyout-wprapper {
+        margin-bottom: 10px;
+        .ant-title-headding {
+            font-size: 14px;
+            color: #172b4d;
+        }
+        .title-code {
+            strong {
+                color: #172b4d;
+            }
+        }
+    }
+}
+.book_slot_payment {
+    .tl-pt-wrap {
+        background: white;
+        padding: 15px 0px;
+        padding-top: 0px;
+    }
+}
+.settings_wallets {
+    .tl-pt-wrap {
+        background: white;
+        padding: 15px 0px;
+        padding-top: 0px;
+    }
+}
+.video_conference {
+    .tl-pt-wrap {
+        background: white;
+        padding: 15px 0px;
+        padding-bottom: 0;
+        padding-top: 0px;
+    }
+}
+.p30{
+    padding: 30px;
+}
+.date-selected {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    margin: 50px 0px 0 0px;
+    strong {
+        color: #172b4d;
+        font-size: 16px;
+        width: 100%;
+        border-top: 4px solid #dae7f9;
+        text-align: center;
+    }
+}
+.sevDaysCaleWrap {
+    transition: 0.3s;
+}
+// total-payout
+.btn-completed {
+    background: #f4f5f9;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8590a3;
+    display: flex;
+    svg {
+        margin-right: 5px;
+    }
+}
+.group-usr-inner {
+    p {
+        margin: 0;
+    }
+    strong {
+        color: #172b4d;
+    }
+    svg {
+        margin-right: 15px;
+    }
+}
+#bookingContent {
+    float: left;
+    height: 100%;
+    opacity: 0;
+    transition: 0.3s;
+}
+.bookings-inner {
+    transition: 0.3s;
+}
+//sidebar-calender-scss
+thead {
+    width: calc(100% - 0px);
+}
+.calendar-wrap {
+    table,
+    thead,
+    tbody {
+        background: none;
+        border: none;
+        tr {
+            th {
+                color: #8b95a6;
+                font-weight: 400;
+                font-size: 12px;
+                text-align: center;
+            }
+            td {
+                cursor: pointer;
+                border-radius: 6px;
+                vertical-align: top;
+                &:hover {
+                    background-color: #f0f0f0;
+                }
+                text-align: center;
+                padding: 0.8rem 0.625rem 0.8rem;
+                font-size: 14px;
+                a {
+                    color: #172b4d;
+                }
+            }
+        }
+        tbody {
+            tr {
+                &:nth-child(even) {
+                    background: none;
+                }
+            }
+            td {
+                span {
+                    display: block;
+                }
+            }
+        }
+        .activate-date-no {
+            td {
+                span.booking-date {
+                    display: block;
+                    text-align: center;
+                    color: #ffb805;
+                }
+            }
+            .selected {
+                background: #ffb805;
+                border-radius: 7px;
+                a {
+                    color: #fff;
+                }
+                span {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.talk_details {
+    .bwhite p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+.mt0 {
+    margin-top: 0px!important;
+}
+.pt0 {
+    padding-top: 0px !important;
+}
+//sidebar-calender-scss
+//model-Cancel-Appointment
+.unionPayIcon {
+    svg {
+        width: 48px;
+        height: 48px;
+        border: 1px solid #efeff0;
+        border-radius: 3px;
+    }
+}
+.amexTh{
+    height: 20px;
+    top: 5.49px;
+    position: relative;
+
+}
+.visaTh {
+
+    height: 13px;
+    top: 2px;
+    position: relative;
+}
+.masterTh {
+    height: 13px;
+    top: 2.5px;
+    position: relative;
+}
+.americanExpresIcon {
+    svg {
+        padding: 2px;
+        height: 48px;
+        width: 48px;
+        border: 1px solid #efeff0;
+        border-radius: 3px;
+    }
+}
+.interacIcon {
+    svg {
+        border: 1px solid #efeff0;
+        height: 48px;
+        width: 48px;
+    }
+}
+.flex-start {
+    justify-content: flex-start;
+}
+.book_slot_payment {
+    .tabs-title > a {
+        padding: 0;
+    }
+}
+.defaultCardButton {
+    float: right;
+    display: block;
+
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+}
+.h52{
+    height: 52px;
+}
+
+.card_list_second {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+.radio-option-inner {
+    display: flex;
+    margin: 0px 0 8px;
+    align-items: center;
+    label {
+        color: #172b4d;
+        font-size: 14px;
+        // font-weight: 600;
+        word-break: break-all;
+    }
+    span {
+        svg {
+            position: relative;
+            top: 4px;
+            width: 20px;
+            margin-right: 15px;
+        }
+    }
+    .date-wrap-content {
+        margin: 0px !important;
+    }
+}
+.space-around {
+    justify-content: space-between;
+}
+//model-Cancel-Appointment
+.booking {
+    .credit-modal {
+        float: left;
+    }
+}

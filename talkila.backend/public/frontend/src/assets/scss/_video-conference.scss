@@ -1,0 +1,3312 @@
+.video_conference {
+    background: #172b4d;
+    overflow: hidden;
+
+    main {
+        #mainVideoBigFrame {
+            height: 100%;
+        }
+
+        .tabs-panel {
+            padding-bottom: 0rem;
+        }
+    }
+}
+
+.teacherScreenShare {
+    video {
+        position: absolute !important;
+        height: 120px !important;
+        top: calc(100% - 120px - 1rem) !important;
+        left: 1rem !important;
+        z-index: 999;
+        width: auto !important;
+        margin: 0 !important;
+        box-shadow: 0 0 5px papayawhip;
+
+        &.screnShare {
+            position: relative !important;
+            z-index: 100;
+            border: 0;
+            left: 0 !important;
+            width: 100% !important;
+            height: auto !important;
+            top: 0 !important;
+        }
+    }
+}
+
+.timeDiv {
+    border: 1px solid rgba(6, 4, 3, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: #f2e3f7;
+}
+
+.eventUlis {
+    margin-left: 0;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+
+    li {
+        margin-bottom: 1rem;
+    }
+}
+
+.headerDivToper {
+    height: 48px;
+}
+
+.innerOverlaps {
+    margin: 1rem;
+    background: white;
+    padding: 0.5rem;
+    border: 1px solid rgba(6, 4, 3, 0.1);
+    border-radius: 0.5rem;
+    padding-bottom: 0;
+}
+
+.dli {
+    display: list-item;
+}
+
+.screnShared {
+    video {
+        position: absolute !important;
+        z-index: 101;
+        height: auto !important;
+        top: calc(100% - 37px) !important;
+        width: 42px !important;
+        right: 4px;
+        box-shadow: 0 0 5px papayawhip;
+
+        &.screnShare {
+            position: relative !important;
+            z-index: 100;
+            border: 0;
+            right: 0;
+            width: 100% !important;
+            height: auto;
+            top: 0;
+        }
+    }
+}
+
+.video_conference {
+    main {
+        padding: 0;
+
+        .video-conference-page {
+            height: 100%;
+        }
+    }
+}
+
+.lh24 {
+    line-height: 24px;
+
+    p {
+        line-height: 24px;
+    }
+}
+
+.mt48 {
+    margin-top: 48px;
+}
+
+.lh28 {
+    line-height: 28px;
+}
+
+.headBolder {
+    font-weight: 600;
+
+    color: #172b4d;
+}
+
+.phoneTopLine {
+    width: 35px;
+    height: 5px;
+    background-color: #172b4d;
+    padding: 0;
+    margin: 0.5rem auto;
+    opacity: 0.2;
+    border-radius: 4px;
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+    left: calc((100% - 35px) / 2);
+}
+
+.closerIngP {
+    position: relative;
+    z-index: 999999999999;
+    cursor: pointer;
+}
+
+.fw900 {
+    font-weight: 900;
+}
+
+.raised_hand_student_list_item {
+    .listItemInner {
+
+        gap: 4px;
+        position: relative;
+        top: 10px;
+
+    }
+
+    img {
+
+        position: relative;
+        bottom: 2px;
+        border-radius: 50%;
+        box-shadow: 0 0 5px;
+        margin-right: 8px;
+
+    }
+
+    p{
+        margin: 0;
+    }
+    img{
+        display:flex;
+        width: 32px;
+        height: 32px;
+    }
+
+    .acceptOrReject {
+        cursor: pointer;
+        display:flex;
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(6, 4, 3, 0.1);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0 0 5px;
+    }
+}
+
+#paymentWalletPopUp {
+    .talkilium {
+        padding-bottom: 0;
+    }
+}
+
+#extendCall {
+    .talkilium {
+        padding-bottom: 0;
+    }
+}
+
+#raise_hand_list {
+    position: absolute;
+    right: -1000px;
+    transition: 0.3s;
+    top: 0;
+    height: calc(100% - 60px);
+    border: 1px solid rgba(6, 4, 3, 0.1);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px 0 0 10px;
+    border-right: 0;
+
+    ol {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+.video_conference {
+    #paymentWalletPopUp {
+        .tabs li.tabs-title {
+            position: relative;
+            top: 0px;
+            border: 1px solid rgba(6, 4, 3, 0.1);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            border-radius: 10px;
+        }
+
+        .tabs li.is-active {
+            background-color: #eef6ff;
+            border-color: #258aff;
+        }
+    }
+}
+
+.firsterDivier {
+    border-right: 1px solid white;
+    max-width: 114px;
+    text-align: center;
+    width: 114px;
+}
+
+.rightSideofExtendSlots {
+    width: calc(100% - 140px);
+}
+
+.video_conference {
+    #loadingCanvas {
+        height: auto;
+        width: auto;
+        max-width: initial;
+    }
+
+    #loadingPopup {
+        .w-100 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.extCal {
+    display: flex !important;
+    width: 100% !important;
+    align-items: center;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.ttu {
+    text-transform: uppercase;
+}
+
+.fs18 {
+    font-size: 18px;
+}
+
+ul.breadcrumb {
+    padding: 10px 8px;
+    list-style: none;
+    background-color: #eee;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 16px;
+    justify-content: center;
+    display: flex;
+}
+
+#paymentPopUp {
+    .breadcrumb {
+        display: none;
+    }
+}
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+
+.displayMiddleFullScreen {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 99;
+    position: absolute !important;
+    background: #172b4d;
+    width: 150px;
+    height: 150px;
+    top: 0 !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 50%;
+    border: 4px solid white;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 0 12px -2px #172b4d;
+}
+
+.svgCrossCameraIcon {
+    position: absolute !important;
+
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999999;
+}
+
+body.video_conference {
+    height: 100%;
+}
+
+.svgCrossCameraIcon1 {
+    top: 0 !important;
+}
+
+.svgCrossCameraIcon2 {
+    top: -9px !important;
+}
+
+.groupButtons {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+}
+
+.video_conference {
+    #reviewPopUp {
+        .crpko {
+            display: flex;
+            justify-content: center;
+            height: 86px;
+        }
+
+        .Stars {
+            display: inline-block;
+
+            font-family: Times;
+            line-height: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .Stars::before {
+            content: "★★★★★";
+            letter-spacing: 3px;
+            background: linear-gradient(90deg,
+                    #fc0 calc(var(--rating) / 5 * 100%),
+                    #ccc calc(var(--rating) / 5 * 100%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        label {
+            transition: 0.3s;
+        }
+
+        label:hover {
+            transform: scale(1.2);
+        }
+
+        label:active {
+            transform: scale(1.5);
+        }
+
+        .rate input::before:hover {
+            transform: scale(2);
+        }
+
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+
+        .rate:not(:checked)>input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rate:not(:checked)>label {
+            float: right;
+            width: 1em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+
+            color: #ccc;
+            margin: 0;
+        }
+
+        .rate:not(:checked)>label:before {
+            content: "★";
+        }
+
+        .rate>input:checked~label {
+            color: #ffc700;
+        }
+
+        .rate:not(:checked)>label:hover,
+        .rate:not(:checked)>label:hover~label {
+            color: #deb217;
+        }
+
+        .rate>input:checked+label:hover,
+        .rate>input:checked+label:hover~label,
+        .rate>input:checked~label:hover,
+        .rate>input:checked~label:hover~label,
+        .rate>label:hover~input:checked~label {
+            color: #c59b08;
+        }
+    }
+
+    /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+}
+
+.m0p0h0 {
+    margin: 0;
+    padding: 0;
+    height: 0;
+}
+
+#reviewCarousel {
+
+    /*  width:100000px; */
+    .innerCarouselElement {
+        /*  float:left; */
+        padding: 18px;
+    }
+
+    .owl-nav {
+        position: absolute;
+        top: calc((100% - 82px) / 2);
+        right: 0;
+        font-size: 55px;
+        width: 100%;
+
+        .owl-prev {
+            position: absolute;
+            left: 18px;
+        }
+
+        .owl-next {
+            position: absolute;
+            right: 18px;
+        }
+    }
+}
+
+.oi {
+    overflow: inherit;
+}
+
+.h60 {
+    height: 60px !important;
+}
+
+.h64 {
+    height: 64px;
+}
+
+.video-cta {
+    transition: 0.3s;
+}
+
+.t03s {
+    transition: 0.3s;
+}
+
+#loadingCanvas2 {
+    height: 80px;
+}
+
+.tabs-re-manage {
+    .is-active {
+        pointer-events: none;
+    }
+}
+
+.lMobile {
+    transition: 0.3s;
+    left: -70px;
+}
+
+#acceptCall {
+    background: #3cc254 !important;
+}
+
+#declineCall {
+    background: #ff4267;
+}
+
+#call-popup {
+    .form-option {
+        width: 100%;
+    }
+}
+
+.logoCall {
+    svg {
+        height: 48px;
+        float: left;
+        margin-left: 0;
+    }
+}
+
+.oButtonVideoCall {
+    background: white;
+}
+
+#call-settings {
+    button {
+        transition: 0.3s;
+        border: 1px solid rgba(6, 4, 3, 0.1);
+    }
+
+    button:hover {
+        border: 1px solid rgba(6, 4, 3, 0.6);
+        box-shadow: inset 0 0 5px rgba(6, 4, 3, 0.5);
+        text-shadow: 0 0 5px black;
+    }
+}
+
+.time-left {
+    #progresTalkChanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #progresTalkChanvas2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.talk-top {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 999;
+    height: 100%;
+
+    .time-left {
+        strong {
+            color: #ffffff;
+        }
+    }
+
+    .grid-x {
+        align-items: center;
+    }
+
+    .student-thumb {
+        position: relative;
+        text-align: right;
+        margin-top: 5px;
+
+        span {
+            background-color: #ffffff;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100px;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+    }
+
+    video {
+        width: auto;
+        margin: 0 auto;
+    }
+}
+
+.talk-duration {
+    width: 180px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(40px);
+    /* Note: backdrop-filter has minimal browser support */
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 200px;
+    margin-top: -4px;
+    margin-left: auto;
+
+    span {
+        margin-right: 10px;
+        display: flex;
+        color: #ffffff;
+    }
+}
+
+.video_conference .tabs-title:hover {
+    box-shadow: inset 0 0 5px white;
+}
+
+.tabs-title.is-active {
+    pointer-events: none;
+
+    &.settingsTabMobileMenu {
+        pointer-events: all;
+    }
+}
+
+.tabs-title1 {
+    padding-left: 32px;
+    padding-right: 32px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+}
+
+.video_conference .tabs-title {
+    position: relative;
+    top: 0px;
+    transition: 0.3s;
+}
+
+.confefence-video-inner {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 0;
+}
+
+.video-cta {
+    position: absolute;
+    width: 100%;
+    z-index: 900;
+}
+
+.tabs-re-manage {
+    background: rgba(23, 43, 77, 0.8);
+    border: 1px solid rgba(6, 4, 3, 0.2);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 111;
+    border-radius: 8px;
+    list-style: none;
+
+    li {
+        border-radius: 8px;
+        padding: 15px 15px;
+
+        a {
+            &:hover {
+                background: none;
+                color: #fff;
+            }
+        }
+
+        .view-btn {
+            color: #ffffff;
+            padding: 0 5px 0 20px;
+        }
+    }
+
+    .tabs-title>a:focus,
+    .tabs-title>a[aria-selected="true"] {
+        background: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    .tabs-title {
+        opacity: 0.5;
+
+        a {
+            color: #8e9399;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 15px 15px;
+
+            &:focus {
+                background: none;
+                border: none;
+            }
+        }
+
+        &.is-active {
+            opacity: 1;
+            border: none;
+        }
+    }
+}
+
+.errorWarn {
+    background: #cd1212;
+}
+
+.top-bar-video ul li a::after,
+.top-bar-video ul li a::after {
+    display: none;
+}
+
+#extendLessonDuration {
+    position: relative;
+    transition-delay: 0.1s;
+    transition: 0.3s;
+}
+
+//dropdown-btn
+.position-span {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+}
+
+.dropdown-menu-field {
+    background: #fff;
+    padding: 10px 15px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.16);
+    width: 161px;
+    margin-top: 2.4rem;
+    list-style: none;
+    color: #172b4d;
+
+    div {
+        padding: 5px 0;
+        font-size: 13px;
+        color: #172b4d;
+
+        svg {
+            margin-right: 5px;
+        }
+    }
+}
+
+video {
+    transition: 0.3s;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+#screen-2 {
+    background: #172b4d;
+}
+
+.videoBoxProfesorCont {
+    width: initial;
+    transition: 0.3s;
+    height: 100%;
+
+    &.swipeD {
+        height: auto;
+    }
+}
+
+.videoBoxProfesor {
+    position: relative;
+    transition: 0.2s;
+    height: 100%;
+
+    .innerVideoBox {
+        text-align: center;
+        height: 100%;
+        transition: 0.3s;
+        display: flex;
+
+        img {
+            width: auto;
+            height: 100%;
+        }
+    }
+}
+
+#viewUsTab {
+    position: absolute;
+    width: 300px;
+    top: 1rem;
+
+    transition: 0.3s;
+
+    .viewProfesor,
+    .viewStudents {
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
+    li.is-active {
+        pointer-events: none;
+        opacity: 1;
+    }
+}
+
+.pinnedStudentsFrame {
+    transition: 0.2s;
+    height: 0;
+    //background: #172b4d;
+}
+
+.mute-all-audio,
+.mute-all-video {
+    svg {
+        margin: 0 auto;
+        height: 40px;
+        border: 1px solid rgb(213, 213, 224);
+        padding: 8px;
+        width: 100%;
+        border-radius: 6px;
+        box-shadow: inset 0 0 1px rgba(6, 4, 3, 0.1);
+    }
+}
+
+.noPinnedStudentsFrame {
+    //background: #172b4d;
+    transition: 0.2s;
+    overflow: auto;
+
+    position: relative;
+
+    .videoBox {
+        video {
+            width: 100%;
+        }
+    }
+}
+
+.dropdown-menu-field {
+    li {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    span {
+        pointer-events: none;
+    }
+}
+
+#rowOne {
+    display: block;
+    opacity: 1;
+    transition: 0.2s;
+}
+
+#rowTwo {
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+#privateTalkStudentHelder {
+    width: 100%;
+
+    //border: 1px solid rgba(6, 4, 3, 0.1);
+    .videoBox {
+        border-radius: 6px;
+    }
+
+    .innerVideoBox {
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 0 10px -5px white;
+        border-radius: 6px;
+        background: #172b4d;
+        min-width: 100px;
+        min-height: 100px;
+    }
+}
+
+.videoBox {
+    position: relative;
+    //border: 1px solid rgba(6, 4, 3, 0.1);
+    //background: #172b4d;
+    transition: 0.3s;
+    transform: scale(1);
+
+    .innerVideoBox {
+        text-align: center;
+        height: 100%;
+
+        img {
+            width: auto;
+            height: 100%;
+        }
+    }
+
+    /* .turnOfVideo {
+        display: none;
+        opacity: 0;
+        transition: 0.3s;
+        transform: scale(0);
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        position: relative;
+        top: calc(50% - 50px);
+
+    } */
+    .turnOnVideo {
+        opacity: 0;
+        transform: scale(0);
+        display: block;
+        transition: 0.3s;
+    }
+}
+
+.black-box {
+    background: #172b4d;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+//dropdown-btn
+// chanting-section-scss
+#screen-2,
+#screen-3 {
+    padding: 0px;
+}
+
+.chating-wrap1 {
+    position: fixed;
+    bottom: 0;
+    width: 320px;
+    right: 0;
+    left: 0;
+    padding: 30px;
+}
+
+.chating-wrap {
+    .meida-mg {
+        background: rgba(23, 43, 77, 0.68);
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 15px 0;
+        border: 1px solid rgba(6, 4, 3, 0.2);
+
+        p {
+            strong {
+                color: #aaafae;
+            }
+
+            color: #aaafae;
+        }
+
+        .thumbnail {
+            img {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    }
+}
+
+#addedLi {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: -100%;
+}
+
+#addedLi2 {
+    position: absolute;
+    bottom: 113px;
+    left: 235px;
+}
+
+.whiteBacker {
+    width: 500px;
+    height: 147px;
+    background: white;
+    border-radius: 12px;
+    z-index: 999;
+    position: absolute;
+    bottom: 90px;
+    display: flex;
+}
+
+.rightDivClasser {
+    text-align: left;
+    margin-top: 16px;
+}
+
+.rightDivHeading {
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 34px;
+    color: #2684ff;
+}
+
+.rightDivText {
+    font-size: 16px;
+    line-height: 28px;
+    color: #7c8087;
+}
+
+.skewBacker {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    background: white;
+    transform: rotate(45deg) skew(18deg, 18deg);
+    left: 18px;
+    bottom: 82px;
+}
+
+.blackBackground {
+    background: rgba(6, 4, 3, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 99;
+}
+
+.blueRoundedSquare {
+    padding: 15px;
+    margin: 24px;
+    border: 1px solid #2684ff;
+    height: 83px;
+    width: 83px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+// chanting-section-scss
+//social-wrap-scss
+ul.social-wrap {
+    list-style: none;
+    margin: 0.5rem auto;
+    flex-wrap: wrap;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    max-width: 360px;
+
+    li {
+        span {
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.16);
+
+            &:hover {
+                -moz-transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                -o-transform: scale(1.1);
+                -ms-transform: scale(1.1);
+                transform: scale(1.1);
+                box-shadow: 0 0 5px white, inset 0 0 0px 1px #172b4d;
+            }
+
+            &.hangup {
+                background: #ff4267;
+            }
+        }
+    }
+}
+
+//social-wrap-scss
+.call-center-wrap {
+    background: #091b39;
+    text-align: center;
+    height: 100%;
+    border: 1px solid #172235b5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+    padding: 50px 15px;
+
+    p {
+        color: #ffffff;
+        margin: 15px 0 0;
+        font-size: 13px;
+        font-weight: 600;
+    }
+}
+
+//model-call-setting
+form.form-field {
+    h5 {
+        font-size: 1em;
+        color: #172b4d;
+    }
+
+    .range-slier {
+        margin-bottom: 1.875em;
+
+        .slider-handle {
+            width: 8px;
+            height: 17px;
+            border-radius: 2px;
+            box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 4px;
+            background: #fff;
+        }
+
+        .slider-fill {
+            background-color: #ffb805;
+        }
+    }
+
+    .line-check {
+        span {
+            width: 0.25em;
+            height: 1.063em;
+            background: #e6e6e6;
+            display: inline-block;
+            border-radius: 3px;
+            margin: 0 0 0 2px;
+        }
+    }
+
+    .text-heading-no {
+        p {
+            margin: 0px;
+        }
+
+        p {
+            &:first-child {
+                margin-bottom: 6px;
+            }
+        }
+    }
+
+    .my-0 {
+        margin: 0px;
+    }
+}
+
+//model-call-setting
+//bottom-right-tabs-scss
+.tabs-content {
+    border: 0;
+}
+
+.chating-wrap-right {
+    position: fixed;
+    right: 0;
+    z-index: 100;
+    opacity: 0;
+    bottom: -200px;
+    transition: 0.6s;
+
+    .tabs-content {
+        border-radius: 15px 0 0 0;
+    }
+}
+
+//two-tabs-for-chat
+.chating-main-wrap {
+    hr {
+        margin: 0px;
+    }
+}
+
+.chating-main-wrap-inner {
+    padding: 1rem;
+
+    input {
+        border: none;
+    }
+}
+
+.chating-inner {
+    p {
+        margin: 0 0px 0 20px;
+        color: #172b4d;
+        font-size: 13px;
+        font-weight: bold;
+    }
+}
+
+.bRed {
+    background: #cd1212;
+}
+
+.callSetApr {
+    height: 80px;
+}
+
+.large6 {
+    width: 0;
+}
+
+.csic {
+    padding-bottom: 16px;
+
+    select {
+        height: 33px;
+        margin: 0;
+    }
+
+    .notApr {
+        background: #cd1212;
+        border-radius: 6px;
+        padding: 8px;
+        height: 58px;
+
+        svg {
+            height: 100%;
+        }
+    }
+
+    .green {
+        background: green;
+        border-radius: 6px;
+        padding: 8px;
+
+        svg {
+            height: 100%;
+        }
+    }
+
+    .small-2 {
+        .green {
+            height: 58px;
+        }
+    }
+}
+
+.chating-box-inner {
+    margin: 0 0 15px;
+
+    .timezone-inner {
+        p {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ffcc00;
+
+            svg {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    .red-heading {
+        p {
+            color: #ff4267;
+        }
+    }
+
+    .three-dotted {
+        svg {
+            margin: 0 6px 0 30px;
+        }
+    }
+}
+
+.other-messenger {
+    width: 100%;
+    display: grid;
+    justify-content: flex-end;
+
+    .chating-inner {
+        justify-content: end;
+
+        p {
+            margin: 0 6px 0px;
+        }
+    }
+
+    .other-m-inner {
+        p {
+            margin: 6px 0 0px;
+            background: #ddd;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            color: #172b4d;
+        }
+
+        span {
+            font-size: 10px;
+            color: #b9bfca;
+        }
+    }
+}
+
+.my-messenger {
+    .other-m-inner {
+        p {
+            background: #172b4d;
+            color: #fff;
+        }
+    }
+
+    .chating-inner {
+        justify-content: flex-end;
+    }
+}
+
+//input-btn-bottom-scss
+.input-bottom {
+    position: relative;
+    border-top: 1px solid #d8d8e3;
+    padding: 3px 0px 3px;
+
+    input {
+        border: 0;
+        box-shadow: none;
+        margin: 0;
+    }
+
+    .send-inner {
+        position: absolute;
+        right: 5px;
+
+        img {
+            margin-left: 10px;
+        }
+    }
+}
+
+//input-btn-bottom-scss
+//bottom-right-tabs-scss
+
+@media screen and #{breakpoint(small down)} {
+    .chating-wrap-right {
+        width: 100%;
+        z-index: 111;
+    }
+
+    .video_conference {
+
+        .footer-tabs,
+        .chating-wrap1 {
+            display: none;
+        }
+    }
+
+    .video-conference-page .tabs-content .viewOneFrame,
+    .video-conference-page .tabs-content .viewOneFrame .viewOneFrameInner,
+    .video_conference #screen-1 {
+        height: 100%;
+    }
+}
+
+@media screen and #{breakpoint(small down)} {
+    .chating-wrap-right {
+        width: 100%;
+        z-index: 111;
+    }
+
+    //mobile-video-calling-scss
+    .tap-to-extend-btn {
+        text-align: center;
+        background: #ffffff26;
+        padding: 15px;
+        border-radius: 30px;
+        backdrop-filter: blur(40px);
+        color: #fff;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            margin-right: 10px;
+        }
+    }
+
+    .users-mobile-view-wra {
+        list-style: none;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        li {
+            margin: 0 5px;
+
+            &.group-icon {
+                svg {
+                    height: 40px;
+                    width: 40px;
+                }
+            }
+
+            .inner-box-timing {
+                position: relative;
+                display: block;
+
+                svg {
+                    height: 24px;
+                    width: 24px;
+
+                    path {
+                        fill: #fff;
+                    }
+                }
+
+                span {
+                    position: absolute;
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background: #172b4d7a;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    border-radius: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .btn-group-call {
+        text-align: center;
+        background: #2684ff;
+        border-radius: 6px;
+        margin: 20px 0 20px;
+
+        span {
+            color: #fff;
+            padding: 12px 15px 12px;
+            display: inline-block;
+            font-weight: 600;
+            width: 65%;
+
+            &.right-line {
+                width: 30%;
+                border-right: 1px solid #172b4d3d;
+            }
+        }
+
+        svg {
+            margin-right: 5px;
+        }
+    }
+
+    .chating-main-wrap-inner {
+        padding: 1em;
+    }
+
+    //mobile-video-calling-scss
+}
+
+.zumbo {
+    .searchBlocks {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.graycolor {
+    color: #8b95a6;
+    font-weight: 600;
+}
+
+.full {
+    .overflow-hidden {
+        height: 100%;
+    }
+}
+
+.groupCallMainFrame {
+    .privateMobileSettings {
+        display: none;
+    }
+}
+
+#paymentCompletedPopUp {
+    .popuper {
+        height: auto !important;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .breadcrumb {
+        display: none;
+    }
+}
+
+@media (min-width: 280px) {
+    .noPinnedStudentsFrame {
+
+        top: 80px;
+    }
+
+    .chating-wrap-right {
+        width: 100%;
+    }
+
+    .video_conference {
+        header {
+            #timeInfoLessonCont {
+                .dropdown {
+                    max-width: calc(100% - 57px);
+                }
+            }
+        }
+    }
+
+    #privateTalkStudentHelder {
+        height: 100%;
+    }
+
+    ul.social-wrap {
+        li {
+            span {
+                width: 54px;
+                height: 54px;
+            }
+        }
+    }
+
+    .video_conference {
+        #reviewPopUp {
+            .Stars {
+                font-size: 32px;
+            }
+
+            .rate:not(:checked)>label {
+                font-size: 32px;
+            }
+        }
+    }
+
+    .headBolder {
+        line-height: 14px;
+        display: flex;
+    }
+
+    .mt48res {
+        margin-top: 2rem;
+        margin-bottom: 8px;
+    }
+
+    .mb16res {
+        margin-bottom: 8px;
+    }
+
+    .video_conference {
+        .extendCallPopupCorrection {
+            align-items: end;
+
+            .popuper {
+                max-height: 90%;
+            }
+
+            &.extendCallPopupCorrection2 {
+                .popuper {
+                    max-height: 20%;
+                }
+            }
+        }
+
+        .heading-group {
+            p {
+                color: white;
+            }
+
+            p.languages-title {
+                color: white;
+            }
+        }
+    }
+
+    #paymentCompletedPopUp {
+        .popuper {
+            background-color: white;
+
+            max-width: 100%;
+
+            .minutes-progress-inner {
+                h2 {
+                    color: white;
+
+                    span {
+                        color: white;
+                    }
+                }
+
+                p {
+                    color: white;
+                }
+            }
+        }
+
+        .call-extend-title {
+            display: block;
+        }
+
+        .pt-completed {
+            display: flex;
+        }
+
+        .pt-completed2 {
+            display: flex;
+        }
+
+        .add-time-title {
+            text-shadow: 0px 0px 2px white;
+            position: relative;
+            top: 18px;
+            width: initial;
+            left: -20px;
+            float: left;
+        }
+
+        .mobile-call-wrap {
+            &.height-auto {
+                .minutes-progress-inner {
+                    background: #ffb805;
+                }
+            }
+        }
+    }
+
+    .extendCallPopupCorrection {
+        align-items: end;
+
+        .popuper {
+            width: 100%;
+            border-radius: 12px 12px 0 0;
+
+            .talkilium {
+                margin-top: 0.5rem;
+            }
+        }
+
+        .closeSpanPopup {
+            top: 16px;
+        }
+    }
+
+    .funkyConan {
+        padding: 16px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .book_slot_payment,
+    .courses,
+    .talkCategory,
+    .talkCategorySubcategory {
+        .funkyConan {
+            padding: 1rem;
+            background: white;
+        }
+    }
+
+    .searchBlocks {
+        h3 {
+            width: 100%;
+        }
+
+        svg {
+            width: 100%;
+        }
+
+        .graycolor {
+            display: none;
+        }
+    }
+
+    .video_conference {
+
+        .heading-title-wrap-german,
+        #timeLeft {
+            text-shadow: 0px 0px 2px black;
+        }
+
+        main {
+            padding-bottom: 0;
+        }
+    }
+
+    .minutes-title {
+        display: none;
+    }
+
+    .videoBoxH2 {
+        height: calc((100% - 62px) / 2);
+        width: auto;
+        max-height: calc((100% - 62px) / 2);
+    }
+
+    .videoBoxH3 {
+        height: calc((100% - 62px) / 3);
+        width: auto;
+        max-height: calc((100% - 62px) / 3);
+    }
+
+    .videoBoxH4 {
+        height: calc((100% - 62px) / 4);
+        width: auto;
+        max-height: calc((100% - 62px) / 4);
+    }
+
+    .videoBoxH8 {
+        height: calc((100% - 62px) / 8);
+        width: auto;
+        max-height: calc((100% - 62px) / 8);
+    }
+
+    .pinnedStudentsFrame {
+
+        .videoBoxH2,
+        .videoBoxH3,
+        .videoBoxH4,
+        .videoBoxH8 {
+            height: auto;
+            max-height: auto;
+        }
+    }
+
+    .noPinnedStudentsFrame {
+        height: calc(100% - 153px);
+    }
+
+    .dropdown.menu.d-flex.menu-right {
+
+        li:nth-child(1),
+        li:nth-child(2),
+        li:nth-child(3),
+        li:nth-child(4) {
+            display: none;
+        }
+    }
+
+    .chating-wrap-right {
+        width: 100%;
+    }
+
+    .video_conference {
+        header {
+            width: 100%;
+        }
+
+        .tob-bar-right {
+            .dropdown {
+                display: none;
+            }
+        }
+
+        .small-4 {
+            right: 0px;
+            transition: 0.33s;
+            position: absolute;
+        }
+
+        .groupCallMainFrame {
+            .small-4 {
+                height: 100%;
+            }
+        }
+
+
+        .mute-all-video {
+            svg {
+                margin-bottom: 8px;
+            }
+        }
+
+        .tabs-re-manage {
+            left: 0;
+            top: 0;
+        }
+
+        .groupCallMainFrame {
+            .video-cta {
+                bottom: 0px;
+            }
+        }
+
+        main {
+            position: relative;
+            z-index: 9;
+            margin-bottom: 0px;
+            background: #172b4d;
+            height: calc(100% + 64px);
+            margin-top: -64px;
+
+            .menu {
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+
+                    li {
+                        svg {
+                            background: white;
+                            border-radius: 6px;
+                            width: 40px;
+                        }
+                    }
+                }
+
+                ul ul li:first-child {
+                    border: none;
+                }
+
+                ul li a:hover {
+                    background-color: #f2f2f2;
+                }
+            }
+
+            .video-cta {
+                bottom: 0px;
+            }
+
+            &.groupCallMainFrame {
+                .video-cta {
+                    bottom: 20px;
+                }
+            }
+        }
+
+        header {
+            background: transparent;
+
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 99;
+
+            .logoCall {
+                display: none;
+            }
+
+            .top-bar {
+                background: inherit;
+                height: 100%;
+            }
+
+            #timeInfoLessonCont {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                flex-direction: row-reverse;
+
+                .dropdown {
+                    position: relative;
+                    padding: 4px;
+                    border-radius: 8px;
+                    margin: 4px;
+                    background: rgba(3, 3, 3, 0.3);
+                    color: white;
+                    top: 0;
+
+                    right: 0;
+                }
+            }
+
+            .dropdown {
+                position: inherit;
+
+                #time-left-wrapper {
+                    .time-left {
+                        height: 57px;
+                    }
+
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    strong,
+                    p {
+                        color: white;
+                        margin-left: 0;
+                    }
+                }
+
+                #extendThisCallLi {
+                    display: none;
+                }
+            }
+
+            #extendLessonDuration {
+                position: relative;
+                left: 0px;
+            }
+        }
+
+        .confefence-video-inner {
+            height: 100%;
+            overflow: hidden;
+            flex-direction: column;
+        }
+    }
+
+    .errorWarn {
+        padding: 4px;
+    }
+
+    .video_conference .mute-all-audio svg {
+        margin-bottom: 8px;
+    }
+
+    .videoBoxProfesorCont {
+        transition: 0.3s;
+        z-index: 92;
+        top: 0px;
+        left: 0px;
+
+        &.swipeD {
+            width: 90px;
+            z-index: 100;
+            top: 0px;
+            left: 15px;
+            border-radius: 6px;
+            position: relative;
+            padding-top: 64px;
+
+            .videoBoxProfesor {
+                border-radius: 6px;
+            }
+
+            .innerVideoBox {
+                display: block;
+                height: auto;
+                display: block;
+
+                video {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 6px;
+                }
+            }
+        }
+
+        .videoBox {
+            display: flex;
+            width: 100%;
+        }
+
+        .innerVideoBox {
+            display: flex;
+            height: 100%;
+
+            video {
+                width: 100%;
+                height: 100%;
+                -o-object-fit: cover;
+                object-fit: cover;
+            }
+        }
+
+        .pinnedStudentsFrame {
+            .innerVideoBox {
+                height: auto;
+            }
+        }
+    }
+
+    .groupCallMainFrame {
+        .videoBoxProfesorCont {
+            width: auto;
+
+            .pinnedStudentsFrame {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+
+        .videoBoxProfesor {
+            .innerVideoBox {
+                display: flex;
+                height: inherit;
+
+                video {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+
+    .talk-top {
+        position: absolute;
+        transition: 0.3s;
+        z-index: 92;
+        top: 0px;
+        right: 0px;
+        width: 100%;
+        height: -webkit-fill-available;
+        transition: 0.3s;
+
+        .position-span {
+            position: absolute;
+
+            right: 15px;
+            z-index: 1000;
+            transition: 0.3s;
+
+            .oButtonVideoCall {
+                background: white;
+                border-radius: 50%;
+                transition: 0.3s;
+            }
+        }
+
+        &.swipeD {
+            width: auto;
+            top: 72px;
+            right: 15px;
+            z-index: 100;
+            transition: 0.3s;
+            height: auto;
+
+            .position-span {
+                transition: 0.3s;
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                z-index: 1000;
+
+                .oButtonVideoCall {
+                    background: white;
+                    border-radius: 0;
+                    border-bottom-left-radius: 50%;
+                    transition: 0.3s;
+                    border-top-right-radius: 6px;
+                }
+            }
+
+            .innerVideoBox {
+                display: block;
+                height: auto;
+                border-radius: 6px;
+
+                video {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 6px;
+                    max-width: 320px;
+                    max-height: 320px;
+                }
+            }
+        }
+
+        .innerVideoBox {
+            border-radius: 0px;
+            display: flex;
+            height: 100%;
+
+            video {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                border-radius: 0;
+            }
+        }
+    }
+}
+
+.turnOfVideo {
+    background-color: #172b4d;
+}
+
+.review-inner {
+    img {
+        border-radius: 50%;
+    }
+}
+
+.divForStudentImage {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+
+    img {
+        box-shadow: 0 0 0 4px white;
+    }
+}
+
+.profile_image_calling_screen {
+    border-radius: 50%;
+}
+
+.grayBackgrounder {
+    background: rgba(17, 17, 17, 0.7);
+    color: white;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 16px;
+    border-radius: 200px;
+}
+
+@media (min-width: 640px) {
+    ul.social-wrap {
+        li {
+            span {
+                width: 64px;
+                height: 64px;
+            }
+        }
+    }
+
+    .video_conference {
+        #reviewPopUp {
+            .Stars {
+                font-size: 48px;
+            }
+
+            .rate:not(:checked)>label {
+                font-size: 48px;
+            }
+        }
+    }
+
+    .mt48res {
+        margin-top: 3rem;
+        margin-bottom: 16px;
+    }
+
+    .mb16res {
+        margin-bottom: 16px;
+    }
+
+    .video_conference {
+        #paymentWalletPopUp {
+            .tabs li.tabs-title {
+                height: 60px;
+            }
+        }
+
+        .add-slot {
+            height: 72px;
+        }
+
+        .predegariz {
+            max-height: 200px;
+        }
+
+        .extendCallPopupCorrection {
+            align-items: center;
+
+            .popuper {
+                max-height: auto;
+            }
+
+            &.extendCallPopupCorrection2 {
+                .popuper {
+                    max-height: auto;
+                }
+            }
+        }
+    }
+
+    #paymentCompletedPopUp {
+        .popuper {
+            background-color: transparent;
+            max-width: 400px;
+        }
+
+        .pt-completed,
+        .pt-completed2 {
+            display: none;
+        }
+
+        .closeSpanPopup {
+            color: white !important;
+            top: 31px;
+        }
+
+        .add-time-title {
+            color: white !important;
+            position: relative;
+            top: 34px;
+            width: 100%;
+            left: -22px;
+        }
+
+        .call-extend-title {
+            display: none;
+        }
+
+        .mobile-call-wrap {
+            &.height-auto {
+                .minutes-progress-inner {
+                    background: rgba(255, 255, 255, 0.4);
+
+                    h2 {
+                        color: #1d293f;
+
+                        span {
+                            color: #1d293f;
+                        }
+                    }
+
+                    p {
+                        color: #1d293f;
+                    }
+                }
+            }
+        }
+    }
+
+    .extendCallPopupCorrection {
+        align-items: center;
+
+        .popuper {
+            width: 100%;
+            border-radius: 12px;
+
+            .talkilium {
+                margin-top: 0.5rem;
+            }
+        }
+
+        .closeSpanPopup {
+            top: 16px;
+        }
+    }
+
+    .minutes-title {
+        display: block;
+    }
+}
+
+.languages-title {
+    display: flex;
+
+    #startCalltime {
+        margin-right: 6px;
+    }
+
+    #endCallTime {
+        margin-left: 6px;
+    }
+}
+
+.mutedMicrophoneStudent {
+    background: #ff4267;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+}
+
+.mutedVideoStudent {
+    background: #ff4267;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+}
+
+.video_conference {
+    .w-100s {
+        width: 100%;
+    }
+
+    .peregarder {
+        .Setup-payment-wrap {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+.messageForEmailCorrection {
+    padding: 16px;
+    background: #ffb805;
+    color: white;
+    border-radius: 6px;
+    box-shadow: inset 0 0 5px #898989;
+    border: 1px solid rgba(6, 4, 3, 0.3);
+}
+
+.videoBoxProfesor {
+    .turnOfVideo {
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        img {
+            border-radius: 50%;
+        }
+    }
+}
+
+.professorNoCamText {
+    position: absolute;
+    top: 88px;
+    width: 400px;
+    font-weight: 600;
+    color: white;
+    z-index: 9999;
+    left: -200%;
+}
+
+.proffesorNoCamSvg {
+    width: 281px;
+    height: 281px;
+    position: absolute;
+    top: calc((100% - 281px) / 2);
+    left: calc((100% - 281px) / 2);
+}
+
+.videoBox {
+    .turnOfVideo {
+        display: none;
+        opacity: 1;
+        min-width: 100%;
+
+        margin: 0;
+        transition: 0.3s;
+        align-items: center;
+        justify-content: center;
+        /* display: flex; */
+        border: 1px solid rgba(6, 4, 3, 0.1);
+        box-shadow: 0 0 10px -5px white;
+        border-radius: 6px;
+
+        div {
+            position: relative;
+            top: 6px;
+
+            img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            p {
+                text-align: center;
+                margin: 0;
+                font-weight: 600;
+                color: white;
+            }
+        }
+    }
+
+    .turnOnVideo {
+        display: flex;
+        transition: 0.3s;
+        transform: scale(0);
+    }
+}
+
+.video-conference-page {
+    .talk-top {
+        .videoBox {
+            .turnOnVideo {
+                height: 100%;
+            }
+
+            .turnOfVideo {
+                height: 100%;
+            }
+        }
+
+        #studentFramePrivate {
+            height: 100%;
+        }
+
+        &.swipeD {
+            .videoBox {
+                .turnOnVideo {
+                    height: auto;
+                }
+            }
+
+            #studentFramePrivate {
+                height: 0%;
+            }
+
+            .turnOfVideo {
+                height: auto;
+            }
+        }
+    }
+}
+
+.mutedMicrophoneProfessor {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: calc((100% - 48px) / 2);
+    left: calc((100% - 48px) / 2);
+    background: #ff4267;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+#typeFilters {
+    input {
+        accent-color: #ffb805;
+    }
+}
+
+.dif {
+    display: inline-flex !important;
+}
+
+.carouselLinksSubs {
+    p {
+        margin-bottom: 0;
+    }
+
+    &.active {
+        p {
+            color: #8c97ac;
+            text-decoration: underline;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .chating-wrap-right {
+        bottom: 0 !important;
+
+    }
+
+    .chating-tabs {
+        height: 61px;
+    }
+
+    .groupCallMainFrame .videoBoxProfesor .innerVideoBox video {
+        width: 100%;
+        height: calc(100vh - 64px);
+        object-fit: contain;
+    }
+
+    .noPinnedStudentsFrame {
+        top: 0px;
+    }
+
+    .videoBoxProfesorCont {
+        &.swipeD {
+            padding-top: 0px;
+        }
+    }
+
+    .confefence-video-inner {
+        padding-top: 0px;
+    }
+
+    .video_conference header ul {
+        display: flex;
+    }
+
+    .videoBoxProfesorCont {
+        display: flex;
+        flex-direction: row;
+
+        .turnOnVideo {
+            height: 100%;
+        }
+    }
+
+    .groupCallMainFrame {
+        .videoBoxProfesorCont {
+            display: block;
+        }
+    }
+
+    .video_conference {
+        header {
+            #timeInfoLessonCont {
+                .dropdown {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+
+    #privateTalkStudentHelder {
+        height: 100%;
+        margin-top: 0px;
+    }
+
+    .swipeD {
+        #privateTalkStudentHelder {
+            height: 100%;
+            margin-top: 0;
+        }
+    }
+
+    .book_slot_payment,
+    .courses,
+    .talkCategory,
+    .talkCategorySubcategory {
+        .funkyConan {
+            padding: 0rem;
+            background: transparent;
+        }
+    }
+
+    .yellow-btn-extend {
+        font-size: 15px;
+    }
+
+    .headBolder {
+        line-height: 28px;
+    }
+
+    .video_conference {
+        .heading-group {
+            p {
+                color: #172b4d;
+            }
+
+            p.languages-title {
+                color: #8b95a6;
+            }
+        }
+    }
+
+    #bookingContent {
+        padding-left: 16px !important;
+    }
+
+    .searchBlocks {
+        h3 {
+            width: auto;
+            flex: 1;
+        }
+
+        svg {
+            width: auto;
+            flex: 1;
+        }
+
+        .graycolor {
+            display: block;
+            margin-left: 4px;
+        }
+    }
+
+    .video_conference {
+
+        .heading-title-wrap-german,
+        #timeLeft {
+            text-shadow: none;
+        }
+    }
+
+    .videoBoxH2 {
+        height: calc((100% - 80px) / 2);
+        width: auto;
+        max-height: calc((100% - 80px) / 2);
+    }
+
+    .videoBoxH3 {
+        height: calc((100% - 80px) / 3);
+        width: auto;
+        max-height: calc((100% - 80px) / 3);
+    }
+
+    .videoBoxH4 {
+        height: calc((100% - 80px) / 4);
+        width: auto;
+        max-height: calc((100% - 80px) / 4);
+    }
+
+    .videoBoxH8 {
+        height: calc((100% - 80px) / 8);
+        width: auto;
+        max-height: calc((100% - 80px) / 8);
+    }
+
+    .noPinnedStudentsFrame {
+        height: calc(100% - 61px);
+    }
+
+    .minutes-title {
+        display: none;
+    }
+
+    .dropdown.menu.d-flex.menu-right {
+
+        li:nth-child(1),
+        li:nth-child(2),
+        li:nth-child(3),
+        li:nth-child(4) {
+            display: block;
+        }
+    }
+
+    .chating-wrap-right {
+        width: 200px;
+    }
+
+    .video_conference {
+        .tob-bar-right {
+            .dropdown {
+                display: flex;
+            }
+        }
+
+        .video-cta {
+            bottom: 0;
+        }
+
+        .groupCallMainFrame {
+            .video-cta {
+                bottom: 0px;
+            }
+        }
+
+        .tabs-re-manage {
+            left: 0px;
+            top: 0px;
+        }
+
+        .top-bar-right {
+            .dropdown {
+                left: 0;
+                transition: 0.3s;
+                padding-right: 0px;
+                overflow: unset;
+                position: relative;
+                left: 6px;
+            }
+        }
+
+        .talk-top {
+            position: absolute;
+            transition: 0.3s;
+            z-index: 92;
+            top: 0px;
+            right: 0px;
+            width: 100%;
+            height: 100%;
+
+            &.swipeD {
+                width: auto;
+                top: 15px;
+                right: 15px;
+                z-index: 100;
+                height: auto;
+
+                .position-span {}
+
+                .innerVideoBox {
+                    video {}
+                }
+            }
+
+            .position-span {}
+
+            .innerVideoBox {
+                video {}
+            }
+        }
+
+        .confefence-video-inner {
+            .menu {
+                display: none;
+            }
+        }
+
+        .videoBoxProfesorCont {
+            width: 100%;
+            height: 100%;
+
+            &.swipeD {
+                height: auto;
+            }
+
+            .videoBoxProfesor {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+            }
+
+            .innerVideoBox {
+                margin-top: 0px;
+                display: block;
+            }
+
+            &.swipeD {
+                width: 240px;
+
+                .innerVideoBox {
+                    height: auto;
+                    margin-top: 15px;
+                }
+            }
+
+            .pinnedStudentsFrame {
+                .innerVideoBox {
+                    height: auto;
+                }
+            }
+        }
+
+        main {
+            position: relative;
+            z-index: 9;
+            margin-bottom: 0px;
+            background: #172b4d;
+            height: 100%;
+            margin-top: 0px;
+        }
+
+        header {
+            .logoCall {
+                display: block;
+            }
+
+            .menu-right {
+                li {
+                    margin-left: 0px;
+
+                    div {
+                        width: 57px;
+                        height: 57px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+
+            .grid-container.full {
+                width: 100%;
+                padding: 0 1rem;
+            }
+
+            position: relative;
+            background: white;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+
+            #timeInfoLessonCont {
+                position: relative;
+                top: 0;
+                width: auto;
+
+                .dropdown {
+                    position: relative;
+                    padding: inherit;
+                    border-radius: inherit;
+                    margin: 4px;
+                    background: rgba(255, 255, 255, 0.3);
+                    color: white;
+                }
+            }
+
+            .dropdown {
+                #extendThisCallLi {
+                    display: block;
+                    left: 0;
+                    top: 0;
+
+                    position: relative;
+                    padding: 0;
+                }
+            }
+
+            .dropdown {
+                position: relative;
+
+                #time-left-wrapper {
+                    .time-left {
+                        height: 57px;
+                    }
+
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    float: right;
+
+                    strong,
+                    p {
+                        color: #172b4d;
+                        margin-right: 0px;
+                    }
+                }
+
+                /* #extendThisCallLi {
+                    position: relative;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    transition: 0.3s;
+                    span {
+                        left: 0;
+                        margin: 0;
+                    }
+                } */
+            }
+        }
+    }
+}
+
+@media (min-width: 820px) {
+    .chating-wrap-right {
+        width: 230px;
+    }
+
+    .yellow-btn-extend {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 844px) {
+    .minutes-title {
+        position: relative;
+    }
+}
+
+@media (min-width: 880px) {
+    .chating-wrap-right {
+        width: 260px;
+    }
+}
+
+.t03s {
+    transition: 0.3s;
+}
+
+.professorVideoTalkMain {
+    .extendMobileLi {
+        display: none;
+    }
+}
+
+.studentScreenShare {
+    video {
+        height: auto;
+        position: absolute;
+    }
+}
+
+.openedShareStudent {
+    height: 40px;
+    position: absolute;
+    top: calc(100% - 62px);
+    right: 0;
+}
+
+@media (min-width: 1024px) {
+    .chating-wrap-right {
+        width: 300px;
+    }
+
+    .videoBoxProfesorCont {
+        .videoBoxProfesor {
+            .turnOnVideo {
+                background: #172b4d;
+            }
+        }
+    }
+
+    .turnOnVideo {
+        margin: 0;
+        transition: 0.3s;
+        border: 1px solid rgba(6, 4, 3, 0.1);
+        box-shadow: 0 0 10px -5px white;
+        border-radius: 6px;
+    }
+
+    .chating-wrap-right {
+        width: 320px;
+    }
+
+    .video_conference {
+        .video-cta {
+            bottom: 0px;
+        }
+
+        .videoBoxProfesorCont {
+            position: absolute;
+            transition: 0.3s;
+            z-index: 2;
+            top: 0px;
+            left: 0px;
+
+            video {
+                width: auto;
+                height: 100%;
+                max-width: 100%;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+
+            .pinnedStudentsFrame {
+                .innerVideoBox {
+                    margin-top: 0;
+
+                    video {
+                        width: 100%;
+                        height: calc(33.3333vh - 26.6667px);
+                    }
+                }
+            }
+
+            &.swipeD {
+                position: absolute;
+                width: 280px;
+                height: auto;
+                z-index: 100;
+                top: 0px;
+                left: 15px;
+
+                .turnOnVideo {}
+
+                video {
+                    width: 100%;
+                }
+            }
+        }
+
+        .groupCallMainFrame {
+            .videoBoxProfesorCont {
+                width: inherit;
+
+                &.swipeD {
+                    width: 280px;
+                }
+            }
+
+            .talk-top {
+                display: none;
+            }
+        }
+
+        .talk-top {
+            position: absolute;
+            transition: 0.3s;
+            z-index: 2;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 2;
+
+            video {
+                width: auto;
+                height: 100%;
+                border-radius: 0;
+                margin-top: 0;
+                position: relative;
+                top: 0px;
+                max-width: 100%;
+            }
+
+            .innerVideoBox {
+                border-radius: 6px;
+                overflow: hidden;
+            }
+
+            &.swipeD {
+                max-width: 240px;
+                width: auto;
+                top: 15px;
+                right: 15px;
+                z-index: 100;
+
+                video {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 6px;
+                    position: unset;
+                    top: 0;
+                    margin: auto;
+                }
+
+                .innerVideoBox {
+                    border-radius: 6px;
+                }
+            }
+        }
+    }
+}
+
+.studentScreenShare {
+    position: absolute;
+    bottom: 0;
+    width: 90px;
+    display: block;
+    height: 54px;
+    right: 8px;
+
+    video {
+        transform: scaleX(1);
+        width: 82px;
+        display: block;
+    }
+}
+
+.videoBox {
+    .studentScreenShare {
+        &:nth-of-type(1) {
+            border: 4px solid red;
+        }
+    }
+}
+
+#privateTalkStudentHelder {
+    .videoBox {
+        height: 100%;
+    }
+}
+
+.groupCallMainFrame {
+    .talk-top {
+        display: none;
+    }
+}
+
+.mutedMicrophoneStudent {
+    z-index: 999;
+}
+
+.screenSharingHelperVideoStudent {
+    background: transparent !important;
+    position: absolute;
+    z-index: 9;
+    height: 30px !important;
+    top: 5%;
+    left: 2.5%;
+    border: 2px solid #172b4d !important;
+    min-height: 20% !important;
+
+    video {
+        height: auto;
+    }
+}
+
+.b1 {
+    background: #f9f9fa;
+    border: 1px solid #efeff0;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    max-height: 84px;
+}
+
+.pt8 {
+    padding-top: 8px;
+}
+
+.pb16 {
+    padding-bottom: 16px;
+}
+
+.searchBlocks {
+    padding: 23px;
+    float: left;
+    width: 100%;
+
+    h3 {
+        line-height: 22px;
+        float: left;
+        text-align: center;
+        margin-bottom: 6px;
+    }
+
+    svg {
+        float: left;
+        text-align: center;
+        height: 35px;
+    }
+
+    .dfs {
+        display: flex;
+        align-items: center;
+
+        svg {
+            height: 24px;
+            width: auto;
+        }
+
+        h3 {
+            text-align: left;
+            padding-left: 8px;
+            margin: 0;
+            font-size: 16px;
+            line-height: 22px;
+        }
+    }
+
+    .textBottomSearchBlocks {
+        font-size: 12px;
+        line-height: 16px;
+        margin: 0;
+        margin-top: 8px;
+    }
+}
+
+.textBottomSearchBlocks2 {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+    margin-top: 8px;
+}
+
+.jcc {
+    justify-content: center !important;
+}
+
+.h64 {
+    height: 64px;
+}
+
+.whiteColor {
+    color: white !important;
+}
+
+.spanBadger {
+    border-radius: 100px;
+    padding: 5px 8px;
+    font-size: 10px !important;
+    line-height: 14px;
+    justify-content: center;
+    margin-right: 18px;
+    max-width: 80px;
+}
+
+.greenBadge {
+    background: #0bb07b;
+}
+
+.orangeBadge {
+    background: #ffa726;
+}
+
+.redBadge {
+    background: #f44336;
+}
+
+.video_conference {
+    .video-conference-page {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+.videoBoxTeacher {
+    display: flex;
+    width: 100%;
+    position: initial;
+    margin: 0 auto;
+}
+
+.groupCallMainFrame {
+    .videoBoxProfesorCont {
+        .videoBoxProfesor {
+            .turnOnVideo {
+                display: block;
+            }
+        }
+    }
+}
+
+.mr12 {
+    margin-right: 12px;
+}
+
+.menu-right {
+    #extendThisCallLi {
+        margin-right: 8px;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid rgba(6, 4, 3, 0.1);
+    }
+}
+
+footer {
+    z-index: 11;
+}
+
+.icon-deletes {
+    cursor: pointer;
+}
+
+.chating-wrap-right {
+    opacity: 1;
+    position: absolute;
+
+    right: 0;
+    background: white;
+    border-radius: 10px 0px 0 0;
+
+    overflow: hidden;
+
+    .chatting-inner-container {
+        .tabs-content {
+            .title-participats-manage {
+                padding: 0 1rem;
+            }
+        }
+
+        .chating-tabs {
+            width: 100%;
+            border-top: 1px solid rgba(6, 4, 3, 0.1);
+            margin: 0;
+
+            li {
+                width: 50%;
+                background: white;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-bottom: 3px solid #ffb805;
+                border-right: 1px solid rgba(6, 4, 3, 0.1);
+            }
+        }
+    }
+}

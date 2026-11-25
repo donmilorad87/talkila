@@ -1,0 +1,95 @@
+#profile-img {
+    mask {
+        pointer-events: none;
+    }
+
+    g {
+        pointer-events: none;
+    }
+}
+
+.userInfo {
+    h6 {
+        &:hover {
+            text-decoration: underline;
+            text-decoration-color: #ffb805;
+            color: #313131;
+        }
+    }
+}
+
+.newMainFilterDiv {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding: 16px;
+    overflow-y: auto;
+    padding-top: 0;
+}
+
+.seccond-footer {
+    background: white;
+    border-top: 1px solid rgba(6, 4, 3, .1);
+}
+.setting-tabs ul {
+ list-style: none;
+}
+.tabs-menu-footer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: none;
+    align-items: flex-end;
+    background: #f4f5f9;
+    height: 62px;
+    padding: 0;
+    margin: 0;
+    li {
+
+        a {
+            padding: 8px 0px;
+            display: block;
+            text-align: center;
+            color: #172B4D;
+
+            p {
+                margin: 0;
+                display: flex;
+                margin-bottom: 3px;
+                margin-top: 6px;
+
+            }
+
+            svg {
+                max-height: 21px;
+            }
+        }
+    }
+
+    .is-active {
+        svg {
+            fill: #ffb805;
+
+            path{
+                fill: #ffb805;
+            }
+        }
+
+        position: relative;
+        border-top: 2px solid #ffb805 !important;
+        top: 0;
+
+        a {
+            background: none;
+            color: #ffb805;
+            font-weight:300;
+        }
+    }
+}
+
+.tabs-title {
+    position: relative;
+    top: 0px;
+}

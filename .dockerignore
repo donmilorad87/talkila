@@ -1,0 +1,11 @@
+talkila.backend/vendor
+talkila.backend/node_modules
+talkila.backend/.env
+talkila.backend/storage/logs/*.log
+talkila.backend/storage/framework/cache/data/*
+talkila.backend/storage/framework/sessions/*
+talkila.backend/storage/framework/views/*
+.git
+*.md
+Docker/Nginx/ssl/*.key
+Docker/Nginx/ssl/*.crt

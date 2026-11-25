@@ -1,0 +1,123 @@
+<?php
+namespace App\Virtual\Models;
+
+/**
+ * @OA\Schema(
+ *     title="UserDontShowAgain",
+ *     description="UserDontShowAgain - model",
+ *     @OA\Xml(
+ *         name="UserDontShowAgain"
+ *     )
+ * )
+ */
+
+class UserDontShowAgain
+{
+// Swagger Deffinition
+
+     /**
+     * @OA\Property(
+     *      title="id",
+     *      description="id - integer",
+     *      example=1,
+     *      format="int64",
+     *      type="integer"
+     * )
+     *
+     * @var integer
+     */
+
+    public $id;
+
+
+     /**
+     * @OA\Property(
+     *      title="created_at",
+     *      description="created_at - datetime",
+     *      example="2020-01-27 17:50:45",
+     *      format="datetime",
+     *      type="string"
+     * )
+     *
+     * @var \DateTime
+     */
+
+    public $created_at;
+
+
+     /**
+     * @OA\Property(
+     *      title="updated_at",
+     *      description="updated_at - datetime",
+     *      example="2020-01-27 17:50:45",
+     *      format="datetime",
+     *      type="string"
+     * )
+     *
+     * @var \DateTime
+     */
+
+    public $updated_at;
+
+
+     /**
+     * @OA\Property(
+     *      title="deleted_at",
+     *      description="deleted_at - datetime",
+     *      example="2020-01-27 17:50:45",
+     *      format="datetime",
+     *      type="string"
+     * )
+     *
+     * @var \DateTime
+     */
+
+    public $deleted_at;
+
+
+     /**
+     * @OA\Property(
+     *      title="user_id",
+     *      description="user_id - integer",
+     *      example=1,
+     *      format="int64",
+     *      type="integer"
+     * )
+     *
+     * @var integer
+     */
+
+    public $user_id;
+
+
+     /**
+     * @OA\Property(
+     *      title="dont_show_again_user_id",
+     *      description="dont_show_again_user_id - integer",
+     *      example=1,
+     *      format="int64",
+     *      type="integer"
+     * )
+     *
+     * @var integer
+     */
+
+    public $dont_show_again_user_id;
+
+
+     /**
+     * @OA\Property(
+     *      title="user",
+     *      description="user - User",
+     *      example="",
+     *      format="",
+     *      type="User"
+     * )
+     *
+     * @var \App\Virtual\Models\User
+     */
+
+    public $user;
+
+
+}
