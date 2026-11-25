@@ -319,7 +319,12 @@ class LoginController extends Controller
 
         $this->clearLoginAttempts($request);
 
-        return $request->wantsJson() ? $response : redirect()->intended($redirectPath);
+        if ($request->wantsJson()) {
+            return $response;
+        }
+
+        // Admins always land on the dashboard; a stale "intended" URL (e.g. /login) must not override it.
+        return $role === 'Admin' ? redirect($redirectPath) : redirect()->intended($redirectPath);
     }
 
     /**
