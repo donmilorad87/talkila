@@ -1,0 +1,1 @@
+window.i18n = {"Date":"\u65e5\u671f","The list of logs is empty!":"\u65e5\u5fd7\u5217\u8868\u4e3a\u7a7a!","All":"\u5168\u90e8","Emergency":"\u5371\u6025","Alert":"\u7d27\u6025","Critical":"\u4e25\u91cd","Error":"\u9519\u8bef","Warning":"\u8b66\u544a","Notice":"\u6ce8\u610f","Info":"\u4fe1\u606f","Debug":"\u8c03\u8bd5"};

@@ -14,8 +14,13 @@ class UpdatePayoutsPaymentDetailsStatusColumn extends Migration
      */
     public function up()
     {
-        DB::statement("ALTER TABLE bookings_payment_details ALTER COLUMN status TYPE boolean USING CASE WHEN status IN ('1','true') THEN true ELSE false END");
-        DB::statement("ALTER TABLE bookings_payment_details ALTER COLUMN status SET DEFAULT false");
+        // Normalise the old string values first, so the type change works on every database engine.
+        DB::table('bookings_payment_details')->whereIn('status', ['1', 'true'])->update(['status' => '1']);
+        DB::table('bookings_payment_details')->whereNotIn('status', ['1', 'true'])->update(['status' => '0']);
+
+        Schema::table('bookings_payment_details', function (Blueprint $table) {
+            $table->boolean('status')->default(false)->change();
+        });
     }
 
     /**
@@ -25,6 +30,8 @@ class UpdatePayoutsPaymentDetailsStatusColumn extends Migration
      */
     public function down()
     {
-        DB::statement("ALTER TABLE bookings_payment_details ALTER COLUMN status TYPE varchar(50) USING status::text");
+        Schema::table('bookings_payment_details', function (Blueprint $table) {
+            $table->string('status', 50)->change();
+        });
     }
 }

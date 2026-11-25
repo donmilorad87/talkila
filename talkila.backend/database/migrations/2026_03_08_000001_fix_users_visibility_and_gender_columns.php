@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class FixUsersVisibilityAndGenderColumns extends Migration
 {
@@ -12,15 +13,15 @@ class FixUsersVisibilityAndGenderColumns extends Migration
      */
     public function up()
     {
-        DB::statement('ALTER TABLE users ALTER COLUMN visibility DROP DEFAULT');
-        DB::statement('ALTER TABLE users ALTER COLUMN visibility TYPE smallint USING visibility::integer');
-        DB::statement('ALTER TABLE users ALTER COLUMN visibility SET DEFAULT 1');
+        // Restores the types from the create migrations (a PostgreSQL import had turned them into booleans).
+        Schema::table('users', function (Blueprint $table) {
+            $table->smallInteger('visibility')->unsigned()->default(1)->change();
+            $table->smallInteger('gender')->default(1)->change();
+        });
 
-        DB::statement('ALTER TABLE users ALTER COLUMN gender DROP DEFAULT');
-        DB::statement('ALTER TABLE users ALTER COLUMN gender TYPE smallint USING gender::integer');
-        DB::statement('ALTER TABLE users ALTER COLUMN gender SET DEFAULT 1');
-
-        DB::statement('ALTER TABLE bookings_payment_details ALTER COLUMN amount_value TYPE decimal(10,2)');
+        Schema::table('bookings_payment_details', function (Blueprint $table) {
+            $table->decimal('amount_value', 10, 2)->change();
+        });
     }
 
     /**
@@ -30,14 +31,13 @@ class FixUsersVisibilityAndGenderColumns extends Migration
      */
     public function down()
     {
-        DB::statement('ALTER TABLE bookings_payment_details ALTER COLUMN amount_value TYPE double precision');
+        Schema::table('bookings_payment_details', function (Blueprint $table) {
+            $table->double('amount_value')->change();
+        });
 
-        DB::statement('ALTER TABLE users ALTER COLUMN visibility DROP DEFAULT');
-        DB::statement('ALTER TABLE users ALTER COLUMN visibility TYPE boolean USING visibility::boolean');
-        DB::statement('ALTER TABLE users ALTER COLUMN visibility SET DEFAULT true');
-
-        DB::statement('ALTER TABLE users ALTER COLUMN gender DROP DEFAULT');
-        DB::statement('ALTER TABLE users ALTER COLUMN gender TYPE boolean USING gender::boolean');
-        DB::statement('ALTER TABLE users ALTER COLUMN gender SET DEFAULT true');
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('visibility')->default(true)->change();
+            $table->boolean('gender')->default(true)->change();
+        });
     }
 }

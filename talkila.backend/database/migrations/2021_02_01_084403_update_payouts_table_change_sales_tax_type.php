@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class UpdatePayoutsTableChangeSalesTaxType extends Migration
@@ -14,7 +13,9 @@ class UpdatePayoutsTableChangeSalesTaxType extends Migration
      */
     public function up()
     {
-        DB::statement('ALTER TABLE payouts ALTER COLUMN sales_tax TYPE json USING sales_tax::text::json');
+        Schema::table('payouts', function (Blueprint $table) {
+            $table->json('sales_tax')->change();
+        });
     }
 
     /**
@@ -24,6 +25,8 @@ class UpdatePayoutsTableChangeSalesTaxType extends Migration
      */
     public function down()
     {
-        DB::statement('ALTER TABLE payouts ALTER COLUMN sales_tax TYPE smallint USING (sales_tax::text)::smallint');
+        Schema::table('payouts', function (Blueprint $table) {
+            $table->tinyInteger('sales_tax')->change();
+        });
     }
 }

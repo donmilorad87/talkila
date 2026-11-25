@@ -35,14 +35,17 @@ return [
             'key' => env('PUSHER_APP_KEY'),
             'secret' => env('PUSHER_APP_SECRET'),
             'app_id' => env('PUSHER_APP_ID'),
-            'options' => [
+            // PUSHER_HOST empty: Pusher Channels itself (local and production), reached through PUSHER_APP_CLUSTER.
+            // PUSHER_HOST set: a self-hosted Pusher-protocol server such as Laravel Reverb.
+            // The pusher library only falls back to the cluster when 'host' is absent (null would mean an empty host).
+            'options' => array_filter([
                 'cluster' => env('PUSHER_APP_CLUSTER'),
-                'host' => env('PUSHER_HOST', '127.0.0.1'),
-                'port' => env('PUSHER_PORT', 6001),
-                'scheme' => env('PUSHER_SCHEME', 'http'),
-                'encrypted' => false,
-                'useTLS' => env('PUSHER_SCHEME', 'http') === 'https',
-            ],
+                'host' => env('PUSHER_HOST') ?: null,
+                'port' => env('PUSHER_PORT') ?: 443,
+                'scheme' => env('PUSHER_SCHEME') ?: 'https',
+                'encrypted' => true,
+                'useTLS' => (env('PUSHER_SCHEME') ?: 'https') === 'https',
+            ], fn ($value) => $value !== null),
         ],
 
         'redis' => [

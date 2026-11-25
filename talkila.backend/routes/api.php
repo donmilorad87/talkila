@@ -39,8 +39,11 @@ use App\Http\Controllers\Api\V1\Admin\WalletController;
 use App\Http\Controllers\Api\V1\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Auth\PartnerController;
 use App\Http\Controllers\Api\V1\FrontendApiCalls\UserProfileApiController;
+use App\Http\Controllers\Api\V1\HealthController;
 
 Route::group(['prefix' => 'v1', 'as' => 'api.'], function () {
+    Route::get('/health', HealthController::class)->name('health');
+
     // Register
     Route::post('/register', [AuthController::class, 'register']);
 

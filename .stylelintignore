@@ -1,0 +1,10 @@
+# Vendored or compiled styles: not edited by hand (frontend/src/assets/scss is the source of frontend/assets/css).
+**/node_modules/**
+talkila.backend/vendor/**
+talkila.backend/public/ckeditor/**
+talkila.backend/public/vendor/**
+talkila.backend/public/build/**
+talkila.backend/public/frontend/assets/css/**
+talkila.backend/public/assets/js/tinymce/**
+**/libs/**
+**/*.min.css

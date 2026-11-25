@@ -17,6 +17,8 @@
     <input type="hidden" id="feurl" value="{{config('app.frontend_url')}}"/>
     <input type="hidden" id="app_environment" value="{{config('app.env')}}"/>
     <input type="hidden" id="socketServerPort" value="{{config('app.socket_server_port')}}"/>
+    <input type="hidden" id="pusherAppKey" value="{{config('broadcasting.connections.pusher.key')}}"/>
+    <input type="hidden" id="pusherAppCluster" value="{{config('broadcasting.connections.pusher.options.cluster')}}"/>
     <input type="hidden" id="app_talk_categories_version" value="{{config('app.app_talk_categories_version')}}"  />
     <input type="hidden" id="app_flags_version" value="{{config('app.app_flags_version')}}"  />
     <input type="hidden" id="app_languages_version" value="{{config('app.app_languages_version')}}"  />

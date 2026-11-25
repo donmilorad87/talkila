@@ -1,0 +1,16 @@
+# Deployed as the .htaccess of the site root (DEPLOY_PATH) by scripts/deploy.sh.
+# The subdomain's document root is the Laravel project root, so every request is rewritten into public/.
+# Nothing outside public/ (.env, vendor/, storage/, artisan, composer.json …) can be reached from the web;
+# the deploy smoke test checks that.
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Without mod_rewrite the rule above would not apply: refuse everything rather than expose the project root.
+<IfModule !mod_rewrite.c>
+    Require all denied
+</IfModule>

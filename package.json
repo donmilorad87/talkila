@@ -1,0 +1,27 @@
+{
+  "name": "talkila",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Talkila — booking e-learning marketplace (CI tooling: lint, E2E, release version)",
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "type": "module",
+  "scripts": {
+    "lint": "npm run lint:js; npm run lint:css",
+    "lint:js": "eslint talkila.backend/public",
+    "lint:css": "stylelint \"talkila.backend/public/**/*.{css,scss}\"",
+    "test:e2e": "playwright test",
+    "docker:up": "docker compose up -d --build --wait",
+    "docker:down": "docker compose down"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.65.1",
+    "eslint": "^9.39.5",
+    "globals": "^17.14.0",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard-scss": "^17.0.0"
+  }
+}

@@ -3,7 +3,7 @@
     "type": "project",
     "description": "Talkila Platform",
     "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "license": "PolyForm-Noncommercial-1.0.0",
     "require": {
         "php": "^8.2",
         "adyen/php-api-library": "^15.0",

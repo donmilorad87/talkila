@@ -18,9 +18,12 @@ cp .env.example .env                                   # Docker Compose variable
 cp talkila.backend/.env.example talkila.backend/.env   # Laravel variables (fill in secrets)
 
 docker compose up --build -d
-docker compose exec laravel php artisan migrate
-docker compose exec laravel php artisan db:seed        # optional: demo data + admin user
+docker compose exec -u www-data laravel php artisan key:generate
+docker compose exec -u www-data laravel php artisan migrate --seed      # base data + admin user
+docker compose exec -u www-data laravel php artisan passport:client --personal --name="Talkila Personal Access Client" --provider=users --no-interaction
 ```
+
+Run `artisan` and `phpunit` as **`-u www-data`** (php-fpm's user). Files they create as root (logs, compiled views) make the site fail with HTTP 500.
 
 The stack binds to the loopback IP **127.0.0.8**, so it can run next to other Docker projects without port clashes. It is exposed on the LAN through the shared reverse proxy (`~/Desktop/gambling/reverse-proxy`) as **https://talkila.local**.
 
@@ -34,9 +37,9 @@ Add this to the hosts file of the machine you browse from (Windows: `C:\Windows\
 |---|---|
 | Website | https://talkila.local |
 | Admin login | https://talkila.local/login (redirects to `/adminIndex`) |
-| pgAdmin | https://talkila.local/pgadmin/ |
+| phpMyAdmin | https://talkila.local/phpmyadmin/ (server `mariadb`, user/password from `.env`) |
 | Supervisor UI | https://talkila.local/supervisor/ |
-| PostgreSQL (from the host) | `127.0.0.8:5432` |
+| MariaDB (from the host) | `127.0.0.8:3306` |
 
 The seeded admin account is `admin@admin.com` / `password`. Change it on any shared machine.
 
@@ -47,11 +50,17 @@ The seeded admin account is `admin@admin.com` / `password`. Change it on any sha
 ```
 .
 ├── docker-compose.yml        # the whole local stack
-├── .env.example              # Docker Compose variables (DB name/user/password, pgAdmin)
+├── .env.example              # Docker Compose variables (DB name/user/password)
+├── package.json              # CI tooling (ESLint, Stylelint, Playwright) + the release version
+├── .github/workflows/        # CI/CD (see docs/DEPLOYMENT.md)
+├── scripts/                  # build-release.sh, deploy.sh, ci/ helpers
+├── deploy/                   # production .htaccess, pinned SSH host keys, production .env template
+├── tests/e2e/                # Playwright tests
+├── docs/DEPLOYMENT.md        # how releases reach production
 ├── Docker/
 │   ├── Nginx/                # nginx image, vhost (default.conf), self-signed SSL cert
-│   ├── Laravel/              # PHP 8.4-FPM image, php.ini, supervisord.conf
-│   └── pgAdmin/              # pre-registered server for pgAdmin
+│   ├── Laravel/              # PHP 8.5-FPM image, php.ini, supervisord.conf
+│   └── MariaDB/              # init script: creates the talkila_test database for PHPUnit
 └── talkila.backend/          # the Laravel 12 application (website, admin, REST API, call server)
 ```
 
@@ -72,36 +81,36 @@ flowchart LR
             Scheduler["scheduler (every 60s)"]
             Reverb["Reverb WebSockets :6001"]
         end
-        Postgres[("PostgreSQL 16")]
+        MariaDB[("MariaDB 11.8")]
         Redis[("Redis 7")]
-        PgAdmin["pgAdmin"]
+        PhpMyAdmin["phpMyAdmin"]
     end
 
     Nginx -->|"*.php (FastCGI)"| FPM
     Nginx -->|"/app/ (WebSocket)"| Reverb
-    Nginx -->|"/pgadmin/"| PgAdmin
+    Nginx -->|"/phpmyadmin/"| PhpMyAdmin
     Nginx -->|"/supervisor/"| Laravel
-    FPM --> Postgres
+    FPM --> MariaDB
     FPM --> Redis
     Workers --> Redis
-    Workers --> Postgres
-    Scheduler --> Postgres
-    PgAdmin --> Postgres
+    Workers --> MariaDB
+    Scheduler --> MariaDB
+    PhpMyAdmin --> MariaDB
 ```
 
 | Service | Image | Role |
 |---|---|---|
-| `nginx` | `nginx:1.25-alpine` (custom) | Terminates SSL, serves `public/`, sends PHP to FPM, proxies `/app/` (WebSockets), `/pgadmin/`, `/supervisor/`. Binds `127.0.0.8:80/443`. |
-| `laravel` | `php:8.4-fpm` (custom) | Runs the app. **Supervisord** manages php-fpm, 2 Redis queue workers, the scheduler loop and the Reverb WebSocket server. Workers run as `www-data`. |
-| `postgres` | `postgres:16-alpine` | Main database. Data in the `talkila_postgres-data` volume. Binds `127.0.0.8:5432`. |
+| `nginx` | `nginx:1.25-alpine` (custom) | Terminates SSL, serves `public/`, sends PHP to FPM, proxies `/app/` (WebSockets), `/phpmyadmin/`, `/supervisor/`. Binds `127.0.0.8:80/443`. |
+| `laravel` | `php:8.5-fpm` (custom) | Runs the app. **Supervisord** manages php-fpm, 2 Redis queue workers, the scheduler loop and the Reverb WebSocket server. Workers run as `www-data`. |
+| `mariadb` | `mariadb:11.8` | Main database, same engine and version as production. Data in the `talkila_mariadb-data` volume. Binds `127.0.0.8:3306`. Also holds `talkila_test` for PHPUnit. |
 | `redis` | `redis:7-alpine` | Cache, sessions and queues. |
-| `pgadmin` | `dpage/pgadmin4` | Database UI under `/pgadmin/`. |
+| `phpmyadmin` | `phpmyadmin:5.2` | Database UI under `/phpmyadmin/`. |
 
 Notes:
 
 - The source code is **bind-mounted** (`./talkila.backend → /var/www/html`), so code changes apply immediately. Restart the `laravel` container after changing `.env`, because the queue workers keep the old config in memory.
 - The compose project is pinned with `name: talkila`, so the named volumes keep the same names even if the folder is renamed.
-- Reverb is configured with `autostart=false`. Start it from the Supervisor UI or with `docker compose exec laravel php artisan reverb:start` when you work on live calls.
+- Live call events go through **Pusher Channels** (cluster `eu`), locally and in production. The Reverb server in the container (`autostart=false`) is only a fallback: to use it instead, set `PUSHER_HOST=laravel`, `PUSHER_PORT=6001`, `PUSHER_SCHEME=http` and start it from the Supervisor UI.
 - `talkila.backend/storage` must be owned by `www-data`. If you get "Permission denied" on log files, run:
   `docker compose exec laravel chown -R www-data:www-data storage bootstrap/cache`
 
@@ -120,7 +129,7 @@ docker compose logs -f laravel                      # app + supervisor logs
 
 ## Application architecture (Laravel)
 
-**Stack:** Laravel 12, PHP 8.4, PostgreSQL 16, Redis 7, Laravel Passport (API tokens), Laravel Cashier (Stripe), Laravel Reverb (WebSockets, Pusher protocol), Twilio SDK, Spatie Media Library, Spatie Webhook Client.
+**Stack:** Laravel 12, PHP 8.5, MariaDB 11.8, Redis 7, Laravel Passport (API tokens), Laravel Cashier (Stripe), Pusher Channels (WebSockets; Laravel Reverb as self-hosted fallback, Pusher protocol), Twilio SDK, Spatie Media Library, Spatie Webhook Client.
 
 ### Layers
 
@@ -193,7 +202,7 @@ sequenceDiagram
     participant C as Client app (student/teacher)
     participant App as Laravel (TwilioController)
     participant TW as Twilio Video
-    participant WS as Reverb (WebSockets)
+    participant WS as Pusher Channels (WebSockets)
 
     C->>App: POST /v1/twilio/socket-event (prepare call)
     App->>TW: create room
@@ -214,7 +223,7 @@ Two event streams meet in the backend:
    `PICKUP (10)`, `HANGUP (11)`, `REDIAL (12)`, `CLIENT_WAITING (13)`, `TALK_END (15)`, `AUDIO_ON/OFF (21/20)`, `VIDEO_ON/OFF (31/32)`, `EXTEND_CALL_REQUEST (57)`, `EXTEND_CALL_ACCEPT/REJECT (55/56)`, plus raise hand, screen share and kick.
 2. **Twilio events**: room and participant status callbacks on `POST /v1/twilio/room-status` (`TwilioController@roomStatus`), plus `POST /v1/twilio/network-quality` for call quality metrics.
 
-Both streams update `SocketRoom` / `SocketParticipant` (and `SocketRoomError` on failures). The backend then broadcasts a Laravel event on the private channel **`room.{roomId}`** through Reverb. All Twilio routes require an API token (`auth:api`, Laravel Passport).
+Both streams update `SocketRoom` / `SocketParticipant` (and `SocketRoomError` on failures). The backend then broadcasts a Laravel event on the private channel **`room.{roomId}`** through Pusher Channels. All Twilio routes require an API token (`auth:api`, Laravel Passport).
 
 Time-driven call logic runs in the scheduler:
 
@@ -250,7 +259,7 @@ The usual pattern is **Event → queued Job → Mail and/or push**:
 
 | File | Purpose | In git |
 |---|---|---|
-| `.env` | Docker Compose: DB credentials, pgAdmin login | no (`.env.example` is) |
+| `.env` | Docker Compose: DB credentials | no (`.env.example` is) |
 | `talkila.backend/.env` | Laravel: app URLs, DB/Redis, mail, Stripe, PayPal, Twilio, OAuth, push, call timing | no (`.env.example` is) |
 | `talkila.backend/.env.docker` | Alternative Laravel env for Docker | no (`.env.docker.example` is) |
 
@@ -261,14 +270,46 @@ Important Laravel variables:
 - `DB_*`, `REDIS_HOST=redis`
 - `STRIPE_KEY`, `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET`, `PAYPAL_*`
 - `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_API_SID`, `TWILIO_API_SECRET`
-- `PUSHER_*`: WebSocket settings. Reverb speaks the Pusher protocol, with `PUSHER_HOST=laravel` and `PUSHER_PORT=6001`.
+- `PUSHER_*`: the Pusher Channels app (`PUSHER_APP_CLUSTER=eu`). Keep `PUSHER_HOST`, `PUSHER_PORT` and `PUSHER_SCHEME` empty to use Pusher; CI uses `BROADCAST_DRIVER=log`.
 - `FIREBASE_ACCESS_KEY`, `APNS_*`: push notifications
 
 Never commit real `.env` files or credentials. GitHub push protection rejects them.
 
 ---
 
+## Testing
+
+```bash
+docker compose exec -u www-data laravel vendor/bin/phpunit --testsuite Api,Web   # PHPUnit (uses the talkila_test database)
+npm ci && npx playwright install chromium                                       # once
+npx playwright test                                                             # E2E against the running stack
+npm run lint                                                                    # ESLint + Stylelint on talkila.backend/public
+```
+
+- **PHPUnit** (`talkila.backend/tests/Feature/Api`, `tests/Feature/Web`) runs against the separate `talkila_test` database. `tests/TestCase.php` refuses to run against any database not named `*_test`, because `RefreshDatabase` drops every table.
+- **Playwright** (`tests/e2e`) opens `https://talkila.local` in Chromium (desktop + mobile) and maps the name straight to the stack's `127.0.0.8`, so no hosts entry is needed.
+- **Lint** covers our own JS/CSS in `public/` (vendored libraries and compiled bundles are skipped). It is **report-only** in CI for now.
+
+---
+
+## CI/CD and deployment
+
+GitHub Actions (`.github/workflows/ci-cd.yml`) runs lint (report-only), PHPUnit and Playwright **inside the project's Docker image** on every pull request and push to `master`. A pushed tag `vX.Y.Z` additionally runs a release check and deploys to **https://talkila.blazingsun.space** over SSH: maintenance page on, rsync of only the changed files, migrations, maintenance off, smoke test.
+
+Setup and the release routine: **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)**.
+
+---
+
 ## Known issues
 
-- The project was migrated from MySQL to PostgreSQL. Some raw SQL in admin controllers and in the `User`, `Talk` and `Payout` models still uses MySQL-only functions (`IF()`, `DATE_FORMAT()`, `CONVERT_TZ()`), so those screens can fail until they are ported.
 - A few files do not follow PSR-4 naming (`app/Virtual/Resources/*Rersource.php`, `app/Http/TokenController.php`).
+
+---
+
+## License
+
+Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+
+You may use, study, modify and share this project for **noncommercial purposes only**: personal use, research, education and non-profit organizations. **Commercial use is not permitted** without a separate written license from the copyright holder.
+
+Copyright 2026 Milorad Đuković

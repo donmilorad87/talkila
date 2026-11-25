@@ -1,0 +1,258 @@
+name: CI/CD
+
+# Pull request into master, push or merge to master  → lint (report-only) + tests (API, web, E2E). Never deploys.
+# Push a release tag vX.Y.Z                          → the same, then 🏷️ Release check, then 🚀 Deploy.
+#   Release check: tag == "v" + package.json version, higher than every earlier release, commit already on master.
+# A merged pull request IS a push to master, so "push to master" covers both "pushed" and "PR merged".
+# Manual run (Actions → Run workflow): on a branch = checks only; on a tag = checks + redeploy of that release.
+run-name: >-
+  ${{ startsWith(github.ref, 'refs/tags/')
+      && format('🚀 Release {0}', github.ref_name)
+      || github.event_name == 'pull_request'
+      && format('🔎 PR #{0}: {1}', github.event.pull_request.number, github.event.pull_request.title)
+      || github.event_name == 'workflow_dispatch'
+      && format('🔁 Manual checks on {0} by {1}', github.ref_name, github.actor)
+      || format('✅ {0}: {1}', github.ref_name, github.event.head_commit.message) }}
+
+on:
+  push:
+    branches: [master]
+    tags: ['v*']
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-cd-${{ github.ref }}
+  # Cancel superseded PR runs; never cancel a running deploy.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash # implies `-eo pipefail`, so `cmd | tee log` still fails when cmd fails
+
+env:
+  NODE_VERSION: 22
+  FORCE_COLOR: 1
+  LARAVEL_IMAGE: talkila-laravel:ci
+
+jobs:
+  lint:
+    name: 🔍 Lint (report-only)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - run: npm ci
+
+      # Report-only for now: findings are listed in the summary but never fail the build.
+      # To make lint blocking later, remove `continue-on-error` from the two steps below.
+      - name: ESLint (JavaScript in talkila.backend/public)
+        id: eslint
+        continue-on-error: true
+        run: npx eslint talkila.backend/public | tee eslint.ci.log
+
+      - name: Stylelint (CSS/SCSS in talkila.backend/public)
+        id: stylelint
+        continue-on-error: true
+        run: npx stylelint "talkila.backend/public/**/*.{css,scss}" | tee stylelint.ci.log
+
+      - name: Release-rules tests (check-release.sh)
+        id: release-rules
+        if: ${{ !cancelled() }}
+        run: tests/ci/check-release.test.sh | tee release-rules.ci.log
+
+      - name: Summary
+        if: ${{ !cancelled() }}
+        run: |
+          {
+            echo "## 🔍 Lint (report-only — does not fail the build)"
+            echo "- ESLint: **$(grep -oE '[0-9]+ problems?' eslint.ci.log | tail -1 || echo 'no problems')**"
+            echo "- Stylelint: **$(grep -cE '^\s+[0-9]+:[0-9]+' stylelint.ci.log || true) problems**"
+          } >> "$GITHUB_STEP_SUMMARY"
+          scripts/ci/summary.sh "ESLint" "${{ steps.eslint.outcome }}" eslint.ci.log
+          scripts/ci/summary.sh "Stylelint" "${{ steps.stylelint.outcome }}" stylelint.ci.log
+          scripts/ci/summary.sh "Release rules" "${{ steps.release-rules.outcome }}" release-rules.ci.log
+
+  test:
+    name: 🐳 Tests in Docker (API, web, E2E)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+
+      # The PHP 8.5 image takes minutes to compile; cache it until the Dockerfile or its configs change.
+      - name: Cache Laravel Docker image
+        id: image-cache
+        uses: actions/cache@v6
+        with:
+          path: /tmp/laravel-image.tar
+          key: laravel-image-${{ hashFiles('Docker/Laravel/**', 'talkila.backend/composer.json', 'talkila.backend/composer.lock') }}
+
+      - name: Build Laravel image (PHP 8.5)
+        if: steps.image-cache.outputs.cache-hit != 'true'
+        run: |
+          docker build -f Docker/Laravel/Dockerfile -t "$LARAVEL_IMAGE" .
+          docker save "$LARAVEL_IMAGE" -o /tmp/laravel-image.tar
+
+      - name: Load cached Laravel image
+        if: steps.image-cache.outputs.cache-hit == 'true'
+        run: docker load -i /tmp/laravel-image.tar
+
+      - name: Start the stack (nginx, Laravel, MariaDB 11.8, Redis)
+        run: |
+          scripts/ci/prepare-env.sh
+          docker compose up -d --wait # no --build: reuse the cached Laravel image (nginx builds if missing)
+          docker compose exec -T laravel composer install --no-interaction --no-progress
+          docker compose exec -T laravel chown -R www-data:www-data storage bootstrap/cache
+          # As www-data (php-fpm's user): files it creates (logs, compiled views) must stay writable for the site.
+          docker compose exec -T -u www-data laravel php artisan migrate --force --seed
+
+      - name: PHPUnit — API
+        id: api
+        run: docker compose exec -T -u www-data laravel vendor/bin/phpunit --testsuite Api --colors=never | tee php-api.ci.log
+
+      - name: PHPUnit — web routes
+        id: web
+        if: ${{ !cancelled() }}
+        run: docker compose exec -T -u www-data laravel vendor/bin/phpunit --testsuite Web --colors=never | tee php-web.ci.log
+
+      - uses: actions/setup-node@v7
+        if: ${{ !cancelled() }}
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install Playwright
+        id: playwright
+        if: ${{ !cancelled() }}
+        run: |
+          npm ci
+          echo "version=$(node -p "require('@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        id: browser-cache
+        if: ${{ !cancelled() }}
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright.outputs.version }}
+
+      - name: Install Chromium
+        if: ${{ !cancelled() }}
+        run: |
+          if [[ "${{ steps.browser-cache.outputs.cache-hit }}" == "true" ]]; then
+            npx playwright install-deps chromium
+          else
+            npx playwright install --with-deps chromium
+          fi
+
+      - name: E2E (Playwright, desktop + mobile)
+        id: e2e
+        if: ${{ !cancelled() }}
+        run: npx playwright test | tee e2e.ci.log
+
+      - name: Laravel log on failure
+        if: ${{ failure() }}
+        run: docker compose exec -T laravel sh -c 'tail -n 100 storage/logs/laravel-*.log' || true
+
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Summary
+        if: ${{ !cancelled() }}
+        run: |
+          echo "## 🐳 Tests (PHP $(docker compose exec -T laravel php -r 'echo PHP_VERSION;'), MariaDB 11.8)" >> "$GITHUB_STEP_SUMMARY"
+          scripts/ci/summary.sh "PHPUnit — API" "${{ steps.api.outcome }}" php-api.ci.log
+          scripts/ci/summary.sh "PHPUnit — web routes" "${{ steps.web.outcome }}" php-web.ci.log
+          scripts/ci/summary.sh "Playwright (desktop + mobile)" "${{ steps.e2e.outcome }}" e2e.ci.log
+
+      # Release tags only: the bundle is built here, from the image the tests just passed in, and deployed as-is.
+      - name: Build release bundle
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          scripts/build-release.sh release
+          tar -czf release.tar.gz release
+
+      - uses: actions/upload-artifact@v7
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: release
+          path: release.tar.gz
+          retention-days: 7
+          if-no-files-found: error
+
+  release:
+    name: 🏷️ Release check
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # all tags and master, to compare versions and write release notes
+
+      - name: Validate tag (version bump, on master)
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+          MAIN_BRANCH_REF: origin/master
+        run: scripts/ci/check-release.sh
+
+  deploy:
+    name: 🚀 Deploy to talkila.blazingsun.space
+    needs: [lint, test, release]
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-24.04
+    environment:
+      name: production
+      url: https://talkila.blazingsun.space/
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: What is being deployed
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          line="Deploying $RELEASE_TAG (commit ${GITHUB_SHA:0:7}, by @$ACTOR)"
+          echo "$line"
+          echo "## 🚀 $line" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: release
+
+      - name: Unpack release bundle
+        run: tar -xzf release.tar.gz
+
+      - name: Deploy over SSH (maintenance → rsync changed files → migrate → live → smoke test)
+        env:
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_PORT: ${{ vars.SSH_PORT }}
+          SSH_USER: ${{ vars.SSH_USER }}
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          key="$(mktemp)"
+          trap 'rm -f "$key"' EXIT
+          chmod 600 "$key"
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          SSH_KEY_FILE="$key" scripts/deploy.sh

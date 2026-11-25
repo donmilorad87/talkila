@@ -11,8 +11,9 @@ window.Echo = new Echo({
     wsHost: document.getElementById('socketServerUrlShort').textContent.trim(),
     wssPort: document.getElementById('socketServerPort').value,
     forceTLS: true,
-    key: 'ABCDEF',
-    cluster: 'mt1',
+    // From .env via configuration_parameters.blade.php: Reverb locally, Pusher Channels in production.
+    key: document.getElementById('pusherAppKey').value,
+    cluster: document.getElementById('pusherAppCluster').value,
     enabledTransports: ['ws', 'wss']
 });
 

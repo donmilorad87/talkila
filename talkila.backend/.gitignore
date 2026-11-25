@@ -16,8 +16,6 @@ docs/
 documents_marko/
 /public/.well-known
 /public/assets/images/user/
-public/build/lang/
-resources/lang/
 .env-localhost
 .env-live
 .env.com
@@ -38,3 +36,4 @@ storage/New folder/storage2.rar
 .early.coverage
 .env.*
 !*.example
+/.phpunit.cache/

@@ -4,3 +4,13 @@
 !*.example
 talkila.backend/.env
 talkila.backend/.env.docker
+
+# CI tooling
+node_modules/
+playwright-report/
+test-results/
+
+# Deploy artifacts (scripts/build-release.sh, scripts/deploy.sh)
+release/
+release.tar.gz
+rsync.log

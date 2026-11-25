@@ -9,7 +9,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Directory | Purpose |
 |-----------|---------|
 | `talkila.backend/` | Combined Laravel 12 app (main site + Twilio call server) |
-| `Docker/` | Docker infrastructure (Nginx, Laravel, Postgres, configs) |
+| `Docker/` | Docker infrastructure (Nginx, Laravel, MariaDB init, configs) |
+| `scripts/`, `deploy/`, `.github/` | CI/CD: release bundle, SSH deploy, workflow (see `docs/DEPLOYMENT.md`) |
+| `tests/e2e/` | Playwright E2E tests (root `package.json`) |
 
 ## Docker Development
 
@@ -19,22 +21,23 @@ docker compose up --build -d
 
 # Served via ~/Desktop/gambling/reverse-proxy (talkila binds 127.0.0.8). Hosts: "192.168.0.109 talkila.local"
 # App:          https://talkila.local
-# pgAdmin:      https://talkila.local/pgadmin/   (admin@local.talkila.com / admin)
+# phpMyAdmin:   https://talkila.local/phpmyadmin/ (server mariadb, credentials from .env)
 # Supervisord:  https://talkila.local/supervisor/ (admin / talkila)
 
-# Run artisan inside container
-docker compose exec laravel php artisan <command>
+# Run artisan inside container — ALWAYS as www-data: root-created logs/views break php-fpm (HTTP 500)
+docker compose exec -u www-data laravel php artisan <command>
 
 # Composer
 docker compose exec laravel composer <command>
 
-# Run tests
-docker compose exec laravel vendor/bin/phpunit
-docker compose exec laravel vendor/bin/phpunit --filter=TestClassName
+# Run tests (PHPUnit uses the talkila_test database; TestCase refuses any DB not named *_test)
+docker compose exec -u www-data laravel vendor/bin/phpunit --testsuite Api,Web
+npx playwright test                     # E2E against the running stack
+npm run lint                            # ESLint + Stylelint on talkila.backend/public (report-only in CI)
 
 # Migrations
-docker compose exec laravel php artisan migrate
-docker compose exec laravel php artisan db:seed
+docker compose exec -u www-data laravel php artisan migrate
+docker compose exec -u www-data laravel php artisan db:seed
 
 # Logs
 docker compose logs -f laravel
@@ -46,11 +49,11 @@ docker compose up --build -d
 
 ### Docker Architecture
 
-- **Nginx** — SSL termination (self-signed for local.talkila.com), reverse proxy to PHP-FPM, pgAdmin, Supervisord, and WebSockets
-- **Laravel** (PHP 8.4-FPM) — Supervisord manages: php-fpm, 2x queue workers (Redis), scheduler (every minute), Reverb WebSocket server (port 6001)
-- **PostgreSQL 16** — Database (migrated from MySQL; DB_CONNECTION=pgsql)
+- **Nginx** — SSL termination (self-signed for local.talkila.com), reverse proxy to PHP-FPM, phpMyAdmin, Supervisord, and WebSockets
+- **Laravel** (PHP 8.5-FPM, same as production) — Supervisord manages: php-fpm, 2x queue workers (Redis), scheduler (every minute), Reverb WebSocket server (port 6001)
+- **MariaDB 11.8** — Database, same engine/version as production (DB_CONNECTION=mysql)
 - **Redis 7** — Cache, sessions, queue
-- **pgAdmin** — Database management UI
+- **phpMyAdmin** — Database management UI
 
 ## Common Commands
 
@@ -77,10 +80,10 @@ StyleCI with Laravel preset (`.styleci.yml`). No local linter configured.
 
 ### Tech Stack
 
-- **Laravel 12.53** on **PHP 8.4**
-- **PostgreSQL 16** (migrated from MySQL)
+- **Laravel 12.53** on **PHP 8.5**
+- **MariaDB 11.8** (production: Hostinger, same version)
 - **Redis 7** for cache/queue/sessions
-- **Laravel Reverb** for WebSockets (replaced beyondcode/laravel-websockets)
+- **Pusher Channels** (cluster eu) for WebSockets, locally and in production. `PUSHER_HOST` empty = Pusher; set it only to use a self-hosted Reverb server instead
 - **Spatie MediaLibrary v11** for file/image uploads
 - **OpCodes Log Viewer v3** (replaced arcanedev/log-viewer)
 
@@ -170,19 +173,25 @@ Pattern: **Event → Job → Mail**
 
 ## Key Environment Variables
 
-- `DB_CONNECTION=pgsql`, `DB_HOST=postgres` — PostgreSQL via Docker
+- `DB_CONNECTION=mysql`, `DB_HOST=mariadb` — MariaDB via Docker
 - `REDIS_HOST=redis` — Redis for cache/queue/sessions
 - `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_API_SID`, `TWILIO_API_SECRET`
 - `STRIPE_KEY`, `STRIPE_SECRET`, `PAYPAL_*`
 - `GOOGLE_*`, `FACEBOOK_*`, `APPLE_*`, `LINKEDIN_*` — Social OAuth
 - `FIREBASE_ACCESS_KEY`, `APNS_TOPIC`, `APNS_CERT_NAME` — Push notifications
-- `PUSHER_*` — WebSocket config (Laravel Reverb server)
+- `PUSHER_*` — Pusher Channels app (cluster eu); CI uses BROADCAST_DRIVER=log
 
 ## Database Notes
 
-- **PostgreSQL 16** (migrated from MySQL). Migrations directory is currently empty — fresh migrations need to be created.
-- Raw SQL in controllers still uses MySQL-specific functions (`IF()`, `DATE_FORMAT()`, `CONVERT_TZ()`, `CAST AS DOUBLE`) — these need PostgreSQL equivalents before those routes work.
-- Affected files: ~15 admin controllers, 3 models (`User`, `Talk`, `Payout`).
+- **MariaDB 11.8** locally (Docker), in CI and in production. All 216 migrations and the seeders run on it.
+- Migrations must stay database-agnostic: use the schema builder (`->change()`), never engine-specific raw SQL.
+
+## CI/CD
+
+- `.github/workflows/ci-cd.yml`: PR / push to master → lint (report-only) + PHPUnit + Playwright inside the Docker image; tag `vX.Y.Z` → also release check + deploy.
+- Deploy = `scripts/build-release.sh` (git-tracked files + `composer --no-dev`) then `scripts/deploy.sh` (artisan down → rsync changed files over SSH → migrate/caches → up → smoke test). Never touches `.env`, `storage/`, user uploads.
+- Production: https://talkila.blazingsun.space (Hostinger, PHP 8.5). Root `.htaccess` = `deploy/root.htaccess` (serves `public/`). Setup: `docs/DEPLOYMENT.md`.
+- Translations (`resources/lang`, `public/build/lang`) are committed on purpose: they are runtime files with no generator.
 
 ## PSR-4 Warnings
 

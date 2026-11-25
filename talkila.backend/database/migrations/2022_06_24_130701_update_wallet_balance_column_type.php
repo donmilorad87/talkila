@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class UpdateWalletBalanceColumnType extends Migration
@@ -14,7 +13,9 @@ class UpdateWalletBalanceColumnType extends Migration
      */
     public function up()
     {
-        DB::statement('ALTER TABLE users ALTER COLUMN wallet_balance TYPE DOUBLE PRECISION');
+        Schema::table('users', function (Blueprint $table) {
+            $table->double('wallet_balance')->default(0)->change();
+        });
     }
 
     /**
@@ -24,6 +25,8 @@ class UpdateWalletBalanceColumnType extends Migration
      */
     public function down()
     {
-        DB::statement('ALTER TABLE users ALTER COLUMN wallet_balance TYPE BIGINT');
+        Schema::table('users', function (Blueprint $table) {
+            $table->bigInteger('wallet_balance')->unsigned()->default(0)->change();
+        });
     }
 }

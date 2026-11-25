@@ -1,0 +1,1 @@
+window.i18n = {"Date":"D\u00e1tum","The list of logs is empty!":"A napl\u00f3k list\u00e1ja \u00fcres!","All":"\u00d6sszes","Emergency":"V\u00e9szhelyzet","Alert":"Riaszt\u00e1s","Critical":"Kritikus","Error":"Hiba","Warning":"Figyelmeztet\u00e9s","Notice":"\u00c9rtes\u00edt\u00e9s","Info":"Inform\u00e1ci\u00f3","Debug":"Hibakeres\u00e9s"};

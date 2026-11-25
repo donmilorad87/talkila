@@ -15,7 +15,7 @@ services:
       - ./Docker/Nginx/ssl:/etc/nginx/ssl:ro
     depends_on:
       - laravel
-      - pgadmin
+      - phpmyadmin
     networks:
       - talkila-network
     restart: unless-stopped
@@ -24,15 +24,17 @@ services:
     build:
       context: .
       dockerfile: Docker/Laravel/Dockerfile
+    # CI builds this image once (cached) and sets LARAVEL_IMAGE, so compose reuses it instead of rebuilding.
+    image: ${LARAVEL_IMAGE:-talkila-laravel:local}
     container_name: talkila-laravel
     volumes:
       - ./talkila.backend:/var/www/html:cached
       - ./Docker/Laravel/supervisord.conf:/etc/supervisor/conf.d/supervisord.conf:ro
       - ./Docker/Laravel/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
     environment:
-      - DB_CONNECTION=pgsql
-      - DB_HOST=postgres
-      - DB_PORT=5432
+      - DB_CONNECTION=mysql
+      - DB_HOST=mariadb
+      - DB_PORT=3306
       - DB_DATABASE=${DB_DATABASE:-talkila}
       - DB_USERNAME=${DB_USERNAME:-talkila}
       - DB_PASSWORD=${DB_PASSWORD:-talkila_secret}
@@ -40,9 +42,8 @@ services:
       - CACHE_DRIVER=redis
       - SESSION_DRIVER=redis
       - QUEUE_CONNECTION=redis
-      - BROADCAST_DRIVER=pusher
     depends_on:
-      postgres:
+      mariadb:
         condition: service_healthy
       redis:
         condition: service_healthy
@@ -50,37 +51,38 @@ services:
       - talkila-network
     restart: unless-stopped
 
-  postgres:
-    image: postgres:16-alpine
-    container_name: talkila-postgres
+  # Same engine and major version as production (Hostinger MariaDB 11.8).
+  mariadb:
+    image: mariadb:11.8
+    container_name: talkila-mariadb
     environment:
-      POSTGRES_DB: ${DB_DATABASE:-talkila}
-      POSTGRES_USER: ${DB_USERNAME:-talkila}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-talkila_secret}
+      MARIADB_DATABASE: ${DB_DATABASE:-talkila}
+      MARIADB_USER: ${DB_USERNAME:-talkila}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-talkila_secret}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-talkila_root}
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - mariadb-data:/var/lib/mysql
+      - ./Docker/MariaDB:/docker-entrypoint-initdb.d:ro
     ports:
-      - "127.0.0.8:5432:5432"
+      - "127.0.0.8:3306:3306"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-talkila}"]
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 5s
-      timeout: 3s
-      retries: 5
+      timeout: 5s
+      retries: 30
     networks:
       - talkila-network
     restart: unless-stopped
 
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    container_name: talkila-pgadmin
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    container_name: talkila-phpmyadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@talkila.local}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
-      SCRIPT_NAME: /pgadmin
-      PGADMIN_SERVER_JSON_FILE: /pgadmin4/servers.json
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-      - ./Docker/pgAdmin/servers.json:/pgadmin4/servers.json:ro
+      PMA_HOST: mariadb
+      PMA_ABSOLUTE_URI: https://talkila.local/phpmyadmin/
+      UPLOAD_LIMIT: 256M
+    depends_on:
+      - mariadb
     networks:
       - talkila-network
     restart: unless-stopped
@@ -101,8 +103,7 @@ services:
     restart: unless-stopped
 
 volumes:
-  postgres-data:
-  pgadmin-data:
+  mariadb-data:
   redis-data:
 
 networks:

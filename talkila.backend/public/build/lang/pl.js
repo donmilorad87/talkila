@@ -1,0 +1,1 @@
+window.i18n = {"Date":"Data","The list of logs is empty!":"Lista log\u00f3w jest pusta!","All":"Wszystkie","Emergency":"Awaryjne","Alert":"Alerty","Critical":"Krytyczne","Error":"B\u0142\u0119dy","Warning":"Ostrze\u017cenia","Notice":"Warte uwagi","Info":"Informacje","Debug":"Debug"};

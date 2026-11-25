@@ -1,4 +1,4 @@
-FROM php:8.4-fpm
+FROM php:8.5-fpm
 
 # System dependencies
 RUN apt-get update && apt-get install -y \
@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     zip \
     unzip \
-    libpq-dev \
+    mariadb-client \
     libzip-dev \
     libpng-dev \
     libjpeg62-turbo-dev \
@@ -21,13 +21,11 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \
         pdo \
-        pdo_pgsql \
-        pgsql \
+        pdo_mysql \
         mbstring \
         zip \
         gd \
         bcmath \
-        opcache \
         pcntl \
         sockets \
         xml \
@@ -39,8 +37,8 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Node.js 20 LTS (for frontend assets)
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+# Install Node.js 22 LTS (for frontend assets)
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install -y nodejs \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -61,13 +59,13 @@ WORKDIR /var/www/html
 
 # Install dependencies (cached layer - only re-runs when composer files change)
 COPY talkila.backend/composer.json talkila.backend/composer.lock* ./
-RUN composer install --no-scripts --no-autoloader --prefer-dist 2>/dev/null || true
+RUN composer install --no-scripts --no-autoloader --prefer-dist --no-interaction
 
 # Copy application code
 COPY talkila.backend/ .
 
 # Finalize composer
-RUN composer dump-autoload --optimize 2>/dev/null || true
+RUN composer dump-autoload --optimize
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public/assets/images 2>/dev/null || true \

@@ -1,0 +1,1 @@
+window.i18n = {"Date":"Kuup\u00e4ev","The list of logs is empty!":"Logide nimekiri on t\u00fchi!","All":"K\u00f5ik","Emergency":"Erakorraline","Alert":"H\u00e4ire","Critical":"Kriitiline","Error":"Viga","Warning":"Hoiatus","Notice":"Teade","Info":"Info","Debug":"Silumine"};
