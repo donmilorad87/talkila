@@ -1065,7 +1065,7 @@ class BookingsApiController extends Controller
                 $socketParticipantTwoRequest['booking_id']          = $newBooking->id;
                 $socketParticipantTwoRequest['user_id']             = $clientData->id;
                 $socketParticipantTwoRequest['name_of_user']        = $talk['anonym_call'] ? 'Anonym' : $clientData->name;
-                $socketParticipantTwoRequest['user_image']          = $talk['anonym_call'] ? env('USER_DEFAULT_IMAGE') : $clientData->profile_picture;
+                $socketParticipantTwoRequest['user_image']          = $talk['anonym_call'] ? config('app.default_image') : $clientData->profile_picture;
                 $socketParticipantTwoRequest['firebase_id']         = (($clientData->device_type == 'ios') ? $clientData->voip_token : $clientData->firebase_id);
                 $socketParticipantTwoRequest['twilio_access_token'] = null;
                 $socketParticipantTwoRequest['is_active']           = ParticipantStates::INACTIVE;
@@ -1670,11 +1670,11 @@ class BookingsApiController extends Controller
                     $participant = User::withTrashed()->find($participantBooking['participant_user_id']);
 
                     if ($participantBooking['anonym']) {
-                        $profile_picture = env('USER_DEFAULT_IMAGE');
+                        $profile_picture = config('app.default_image');
                         $profile_name    = 'Anonymous';
                     } else {
                         if (empty($participant->profile_picture)) {
-                            $profile_picture = env('USER_DEFAULT_IMAGE');
+                            $profile_picture = config('app.default_image');
                         } else {
                             $profile_picture = $participant->profile_picture;
                         }

@@ -141,7 +141,7 @@
                                 <div class="firsterShare copyText">
                                     <input type="text" readonly="readonly" id="profile-path-holder1"
                                         class="profile-path-holder"
-                                        value="{{ env('APP_FRONTEND_URL') . '/' . ($userData['username'] ?? '') }}">
+                                        value="{{ config('app.frontend_url') . '/' . ($userData['username'] ?? '') }}">
                                     <p class="copyText copyTexter">
                                         @include('frontend.partials.svg.icons.copy')
                                     </p>

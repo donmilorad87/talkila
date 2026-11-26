@@ -16,12 +16,12 @@ class AdyenPaymentController
         // Set your X-API-KEY with the API key from the Customer Area.
         $client = new \Adyen\Client();
         $client->setEnvironment(\Adyen\Environment::TEST);
-        $client->setXApiKey(env('YOUR_X_API_KEY'));
+        $client->setXApiKey(config('talkila.adyen.x_api_key'));
 
         return $client;
     }
 
-    public function adyenPaymentMethods(Request $request = null)
+    public function adyenPaymentMethods(?Request $request = null)
     {
         try {
             $client = $this->initializeAdyen();
@@ -29,7 +29,7 @@ class AdyenPaymentController
 
             if($request == null) {
                 $params = array(
-                    "merchantAccount" => env('YOUR_MERCHANT_ACCOUNT'),
+                    "merchantAccount" => config('talkila.adyen.merchant_account'),
                     "countryCode" => "DE",
                     "shopperLocale" => "de-DE",
                     "amount" => array(
@@ -143,7 +143,7 @@ class AdyenPaymentController
             $bookingPaymentDetailsData = $this->getBookingPaymentDetailsDataForAdyen($bookingId);
 
             $params = array(
-                "merchantAccount"    => env('YOUR_MERCHANT_ACCOUNT'),
+                "merchantAccount"    => config('talkila.adyen.merchant_account'),
                 "modificationAmount" => [
                     "value" => doubleval($bookingPaymentDetailsData->amount_value),
                     "currency" => 'EUR'
@@ -172,7 +172,7 @@ class AdyenPaymentController
             $bookingPaymentDetailsData = $this->getBookingPaymentDetailsDataForAdyen($bookingId);
 
             $params = array(
-                "merchantAccount"   => env('YOUR_MERCHANT_ACCOUNT'),
+                "merchantAccount"   => config('talkila.adyen.merchant_account'),
                 "originalReference" => $bookingPaymentDetailsData->payment_reference
             );
             Log::notice('::adyenCancelPayment::');
@@ -198,7 +198,7 @@ class AdyenPaymentController
             $bookingPaymentDetailsData = $this->getBookingPaymentDetailsDataForAdyen($bookingId);
 
             $params = array(
-                "merchantAccount"   => env('YOUR_MERCHANT_ACCOUNT'),
+                "merchantAccount"   => config('talkila.adyen.merchant_account'),
                 "originalReference" => $bookingPaymentDetailsData->payment_reference
             );
             Log::notice('::adyenCancelOrRefundPayment::');
@@ -224,7 +224,7 @@ class AdyenPaymentController
             $bookingPaymentDetailsData = $this->getBookingPaymentDetailsDataForAdyen($bookingId);
 
             $params = array(
-                "merchantAccount"       => env('YOUR_MERCHANT_ACCOUNT'),
+                "merchantAccount"       => config('talkila.adyen.merchant_account'),
                 "modificationAmount" => [
                     "value" => doubleval($bookingPaymentDetailsData->amount_value),
                     "currency" => 'EUR'

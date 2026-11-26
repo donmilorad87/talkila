@@ -49,8 +49,8 @@ class FeedbackNew extends Mailable
         $address    = 'mail@talkila.com';
         $subject    = __('FEEDBACK_NEW_SUBJECT', ['talk' => $this->courseName]);
         $name       = 'Talkila';
-        $userUrl    = env('APP_FRONTEND_URL').'/'. $this->feedbackUserName;
-        $courseUrl  = env('APP_FRONTEND_URL').'/booking-summary/'. $this->courseId ;
+        $userUrl    = config('app.frontend_url').'/'. $this->feedbackUserName;
+        $courseUrl  = config('app.frontend_url').'/booking-summary/'. $this->courseId ;
         $message    = $this->getMessage($userUrl, $courseUrl);
 
         EmailHistoriesLogController::createHistoryEmailLog($this->email_mentor, $subject, $message);

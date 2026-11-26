@@ -135,7 +135,7 @@ class AuthController extends Controller
                     'affiliates_sub_affiliate_id' => $subAffiliate->affiliate_id ?? null,
                     'affiliates_valid_until'      => isset($subAffiliate->id) ? Carbon::now()->addYears(1) : Carbon::now(),
                     'password'                    => bcrypt($request->password),
-                    'profile_picture_tmp'         => $partnerUser ? $request->image : env('USER_DEFAULT_IMAGE'),
+                    'profile_picture_tmp'         => $partnerUser ? $request->image : config('app.default_image'),
                     'vat_id'                      => Country::GERMANY,
                     'timezone'                    => $request->timezone_offset ?? $request->header('Time-Zone-Offset-UTC', 0),
                     'partner_id'                  => $partnerUser ? ($partnerUser->is_unique ? $partnerUser->partner_id : null) : null,
@@ -167,7 +167,7 @@ class AuthController extends Controller
                 Log::notice('::AuthController::register::$user');
                 Log::notice($user);
 
-                $verificationMessage = env('APP_FRONTEND_URL') . '/verification-account?id=' . $user->id . '&hash=' . $user->verification_token . '&user_email=' . $request->email;
+                $verificationMessage = config('app.frontend_url') . '/verification-account?id=' . $user->id . '&hash=' . $user->verification_token . '&user_email=' . $request->email;
 
 //            $emailResponse       = EmailsHolderController::accountActivation('english', $request->email, $request->username, 'moj-url', $verificationMessage, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'));
                 $emailResponse = Mail::to($request->email)->queue(
@@ -331,7 +331,7 @@ class AuthController extends Controller
                         'google_details'      => json_encode($socialiteUser),
                         'login_type'          => User::LOGIN_TYPE['gmail'],
                         'name'                => $partnerUser ? $request->name : $socialiteUser->getName(),
-                        'profile_picture_tmp' => env('USER_DEFAULT_IMAGE'),
+                        'profile_picture_tmp' => config('app.default_image'),
                     ];
                 } elseif ($driver === self::SOCIALITE_TYPE_FACEBOOK) {
                     $fields = [
@@ -339,7 +339,7 @@ class AuthController extends Controller
                         'facebook_details'    => json_encode($socialiteUser),
                         'login_type'          => User::LOGIN_TYPE['facebook'],
                         'name'                => $partnerUser ? $request->name : $socialiteUser->getName(),
-                        'profile_picture_tmp' => env('USER_DEFAULT_IMAGE'),
+                        'profile_picture_tmp' => config('app.default_image'),
                     ];
                 } else {
                     $fields = [
@@ -347,7 +347,7 @@ class AuthController extends Controller
                         'apple_details'       => json_encode($apple_response) ?: null,
                         'login_type'          => User::LOGIN_TYPE['apple'],
                         'name'                => $request->name,
-                        'profile_picture_tmp' => env('USER_DEFAULT_IMAGE'),
+                        'profile_picture_tmp' => config('app.default_image'),
                     ];
                 }
 

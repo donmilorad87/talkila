@@ -101,7 +101,7 @@
                                     @if ($userData['id'] === $item['teacher_id'])
                                         @foreach ($item['booking_participants'] as $participant)
                                             <div class="profile-wrap">
-                                                <img src="@if ($participant['profile_picture']) {{ $participant['profile_picture'] }}@else {{ env('USER_DEFAULT_IMAGE') }} @endif"
+                                                <img src="@if ($participant['profile_picture']) {{ $participant['profile_picture'] }}@else {{ config('app.default_image') }} @endif"
                                                     alt="{{ $participant['profile_name'] }}"
                                                     title="{{ $participant['profile_name'] }}" />
 
@@ -109,7 +109,7 @@
                                         @endforeach
                                     @else
                                         <div class="profile-wrap">
-                                            <img src="@if ($item['booking_participants'][0]['profile_picture']) {{ $item['booking_participants'][0]['profile_picture'] }}@else {{ env('USER_DEFAULT_IMAGE') }} @endif"
+                                            <img src="@if ($item['booking_participants'][0]['profile_picture']) {{ $item['booking_participants'][0]['profile_picture'] }}@else {{ config('app.default_image') }} @endif"
                                                 alt="{{ $item['teacher_username'] }}"
                                                 title="{{ $item['teacher_username'] }}" />
                                         </div>

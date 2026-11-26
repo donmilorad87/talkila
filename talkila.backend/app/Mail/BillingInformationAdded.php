@@ -62,7 +62,7 @@ class BillingInformationAdded extends Mailable
         $subject    = __('BILLING_CHANGED_SUBJECT');
         $name       = 'Talkila';
 
-        $bilingInformationUrl   = env('APP_FRONTEND_URL').'/settings/billing-informations';
+        $bilingInformationUrl   = config('app.frontend_url').'/settings/billing-informations';
         $message                = $this->getMessage();
 
         EmailHistoriesLogController::createHistoryEmailLog($this->email_mentor, $subject, $message);
@@ -83,7 +83,7 @@ class BillingInformationAdded extends Mailable
 
     public function getMessage()
     {
-        $bilingInformationUrl   = env('APP_FRONTEND_URL').'/settings/billing-informations';
+        $bilingInformationUrl   = config('app.frontend_url').'/settings/billing-informations';
         $markdown = Container::getInstance()->make(Markdown::class);
         $html = $markdown->render('emails.billing_information_added', [
             'original_full_name'    => $this->original_full_name,

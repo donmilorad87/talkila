@@ -12,7 +12,7 @@ class Notification
 {
     public function __construct()
     {
-        $this->accessKey = getenv("FIREBASE_ACCESS_KEY");
+        $this->accessKey = config('services.firebase_notification.access_key');
     }
 
     public function sendPushNotification($payload){

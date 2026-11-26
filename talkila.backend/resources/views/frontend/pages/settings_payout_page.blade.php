@@ -2,8 +2,8 @@
 @section('content')
     <div class="container">
         <div class="show-for-mobile">
-            <input type="hidden" id="appUrl" value="{{ env('APP_FRONTEND_URL') }}" />
-            <input type="hidden" id="settingsAppId" value="{{ env('PAYPAL_CLIENT_ID') }}" />
+            <input type="hidden" id="appUrl" value="{{ config('app.frontend_url') }}" />
+            <input type="hidden" id="settingsAppId" value="{{ config('paypal.client_id') }}" />
 
             @include('frontend.partials.components.mobile-page-navigation-header', [
                 'page_title' => __('PAYOUT'),

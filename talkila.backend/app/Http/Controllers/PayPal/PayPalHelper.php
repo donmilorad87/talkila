@@ -25,7 +25,7 @@ class PayPalHelper
     public function __construct()
     {
         $this->_http   = new HttpHelper;
-        $this->_apiUrl = env('PAYPAL_ENDPOINTS');
+        $this->_apiUrl = config('talkila.paypal.endpoints');
     }
 
     /**
@@ -35,7 +35,7 @@ class PayPalHelper
      */
     private function _setDefaultHeaders()
     {
-        $this->_http->addHeader("PayPal-Partner-Attribution-Id: " . env('SBN_CODE'));
+        $this->_http->addHeader("PayPal-Partner-Attribution-Id: " . config('talkila.paypal.sbn_code'));
     }
 
     /**
@@ -52,7 +52,7 @@ class PayPalHelper
         if ($resource == 'oauth2/token') {
             return $this->_apiUrl . ($version ?: "/v1/") . $resource;
         } else {
-            return $this->_apiUrl . "/" . ($version ?: env('PAYPAL_REST_VERSION')) . "/" . $resource;
+            return $this->_apiUrl . "/" . ($version ?: config('paypal.rest_version')) . "/" . $resource;
         }
     }
 
@@ -73,7 +73,7 @@ class PayPalHelper
         $this->_http->resetHelper();
         $this->_setDefaultHeaders();
         $this->_http->setUrl($this->_createApiUrl("oauth2/token"));
-        $this->_http->setAuthentication(env('PAYPAL_CLIENT_ID') . ":" . env('PAYPAL_SECRET'));
+        $this->_http->setAuthentication(config('paypal.client_id') . ":" . config('paypal.secret'));
         $this->_http->setBody("grant_type=client_credentials");
         $returnData   = $this->_http->sendRequest();
         $this->_token = $returnData['access_token'];
@@ -95,7 +95,7 @@ class PayPalHelper
         $this->_http->resetHelper();
         $this->_setDefaultHeaders();
         $this->_http->setUrl($this->_createApiUrl("oauth2/token"));
-        $this->_http->setAuthentication(env('PAYPAL_CLIENT_ID') . ":" . env('PAYPAL_SECRET'));
+        $this->_http->setAuthentication(config('paypal.client_id') . ":" . config('paypal.secret'));
         $this->_http->setBody("grant_type=authorization_code&code=$code");
         $returnData   = $this->_http->sendRequest();
         $this->_token = $returnData['access_token'];

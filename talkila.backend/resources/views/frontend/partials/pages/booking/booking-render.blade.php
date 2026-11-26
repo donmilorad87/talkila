@@ -184,7 +184,7 @@
 
                                             <div class="profile-wrap">
                                                 <img class="bookingParticipantImg"
-                                                    src="@if ($item['booking_participants'][0]['profile_picture']) {{ $item['booking_participants'][0]['profile_picture'] }}@else {{ env('USER_DEFAULT_IMAGE') }} @endif"
+                                                    src="@if ($item['booking_participants'][0]['profile_picture']) {{ $item['booking_participants'][0]['profile_picture'] }}@else {{ config('app.default_image') }} @endif"
                                                     alt="{{ $item['booking_participants'][0]['profile_name'] }}"
                                                     title="{{ $item['booking_participants'][0]['profile_name'] }}" />
                                                 <span></span>

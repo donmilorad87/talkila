@@ -24,7 +24,7 @@ class PaymentController extends Controller
             Log::notice($request);
             $user = $request->user();
 
-            $paymentGateway = $request->payment_type ?? env('PAYMENT_GATEWAY');
+            $paymentGateway = $request->payment_type ?? config('talkila.payment_gateway');
 
             switch ($paymentGateway) {
                 case self::PAYMENT['STRIPE']:

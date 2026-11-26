@@ -104,10 +104,10 @@
 
         <p class="mb16 wbba fl">
             @if (isset($talkData['description']) && !empty($talkData['description']))
-                @if (strlen($talkData['description']) > env('NUMBER_OF_CHAR_FOR_SHOW_MORE', 200))
+                @if (strlen($talkData['description']) > config('talkila.number_of_char_for_show_more', 200))
                     @php
-                        $first_200_chars = substr($talkData['description'], 0, env('NUMBER_OF_CHAR_FOR_SHOW_MORE', 200));
-                        $rest_chars = substr($talkData['description'], env('NUMBER_OF_CHAR_FOR_SHOW_MORE', 200));
+                        $first_200_chars = substr($talkData['description'], 0, config('talkila.number_of_char_for_show_more', 200));
+                        $rest_chars = substr($talkData['description'], config('talkila.number_of_char_for_show_more', 200));
                     @endphp
                     <div>
                         <p class="shortenDesc fl mb0">{{ $first_200_chars }} <span class="threeDots"> ... </span>

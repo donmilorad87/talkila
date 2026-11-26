@@ -69,7 +69,7 @@ class RegisterController extends Controller
             ]);
 
             // Send Verification message.
-            $verificationMessage = env('APP_FRONTEND_URL') . '/verification-account?id=' . $user->id . '&hash=' . $user->verification_token;
+            $verificationMessage = config('app.frontend_url') . '/verification-account?id=' . $user->id . '&hash=' . $user->verification_token;
             Mail::to($data['email'])->queue(new AccountActivation('en', $data['email'], $data['name'], 'moj-url', $verificationMessage, date('Y-m-d H:i:s')));
 
             DB::commit();

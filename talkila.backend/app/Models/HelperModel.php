@@ -267,7 +267,7 @@ class HelperModel extends Model
             'Authorization'         => "$tokenType $accessToken",
             'Application-Language'  => strtolower(App::getLocale())
 
-        ])->get(env('APP_BACKEND_URL', '') . '/notifications-unread-count', [
+        ])->get(config('app.appBackendServerUrl', '') . '/notifications-unread-count', [
         ]); */
 
         if (!empty($notificationsCount['data'])) {

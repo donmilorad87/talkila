@@ -47,7 +47,7 @@
     </ul>
     @if (Route::current()->getName() !== 'account_verification')
         @if(!$loggedinUserDatas['approved'])
-            <a class="btn cp" href="{{ env('ACCOUNT_VERIFICATION','/account-verification') }}" data-popup="uploadPopUp">
+            <a class="btn cp" href="{{ config('talkila.account_verification','/account-verification') }}" data-popup="uploadPopUp">
                 {{ __('PROFILE_VERIFICATION') }}</a>
         @endif
     @endif

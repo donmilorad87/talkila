@@ -29,7 +29,7 @@ class Helpers
     }
 
     public static function createAffiliateReferralLink(Request $request) {
-        return env('APP_URL_STRING') . '/lp/'. $request->user()->affiliate->subaffiliates->first()->tracking_id;
+        return config('talkila.app_url_string') . '/lp/'. $request->user()->affiliate->subaffiliates->first()->tracking_id;
     }
 
     public static function isLoggedIn()
@@ -46,7 +46,7 @@ class Helpers
 
         $loggedUserData = \auth()->user();
 
-        $shareLinks = ShareFacade::page(env('APP_URL').'/'.($loggedUserData->username ?? null))
+        $shareLinks = ShareFacade::page(config('app.url').'/'.($loggedUserData->username ?? null))
             ->facebook()
             ->twitter()
             ->linkedin('Extra linkedin summary can be passed here')
@@ -74,7 +74,7 @@ class Helpers
             'Authorization'         => "$tokenType $accessToken",
             'Application-Language'  => strtolower(App::getLocale()),
 
-        ])->get(env('APP_BACKEND_URL', '') . '/talk-categories', [
+        ])->get(config('app.appBackendServerUrl', '') . '/talk-categories', [
 
         ]); */
 

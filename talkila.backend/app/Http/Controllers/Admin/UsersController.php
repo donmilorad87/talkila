@@ -193,7 +193,7 @@ class UsersController extends Controller
 
             $user->save();
 
-            $verificationMessage = env('APP_FRONTEND_URL') . '/verification-account?id=' . $user->id . '&hash=' . $user->verification_token;
+            $verificationMessage = config('app.frontend_url') . '/verification-account?id=' . $user->id . '&hash=' . $user->verification_token;
 
 //            EmailsHolderController::accountActivation('en', $user->email, $user->name, $user->username_url, $verificationMessage, $user->created, $user->created_at);
             Mail::to($request->email)->queue(new AccountActivation($request->header('Application-Language', 'en'), $request->email, $request->name, 'moj-url', $verificationMessage, date('Y-m-d H:i:s')));
@@ -673,7 +673,7 @@ class UsersController extends Controller
             new TemplateId("d-2394f6d0066344a7a578bec47afc5637")
         );
 
-        $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+        $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
         try {
             $response = $sendgrid->send($email);
             if ($response) {

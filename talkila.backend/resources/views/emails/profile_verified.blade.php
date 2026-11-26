@@ -11,7 +11,7 @@
 <img style="margin-left: 10px; border-radius:12px;" src="{{ $teacher_profile_picture }}" alt="{{ $talk_teacher_username }}" />
 </a>
 @else
-<a href="{{env('APP_FRONTEND_URL')}}/{{$talk_teacher_username }}" style="min-width: 72px;margin-right: 16px;">
+<a href="{{config('app.frontend_url')}}/{{$talk_teacher_username }}" style="min-width: 72px;margin-right: 16px;">
 <img style="margin-left: 10px; border-radius:12px;" src="https://www.talkila.com/assets/images/avatar.svg" alt="{{ $talk_teacher_username }}" />
 </a>
 @endif

@@ -14,3 +14,6 @@ test-results/
 release/
 release.tar.gz
 rsync.log
+
+# Private deployment notes with credentials (never commit)
+/deploy.md

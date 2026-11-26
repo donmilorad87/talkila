@@ -81,7 +81,7 @@ class CreditCardController extends Controller
             'success' => false,
         ], 500);
 
-        switch (env('PAYMENT_GATEWAY')) {
+        switch (config('talkila.payment_gateway')) {
             case 'stripe':
                 $stripe   = new StripeController();
                 $payment_response = $stripe->addPaymentMethod($request)->getData(true);
@@ -125,7 +125,7 @@ class CreditCardController extends Controller
             'success' => false,
         ], 500);
 
-        switch (env('PAYMENT_GATEWAY')) {
+        switch (config('talkila.payment_gateway')) {
             case 'stripe':
                 $stripe   = new StripeController();
                 $response = $stripe->retrievePaymentMethods($request);
@@ -148,7 +148,7 @@ class CreditCardController extends Controller
             'success' => false,
         ], 500);
 
-        switch (env('PAYMENT_GATEWAY')) {
+        switch (config('talkila.payment_gateway')) {
             case 'stripe':
                 $stripe   = new StripeController();
                 $response = $stripe->addPaymentMethod($request);
@@ -168,7 +168,7 @@ class CreditCardController extends Controller
             'success' => false,
         ], 500);
 
-        switch (env('PAYMENT_GATEWAY')) {
+        switch (config('talkila.payment_gateway')) {
             case 'stripe':
                 $stripe   = new StripeController();
                 $response = $stripe->deletePaymentMethod($request);
@@ -188,7 +188,7 @@ class CreditCardController extends Controller
             'success' => false,
         ], 500);
 
-        switch (env('PAYMENT_GATEWAY')) {
+        switch (config('talkila.payment_gateway')) {
             case 'stripe':
                 $stripe   = new StripeController();
                 $response = $stripe->getSetupIntent($request);

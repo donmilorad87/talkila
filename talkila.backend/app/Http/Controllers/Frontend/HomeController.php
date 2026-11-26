@@ -638,7 +638,7 @@ class HomeController extends Controller
             "message" => __('RESET_PASSWORD_RESPONSE'),
         ];
 
-        /* $content = Http::post(env('APP_BACKEND_URL', '').'/forgot-password', [
+        /* $content = Http::post(config('app.appBackendServerUrl', '').'/forgot-password', [
             'lang'      => strtolower(App::getLocale()),
             'email'     => $request->input('email')
         ]); */

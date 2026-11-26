@@ -134,7 +134,7 @@
                             <div class="position-input">
                                 <div class="firsterShare">
                                     <input type="text" readonly="readonly" id="profile-path-holder1"
-                                        class="profile-path-holder copyText" value="{{ env('APP_FRONTEND_URL') . '/' . (auth()->user()->username ?? '') }}">
+                                        class="profile-path-holder copyText" value="{{ config('app.frontend_url') . '/' . (auth()->user()->username ?? '') }}">
                                     <p class="copyText copyTexter">
                                         @include('frontend.partials.svg.icons.copy')
                                     </p>
@@ -143,7 +143,7 @@
                                     <div class="secShare">
                                         <input type="text" readonly="readonly" id="profile-path-holder2"
                                             class="profile-path-holder"
-                                                value="{{ env('APP_URL') . '/' . $talk_details['username'] . '/talk/' . $talk_id }}">
+                                                value="{{ config('app.url') . '/' . $talk_details['username'] . '/talk/' . $talk_id }}">
                                         <p class="copyText copyTexter">
                                             @include('frontend.partials.svg.icons.copy')
                                         </p>

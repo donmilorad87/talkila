@@ -12,7 +12,7 @@
                                 @if($item['anonym'])
                                     @include('frontend.partials.svg.icons.anonymous-black')
                                 @elseif(!empty($item['profile_picture']))
-                                    <img class="rounderReviewImage mr16" src="@if (isset($item['profile_picture']) && !empty($item['profile_picture'])) {{ $item['profile_picture'] }} @else {{ env('USER_DEFAULT_IMAGE') }} @endif">
+                                    <img class="rounderReviewImage mr16" src="@if (isset($item['profile_picture']) && !empty($item['profile_picture'])) {{ $item['profile_picture'] }} @else {{ config('app.default_image') }} @endif">
                                 @else
                                     @include('frontend.partials.svg.icons.no-profile-picture-shadow')
                                 @endif

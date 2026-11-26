@@ -34,7 +34,7 @@ class OAuthTokenIsValid
             'Authorization'         => "$tokenType $accessToken",
             'Application-Language'  =>  strtolower(App::getLocale())
 
-        ])->post(env('APP_BACKEND_URL', '') . '/user');
+        ])->post(config('app.appBackendServerUrl', '') . '/user');
 
         if ($responseLoggedInUser->failed()) {
             Session::flash('alert-danger', 'Something went wrong!');

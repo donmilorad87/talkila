@@ -83,7 +83,7 @@ class RegisterController extends Controller
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        $verificationMessage = env('APP_FRONTEND_URL') . '/verification-account?id=' . $user->id . '&hash=' . $user->verification_token;
+        $verificationMessage = config('app.frontend_url') . '/verification-account?id=' . $user->id . '&hash=' . $user->verification_token;
 
 //        EmailsHolderController::accountActivation('english', $data['email'], $data['name'], 'moj-url', $verificationMessage, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'));
         Mail::to($data['email'])->queue(new AccountActivation('en', $data['email'], $data['name'], 'moj-url', $verificationMessage, date('Y-m-d H:i:s')));

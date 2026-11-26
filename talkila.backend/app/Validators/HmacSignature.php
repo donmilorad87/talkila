@@ -133,7 +133,7 @@ class HmacSignature implements SignatureValidator
         $isRequestValid = true;
 
         // YOUR_HMAC_KEY from the Customer Area
-        $hmacKey = env('WEBHOOK_CLIENT_SECRET');
+        $hmacKey = config('talkila.webhook_client_secret');
         $notificationRequest = $request->all();
 
         // TEST

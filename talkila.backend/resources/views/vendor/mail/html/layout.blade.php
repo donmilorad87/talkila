@@ -42,7 +42,7 @@ width: 100% !important;
 <tr>
 <td class="content-cell">
 <p class="text-center">
-<a href="{{  env('APP_FRONTEND_URL') }}">
+<a href="{{  config('app.frontend_url') }}">
 <img src="{{ asset('images/TalkilaEmailLogo.png') }}" />
 </a>
 </p>

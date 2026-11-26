@@ -127,8 +127,8 @@ class WalletController extends Controller
 {
     public function __construct()
     {
-        $this->stripeUrl = getenv("STRIPE_API_BASE_URl");
-        $this->stripeKey = getenv("STRIPE_SECRET_KEY");
+        $this->stripeUrl = config('talkila.stripe_api_base_url');
+        $this->stripeKey = config('services.stripe.secret');
     }
 
     public function paypalCreateOrder(Request $request)

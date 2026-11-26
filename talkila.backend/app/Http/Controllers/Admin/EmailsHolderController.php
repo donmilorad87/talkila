@@ -45,7 +45,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-b29957cbf0f0489ebf2bb5c5e82c2e94")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -93,7 +93,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-372218f03bbd4774942bc287c176b7e5")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -151,7 +151,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-8547f92c902e47f6b30450d50acd5af3")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -209,7 +209,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-732cbb36815c4fafaa0b358c96441505")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -267,7 +267,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-2412ad43403a400da2a1f0855280da23")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -325,7 +325,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-b2e766be04304a14aae5e292a5dc2280")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -389,7 +389,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-8547f92c902e47f6b30450d50acd5af3")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -437,7 +437,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-f4f0e9853c234c83950320a906bbadb1")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -488,7 +488,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-d6b96ab50731430d92bd19a63b1addc1")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -559,7 +559,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-e854fdba460b4c4586258b37179e4451")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -619,7 +619,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-82b2a52a9ade49679a348aa250ff7574")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -679,7 +679,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-7bbf32c2d6bd435d9b5e003d76b33765")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -733,7 +733,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-fb969723029941b58f1f3f822ac8de5e")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -800,7 +800,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-ed141983d08e45f684edc38afac76f41")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -847,7 +847,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-7bbf32c2d6bd435d9b5e003d76b33765")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -900,7 +900,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-1b222dc6c5684af591ba3ddc2d805953")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -952,7 +952,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-caa88b9623fe4e47bb0c7845070284d8")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {
@@ -1001,7 +1001,7 @@ class EmailsHolderController extends Controller
                 new TemplateId("d-9e55e39bff324e96a0554bb81e6a830b")
             );
 
-            $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+            $sendgrid = new \SendGrid(config('talkila.sendgrid_api_key'));
 
             $response = $sendgrid->send($email);
             if ($response) {

@@ -47,7 +47,7 @@ class TestWebHookSending extends Command
         WebhookCall::create()
             ->url('http://127.0.0.1/local.talkila.com/laravel/public/webhook-receiving-url')
             ->payload(['key' => 'value'])
-            ->useSecret(env('WEBHOOK_CLIENT_SECRET'))
+            ->useSecret(config('talkila.webhook_client_secret'))
             ->dispatchNow();
     }
 }

@@ -171,7 +171,7 @@
                                         <div class="secShare">
                                             <input type="text" readonly="readonly" id="profile-path-holder2"
                                                 class="copyText profile-path-holder profile-path-holder22"
-                                                value="{{ env('APP_FRONTEND_URL') . '/' . $talk_details['username'] . '/talk/' . $talk_details['id'] }}">
+                                                value="{{ config('app.frontend_url') . '/' . $talk_details['username'] . '/talk/' . $talk_details['id'] }}">
                                             <p class="copyText copyTexter">
                                                 @include('frontend.partials.svg.icons.copy')
                                             </p>

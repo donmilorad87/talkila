@@ -176,7 +176,7 @@ class AuthController extends Controller
                 'Content-Type'         => 'application/json',
                 'Application-Language' => strtolower(App::getLocale()),
 
-            ])->post(env('APP_BACKEND_URL', '') . '/login-with-google', [
+            ])->post(config('app.appBackendServerUrl', '') . '/login-with-google', [
                 'accessToken' => $gUser->token,
             ]);
 
@@ -228,7 +228,7 @@ class AuthController extends Controller
             //                'Content-Type'          => 'application/json',
             //                'Application-Language'  =>  strtolower(App::getLocale())
             //
-            //            ])->post(env('APP_BACKEND_URL', '').'/login-with-facebook', [
+            //            ])->post(config('app.appBackendServerUrl', '').'/login-with-facebook', [
             //                'accessToken' => $fUser->token
             //            ]);
             $request->request->add([

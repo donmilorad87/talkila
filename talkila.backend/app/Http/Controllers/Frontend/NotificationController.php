@@ -68,7 +68,7 @@ class NotificationController extends Controller
                 'Authorization'         => "$tokenType $accessToken",
                 'Application-Language'  => strtolower(App::getLocale())
 
-            ])->get(env('APP_BACKEND_URL', '') . '/users/' . $item['payload']['username_of_teacher_id'], [
+            ])->get(config('app.appBackendServerUrl', '') . '/users/' . $item['payload']['username_of_teacher_id'], [
 
             ]);
 

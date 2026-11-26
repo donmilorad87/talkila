@@ -28,8 +28,8 @@
 
 <script src='https://www.paypalobjects.com/js/external/api.js'></script>
 <script>
-    var appID       = '{{ env('PAYPAL_CONNECT_JTC') }}';
-    var returnUrl   = '{{ env('APP_URL') }}';
+    var appID       = '{{ config('talkila.paypal.connect_jtc') }}';
+    var returnUrl   = '{{ config('app.url') }}';
 
     paypal.use( ['login'], function (login) {
         login.render ({

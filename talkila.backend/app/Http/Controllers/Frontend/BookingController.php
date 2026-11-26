@@ -64,7 +64,7 @@ class BookingController extends Controller
 
         $now->add(new DateInterval('PT' . abs((int)(auth()->user()->timezone)) . 'M'));
 
-        if (floatval(env('POSTPONE_TIME')) < round((strtotime($start_time) - strtotime($now->format('Y-m-d H:i:s'))) / 3600, 2)) {
+        if (floatval(config('talkila.postpone_time')) < round((strtotime($start_time) - strtotime($now->format('Y-m-d H:i:s'))) / 3600, 2)) {
             return true;
         } else {
             return false;
@@ -672,7 +672,7 @@ class BookingController extends Controller
             'Authorization'        => "$tokenType $accessToken",
             'Application-Language' => strtolower(App::getLocale()),
             'Time-Zone-Offset-UTC' => getLocalTimeZone(),
-        ])->post(env('APP_BACKEND_URL', '') . '/deposite-in-wallet', [
+        ])->post(config('app.appBackendServerUrl', '') . '/deposite-in-wallet', [
             'user_id'  => $userId,
             'amount'   => $amount,
             'currency' => 'eur',

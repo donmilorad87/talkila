@@ -156,7 +156,7 @@
 
                                     <input type="text" readonly="readonly" id="profile-path-holder2"
                                         class="copyText profile-path-holder profile-path-holder22"
-                                        value="{{ env('APP_FRONTEND_URL') . '/' . $user->username . '/talk/' }}">
+                                        value="{{ config('app.frontend_url') . '/' . $user->username . '/talk/' }}">
                                     <p class="copyText copyTexter">
                                         @include('frontend.partials.svg.icons.copy')
                                     </p>

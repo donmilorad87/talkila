@@ -11,6 +11,7 @@
         </testsuite>
         <testsuite name="Web">
             <directory>./tests/Feature/Web</directory>
+            <directory>./tests/Feature/Architecture</directory>
         </testsuite>
         <testsuite name="Unit">
             <directory>./tests/Unit</directory>
